@@ -1,0 +1,4 @@
+﻿  TcpClient_Funs.cpp
+D:\test\CPlusPlus\TestServer\engine\TcpClient_Funs.cpp(101,92): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\engine\TcpClient_Funs.cpp(375,52): warning C4018: “<”: 有符号/无符号不匹配
+  TestWindows.vcxproj -> D:\test\CPlusPlus\TestServer\TestServer\exe\TestWindows.exe

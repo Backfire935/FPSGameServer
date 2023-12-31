@@ -1,0 +1,44 @@
+﻿D:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(517,5): warning MSB8028: 中间目录(..\compiles\Debug\x64\)包含从另一个项目(TestWindows.vcxproj)共享的文件。   这会导致错误的清除和重新生成行为。
+  INetBase.cpp
+D:\test\CPlusPlus\TestServer\engine\INetBase.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  IOPool.cpp
+D:\test\CPlusPlus\TestServer\engine\IOPool.cpp(88,33): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\engine\IOPool.cpp(156,30): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\engine\IOPool.cpp(224,30): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
+  TcpClient.cpp
+D:\test\CPlusPlus\TestServer\engine\TcpClient.cpp(98,20): warning C4244: “初始化”: 从“SOCKET”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\engine\TcpClient.cpp(124,20): warning C4244: “初始化”: 从“SOCKET”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\engine\TcpClient.cpp(139,43): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  TcpClient_Funs.cpp
+D:\test\CPlusPlus\TestServer\engine\TcpClient_Funs.cpp(101,92): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\engine\TcpClient_Funs.cpp(375,52): warning C4018: “<”: 有符号/无符号不匹配
+  TcpClient_Thread.cpp
+D:\test\CPlusPlus\TestServer\engine\TcpClient_Thread.cpp(59,33): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
+  TcpServer.cpp
+D:\test\CPlusPlus\TestServer\engine\TcpServer.cpp(60,12): warning C4129: “ ”: 不可识别的字符转义序列
+D:\test\CPlusPlus\TestServer\engine\TcpServer.cpp(275,52): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\engine\TcpServer.cpp(305,13): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\engine\TcpServer.cpp(290,17): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  TcpServer_Funs.cpp
+D:\test\CPlusPlus\TestServer\engine\TcpServer_Funs.cpp(70,20): warning C4018: “<”: 有符号/无符号不匹配
+D:\test\CPlusPlus\TestServer\engine\TcpServer_Funs.cpp(122,78): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\engine\TcpServer_Funs.cpp(148,16): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+D:\test\CPlusPlus\TestServer\engine\TcpServer_Funs.cpp(217,37): warning C4244: “参数”: 从“SOCKET”转换到“const int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\engine\TcpServer_Funs.cpp(548,45): warning C4018: “<=”: 有符号/无符号不匹配
+  TcpServer_Thread.cpp
+  ShareFunction.cpp
+  md5.cpp
+  tinystr.cpp
+  tinyxml.cpp
+  tinyxmlerror.cpp
+  tinyxmlparser.cpp
+  AppGlobal.cpp
+  AppManager.cpp
+D:\test\CPlusPlus\TestServer\TestClient\code\AppManager.cpp(41,13): warning C4553: “==”: 未使用表达式结果；是否打算使用“=”?
+  AppTest.cpp
+D:\test\CPlusPlus\TestServer\TestClient\code\AppTest.cpp(44,17): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 2 拥有了类型“app::testData”
+D:\test\CPlusPlus\TestServer\TestClient\code\AppTest.cpp(44,17): warning C4477: “printf”: 格式字符串“%f”需要类型“double”的参数，但可变参数 3 拥有了类型“u32”
+  TestWindows.cpp
+  正在生成代码...
+AppManager.obj : error LNK2001: 无法解析的外部符号 "class std::vector<class net::ITcpClient *,class std::allocator<class net::ITcpClient *> > app::__TcpGame" (?__TcpGame@app@@3V?$vector@PEAVITcpClient@net@@V?$allocator@PEAVITcpClient@net@@@std@@@std@@A)
+..\exe\TestClient.exe : fatal error LNK1120: 1 个无法解析的外部命令

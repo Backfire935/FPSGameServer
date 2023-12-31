@@ -1,0 +1,30 @@
+﻿  正在验证源
+  正在将源远程复制到“192.168.182.128”
+  正在验证体系结构
+  正在验证体系结构
+  正在启动远程生成
+  正在编译源:
+  INetBase.cpp
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\INetBase.cpp(32,22): warning : conversion to ‘int’ from ‘ssize_t {aka long int}’ may alter its value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\INetBase.cpp(32,22): warning :     int ret = readlink("/proc/self/exe", FileExePath, MAX_EXE_LEN);
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\INetBase.cpp(32,22): warning :               ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\INetBase.cpp(32,8): warning : unused variable ‘ret’ [-Wunused-variable]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\INetBase.cpp(32,8): warning :     int ret = readlink("/proc/self/exe", FileExePath, MAX_EXE_LEN);
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\INetBase.cpp(32,8): warning :         ^~~
+  IOPool.cpp
+  ShareFunction.cpp
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\share\ShareFunction.cpp(43,40): warning : conversion to ‘u16 {aka short unsigned int}’ from ‘int’ may alter its value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\share\ShareFunction.cpp(51,41): warning : conversion to ‘u8 {aka unsigned char}’ from ‘int’ may alter its value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\share\ShareFunction.cpp(96,41): warning : conversion to ‘u8 {aka unsigned char}’ from ‘int’ may alter its value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\share\ShareFunction.cpp(117,36): warning : conversion to ‘u16 {aka short unsigned int}’ from ‘int’ may alter its value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\share\ShareFunction.cpp(117,36): warning :              serverList->Port = atoi(xmlNode->Attribute("Port"));
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\share\ShareFunction.cpp(117,36): warning :                                 ~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\share\ShareFunction.cpp(141,26): warning : comparison between signed and unsigned integer expressions [-Wsign-compare]
+  md5.cpp
+  tinystr.cpp
+  tinyxml.cpp
+  tinyxmlerror.cpp
+  tinyxmlparser.cpp
+  main.cpp
+  正在链接对象
+  TestLinux.vcxproj -> D:\test\CPlusPlus\TestServer\TestServer\exe\testlinux.out
