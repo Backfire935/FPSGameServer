@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\..\engine\INetBase.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\share\tinyxml\md5.cpp">
+      <Filter>share\tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\share\tinyxml\tinystr.cpp">
+      <Filter>share\tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\share\tinyxml\tinyxml.cpp">
+      <Filter>share\tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\share\tinyxml\tinyxmlerror.cpp">
+      <Filter>share\tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\share\tinyxml\tinyxmlparser.cpp">
+      <Filter>share\tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="TestWindows.cpp" />
+    <ClCompile Include="..\..\share\ShareFunction.cpp" />
+    <ClCompile Include="..\..\engine\IOPool.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\TcpServer.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\TcpServer_Thread.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\TcpServer_Funs.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="AppGlobal.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="AppManager.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="AppTest.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\TcpClient.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\TcpClient_Funs.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\TcpClient_Thread.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\share\protobuff\xxx.pb.cc">
+      <Filter>protobuff</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="engine">
+      <UniqueIdentifier>{4848dbe6-fd4c-4f27-a365-2074fa571c60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="share">
+      <UniqueIdentifier>{cf2c3f94-1b70-468e-898c-1196b1918f05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="share\tinyxml">
+      <UniqueIdentifier>{9b113299-24fe-4d6a-bc17-ac9b78488cab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app">
+      <UniqueIdentifier>{8704328a-ae40-4abf-96c7-ff3c0a120a51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="protobuff">
+      <UniqueIdentifier>{74d8523f-aaaf-49e0-8556-b31bb522eec6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\engine\IDefine.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\INetBase.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\share\tinyxml\md5.h">
+      <Filter>share\tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\share\tinyxml\tinystr.h">
+      <Filter>share\tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\share\tinyxml\tinyxml.h">
+      <Filter>share\tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\share\ShareFunction.h" />
+    <ClInclude Include="..\..\engine\IContainer.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\IOPool.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\TcpServer.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="AppGlobal.h">
+      <Filter>app</Filter>
+    </ClInclude>
+    <ClInclude Include="AppManager.h">
+      <Filter>app</Filter>
+    </ClInclude>
+    <ClInclude Include="AppTest.h">
+      <Filter>app</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\TcpClient.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\share\protobuff\xxx.pb.h">
+      <Filter>protobuff</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\exe\config_client.xml" />
+    <Xml Include="..\exe\config_server.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\share\protobuff\xxx.proto">
+      <Filter>protobuff</Filter>
+    </None>
+  </ItemGroup>
+</Project>

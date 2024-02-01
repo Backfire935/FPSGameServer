@@ -1,0 +1,9 @@
+syntax = "proto3";
+package test;
+
+message Testxxx
+{
+	int32 aa = 1;
+	int32 bb = 2;
+	int32 cc = 9;
+}

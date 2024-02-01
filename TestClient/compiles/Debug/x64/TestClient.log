@@ -1,0 +1,64 @@
+﻿  INetBase.cpp
+E:\CodeProgram\FPSGameServer\engine\INetBase.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  IOPool.cpp
+E:\CodeProgram\FPSGameServer\engine\IOPool.cpp(88,31): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
+E:\CodeProgram\FPSGameServer\engine\IOPool.cpp(155,28): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
+E:\CodeProgram\FPSGameServer\engine\IOPool.cpp(223,28): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
+  TcpClient.cpp
+E:\CodeProgram\FPSGameServer\engine\TcpClient.cpp(100,20): warning C4244: “初始化”: 从“SOCKET”转换到“int”，可能丢失数据
+E:\CodeProgram\FPSGameServer\engine\TcpClient.cpp(126,20): warning C4244: “初始化”: 从“SOCKET”转换到“int”，可能丢失数据
+E:\CodeProgram\FPSGameServer\engine\TcpClient.cpp(141,43): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+E:\CodeProgram\FPSGameServer\engine\TcpClient.cpp(204,17): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 3 拥有了类型“SOCKET”
+  E:\CodeProgram\FPSGameServer\engine\TcpClient.cpp(204,17):
+  请考虑在格式字符串中使用“%lld”
+  E:\CodeProgram\FPSGameServer\engine\TcpClient.cpp(204,17):
+  请考虑在格式字符串中使用“%Id”
+  E:\CodeProgram\FPSGameServer\engine\TcpClient.cpp(204,17):
+  请考虑在格式字符串中使用“%I64d”
+  
+  TcpClient_Funs.cpp
+E:\CodeProgram\FPSGameServer\engine\TcpClient_Funs.cpp(101,89): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+E:\CodeProgram\FPSGameServer\engine\TcpClient_Funs.cpp(375,52): warning C4018: “<”: 有符号/无符号不匹配
+  TcpClient_Thread.cpp
+E:\CodeProgram\FPSGameServer\engine\TcpClient_Thread.cpp(61,34): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
+  TcpServer.cpp
+E:\CodeProgram\FPSGameServer\engine\TcpServer.cpp(60,12): warning C4129: “ ”: 不可识别的字符转义序列
+E:\CodeProgram\FPSGameServer\engine\TcpServer.cpp(276,52): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
+E:\CodeProgram\FPSGameServer\engine\TcpServer.cpp(308,13): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+E:\CodeProgram\FPSGameServer\engine\TcpServer.cpp(292,17): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  TcpServer_Funs.cpp
+E:\CodeProgram\FPSGameServer\engine\TcpServer_Funs.cpp(70,20): warning C4018: “<”: 有符号/无符号不匹配
+E:\CodeProgram\FPSGameServer\engine\TcpServer_Funs.cpp(122,75): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+E:\CodeProgram\FPSGameServer\engine\TcpServer_Funs.cpp(148,16): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+E:\CodeProgram\FPSGameServer\engine\TcpServer_Funs.cpp(217,37): warning C4244: “参数”: 从“SOCKET”转换到“const int”，可能丢失数据
+E:\CodeProgram\FPSGameServer\engine\TcpServer_Funs.cpp(548,45): warning C4018: “<=”: 有符号/无符号不匹配
+  TcpServer_Thread.cpp
+  xxx.pb.cc
+E:\CodeProgram\FPSGameServer\share\google\protobuf\wire_format_lite.h(935,41): warning C4244: “参数”: 从“google::protobuf::uint64”转换到“google::protobuf::uint32”，可能丢失数据
+  (编译源文件“../../share/protobuff/xxx.pb.cc”)
+  
+E:\CodeProgram\FPSGameServer\share\google\protobuf\parse_context.h(269,28): warning C4244: “-=”: 从“google::protobuf::stringpiece_ssize_type”转换到“int”，可能丢失数据
+  (编译源文件“../../share/protobuff/xxx.pb.cc”)
+  
+  ShareFunction.cpp
+  md5.cpp
+  tinystr.cpp
+  tinyxml.cpp
+  tinyxmlerror.cpp
+  tinyxmlparser.cpp
+  AppGlobal.cpp
+E:\CodeProgram\FPSGameServer\TestClient\code\AppGlobal.cpp(38,11): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 3 拥有了类型“const char *”
+E:\CodeProgram\FPSGameServer\TestClient\code\AppGlobal.cpp(38,11): warning C4313: "printf": 格式字符串中的 "%d" 与类型为 "const char *" 的参数 3 冲突
+  AppManager.cpp
+  AppTest.cpp
+E:\CodeProgram\FPSGameServer\share\google\protobuf\wire_format_lite.h(935,41): warning C4244: “参数”: 从“google::protobuf::uint64”转换到“google::protobuf::uint32”，可能丢失数据
+  (编译源文件“AppTest.cpp”)
+  
+E:\CodeProgram\FPSGameServer\share\google\protobuf\parse_context.h(269,28): warning C4244: “-=”: 从“google::protobuf::stringpiece_ssize_type”转换到“int”，可能丢失数据
+  (编译源文件“AppTest.cpp”)
+  
+E:\CodeProgram\FPSGameServer\TestClient\code\AppTest.cpp(94,29): warning C4305: “=”: 从“int”到“u8”截断
+E:\CodeProgram\FPSGameServer\TestClient\code\AppTest.cpp(94,29): warning C4309: “=”: 截断常量值
+  TestWindows.cpp
+  正在生成代码...
+  TestClient.vcxproj -> E:\CodeProgram\FPSGameServer\TestClient\exe\TestClient.exe

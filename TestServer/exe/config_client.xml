@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="GB2312"?>
+<root>
+    <client
+    MaxUser="1"
+    MaxConnect="1"
+    CCode="97"
+    Version="20231028"
+    ReceOne="8"
+    ReceMax="256"
+    SendOne="8"
+    SendMax="256"
+    HeartTime="10"
+    AutoTime="5"
+    SafeCode="testcode"
+    Head="DE"
+    />
+    <server 
+    num="1"
+    />
+    <client1 
+    IP="127.0.0.1"
+    Port="13570"
+    ID="2000"
+    Type="Game"
+    />
+</root>
