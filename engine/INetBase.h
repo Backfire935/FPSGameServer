@@ -9,60 +9,60 @@ namespace net
 #pragma pack(push, packing)
 	#pragma pack(1)
 
-	//¿Í»§¶ËÁ¬½ÓÊı¾İË÷Òı
+	//å®¢æˆ·ç«¯è¿æ¥æ•°æ®ç´¢å¼•
 	struct S_CLIENT_BASE_INDEX
 	{
-		s32	index;	//¼Ç×¡Íæ¼ÒÁ¬½ÓÊı¾İµÄÏÂ±ê
+		s32	index;	//è®°ä½ç©å®¶è¿æ¥æ•°æ®çš„ä¸‹æ ‡
 		inline void Reset() { index = -1; }
 	};
 
-	//¿Í»§¶ËÁ¬½ÓÊı¾İ
+	//å®¢æˆ·ç«¯è¿æ¥æ•°æ®
 	struct S_CLIENT_BASE
 	{
-	#ifdef ____WIN32_	//Ö§³Ö¿çÆ½Ì¨
+	#ifdef ____WIN32_	//æ”¯æŒè·¨å¹³å°
 		SOCKET socketfd;
 	#else
 		int	socketfd;
 	#endif
 
-		s8	state; //ÓĞ·ûºÅÒ»×Ö½Ú£¬¼Ç×¡µ±Ç°Á¬½Ó×´Ì¬
-		s8	closeState; // ¼ÇÂ¼¹Ø±Õ×´Ì¬
+		s8	state; //æœ‰ç¬¦å·ä¸€å­—èŠ‚ï¼Œè®°ä½å½“å‰è¿æ¥çŠ¶æ€
+		s8	closeState; // è®°å½•å…³é—­çŠ¶æ€
 		char	ip[MAX_IP_LEN];
 		u16	port;
-		s32	ID;//µ±Ç°Íæ¼ÒÁ¬½ÓÊı¾İID£¬Ò²ÊÇË÷ÒıÏÂ±ê
-		u8	rCode;//¶ÔÊı¾İ½øĞĞÒì»ò£¬·ÀÖ¹ÖªµÀÊı¾İÃ÷ÎÄÊÇÊ²Ã´,Æğµ½»ìÏıµÄ×÷ÓÃ
+		s32	ID;//å½“å‰ç©å®¶è¿æ¥æ•°æ®IDï¼Œä¹Ÿæ˜¯ç´¢å¼•ä¸‹æ ‡
+		u8	rCode;//å¯¹æ•°æ®è¿›è¡Œå¼‚æˆ–ï¼Œé˜²æ­¢çŸ¥é“æ•°æ®æ˜æ–‡æ˜¯ä»€ä¹ˆ,èµ·åˆ°æ··æ·†çš„ä½œç”¨
 
 
-	//ÓÎÏ·¼ÍÂ¼Êı¾İ
-		s32	ClientID;//¸÷¸ö¹¦ÄÜ·şÎñÆ÷ID
+	//æ¸¸æˆçºªå½•æ•°æ®
+		s32	ClientID;//å„ä¸ªåŠŸèƒ½æœåŠ¡å™¨ID
 		u8	ClientType;//0 1-DB 2-Center 3-Game 4-Gate 5-Login
 	
-		//Éú²úÕß--½ÓÊÕÊı¾İ
-		//Ïû·ÑÕß--½âÎöÊı¾İ
-		bool		is_RecvCompleted;//Êı¾İÊÇ·ñ½ÓÊÕÍê³É
-		char*		recvBuf;//´æ·Å½ÓÊÕµ½µÄÊı¾İ£¬¶ÁÈ¡µ½µÄ¿Í»§¶ËµÄÊı¾İ£¬´æ·Å½ø£¬¿ª±ÙµÄ¿Õ¼ä´óĞ¡ÊÇ³õÊ¼»¯Ê±ConfigXMLµÄReceMaxÖµ
-		//char*		recvBuf_Temp;//´æ·ÅÒ»´Î×î´óÔÊĞí½ÓÊÕµÄÊı¾İµÄ´óĞ¡£¬´óĞ¡ÊÇConfigXMLµÄReceOne
-		s32			recv_Head;//½ÓÊÕÊı¾İÍ·µÄÆ«ÒÆÁ¿ Éú²úÕß
-		s32			recv_Tail;//½ÓÊÕÊı¾İÎ²µÄÆ«ÒÆÁ¿ Ïû·ÑÕß
-		s32			recv_TempHead;//ÁÙÊ±Í·
-		s32			recv_TempTail;//ÁÙÊ±Î²
+		//ç”Ÿäº§è€…--æ¥æ”¶æ•°æ®
+		//æ¶ˆè´¹è€…--è§£ææ•°æ®
+		bool		is_RecvCompleted;//æ•°æ®æ˜¯å¦æ¥æ”¶å®Œæˆ
+		char*		recvBuf;//å­˜æ”¾æ¥æ”¶åˆ°çš„æ•°æ®ï¼Œè¯»å–åˆ°çš„å®¢æˆ·ç«¯çš„æ•°æ®ï¼Œå­˜æ”¾è¿›ï¼Œå¼€è¾Ÿçš„ç©ºé—´å¤§å°æ˜¯åˆå§‹åŒ–æ—¶ConfigXMLçš„ReceMaxå€¼
+		//char*		recvBuf_Temp;//å­˜æ”¾ä¸€æ¬¡æœ€å¤§å…è®¸æ¥æ”¶çš„æ•°æ®çš„å¤§å°ï¼Œå¤§å°æ˜¯ConfigXMLçš„ReceOne
+		s32			recv_Head;//æ¥æ”¶æ•°æ®å¤´çš„åç§»é‡ ç”Ÿäº§è€…
+		s32			recv_Tail;//æ¥æ”¶æ•°æ®å°¾çš„åç§»é‡ æ¶ˆè´¹è€…
+		s32			recv_TempHead;//ä¸´æ—¶å¤´
+		s32			recv_TempTail;//ä¸´æ—¶å°¾
 
-		//Éú²úÕß--·â°ü
-		//Ïû·ÑÕß--·¢ËÍÊı¾İ
-		bool		is_Sending;//ÊÇ·ñÕıÔÚ·¢ËÍÊı¾İ·â°ü
-		bool		is_SendCompleted;//ÊÇ·ñ·¢ËÍÍê±Ï
-		char*		sendBuf;//·¢ËÍ»º³åÇø,´óĞ¡ÊÇConfigXMLµÄSendMax
-		s32			send_Head;//·¢ËÍÊı¾İÍ·µÄÆ«ÒÆÁ¿ Ïû·ÑÕß »¬¶¯´°¿Ú
-		s32			send_Tail;//·¢ËÍÊı¾İÎ²µÄÆ«ÒÆÁ¿ Éú²úÕß
+		//ç”Ÿäº§è€…--å°åŒ…
+		//æ¶ˆè´¹è€…--å‘é€æ•°æ®
+		bool		is_Sending;//æ˜¯å¦æ­£åœ¨å‘é€æ•°æ®å°åŒ…
+		bool		is_SendCompleted;//æ˜¯å¦å‘é€å®Œæ¯•
+		char*		sendBuf;//å‘é€ç¼“å†²åŒº,å¤§å°æ˜¯ConfigXMLçš„SendMax
+		s32			send_Head;//å‘é€æ•°æ®å¤´çš„åç§»é‡ æ¶ˆè´¹è€… æ»‘åŠ¨çª—å£
+		s32			send_Tail;//å‘é€æ•°æ®å°¾çš„åç§»é‡ ç”Ÿäº§è€…
 		s32			send_TempTail;//
 
-		//Ê±¼äÀà
-		s32			time_Connect;//´æ·ÅÁ¬½ÓÊ±¼ä
-		s32			time_Heart;//¼ÇÂ¼ĞÄÌøÊ±¼ä
-		s32			time_Close;//¹Ø±ÕÊ±¼ä
-		u8			threadID;//Ïß³ÌID
-		s32			shutdown_kind;//°²È«¹Ø±Õ·şÎñÆ÷£¬´òÓ¡Êä³öĞÅÏ¢
-		char		md5[MAX_MD5_LEN];//MD5Âë°²È«ÑéÖ¤
+		//æ—¶é—´ç±»
+		s32			time_Connect;//å­˜æ”¾è¿æ¥æ—¶é—´
+		s32			time_Heart;//è®°å½•å¿ƒè·³æ—¶é—´
+		s32			time_Close;//å…³é—­æ—¶é—´
+		u8			threadID;//çº¿ç¨‹ID
+		s32			shutdown_kind;//å®‰å…¨å…³é—­æœåŠ¡å™¨ï¼Œæ‰“å°è¾“å‡ºä¿¡æ¯
+		char		md5[MAX_MD5_LEN];//MD5ç å®‰å…¨éªŒè¯
 
 		void	Init();
 		void	Reset();
@@ -81,7 +81,7 @@ namespace net
 	#endif
 	};
 
-	//Á¬½Ó·şÎñÆ÷Êı¾İ½á¹¹
+	//è¿æ¥æœåŠ¡å™¨æ•°æ®ç»“æ„
 	struct S_SERVER_BASE
 	{
 #ifdef ____WIN32_
@@ -98,29 +98,29 @@ namespace net
 		u8			state;
 		u8			rCode;
 
-		//Éú²úÕß--½ÓÊÕÊı¾İ
-	//Ïû·ÑÕß--½âÎöÊı¾İ
-		char*		recvBuf;//´æ·Å½ÓÊÕµ½µÄÊı¾İ£¬¶ÁÈ¡µ½µÄ¿Í»§¶ËµÄÊı¾İ£¬´æ·Å½ø£¬¿ª±ÙµÄ¿Õ¼ä´óĞ¡ÊÇ³õÊ¼»¯Ê±ConfigXMLµÄReceMaxÖµ
-		char*		recvBuf_Temp;//´æ·ÅÒ»´Î×î´óÔÊĞí½ÓÊÕµÄÊı¾İµÄ´óĞ¡£¬´óĞ¡ÊÇConfigXMLµÄReceOne
-		s32			recv_Head;//½ÓÊÕÊı¾İÍ·µÄÆ«ÒÆÁ¿ Éú²úÕß
-		s32			recv_Tail;//½ÓÊÕÊı¾İÎ²µÄÆ«ÒÆÁ¿ Ïû·ÑÕß
-		s32			recv_TempHead;//ÁÙÊ±Í·
-		s32			recv_TempTail;//ÁÙÊ±Î²
-		bool			is_Recved;//Êı¾İÊÇ·ñ½ÓÊÕÍê³É
+		//ç”Ÿäº§è€…--æ¥æ”¶æ•°æ®
+	//æ¶ˆè´¹è€…--è§£ææ•°æ®
+		char*		recvBuf;//å­˜æ”¾æ¥æ”¶åˆ°çš„æ•°æ®ï¼Œè¯»å–åˆ°çš„å®¢æˆ·ç«¯çš„æ•°æ®ï¼Œå­˜æ”¾è¿›ï¼Œå¼€è¾Ÿçš„ç©ºé—´å¤§å°æ˜¯åˆå§‹åŒ–æ—¶ConfigXMLçš„ReceMaxå€¼
+		char*		recvBuf_Temp;//å­˜æ”¾ä¸€æ¬¡æœ€å¤§å…è®¸æ¥æ”¶çš„æ•°æ®çš„å¤§å°ï¼Œå¤§å°æ˜¯ConfigXMLçš„ReceOne
+		s32			recv_Head;//æ¥æ”¶æ•°æ®å¤´çš„åç§»é‡ ç”Ÿäº§è€…
+		s32			recv_Tail;//æ¥æ”¶æ•°æ®å°¾çš„åç§»é‡ æ¶ˆè´¹è€…
+		s32			recv_TempHead;//ä¸´æ—¶å¤´
+		s32			recv_TempTail;//ä¸´æ—¶å°¾
+		bool			is_Recved;//æ•°æ®æ˜¯å¦æ¥æ”¶å®Œæˆ
 
-		//Éú²úÕß--·â°ü
-	//Ïû·ÑÕß--·¢ËÍÊı¾İ
-		char*		sendBuf;//·¢ËÍ»º³åÇø,´óĞ¡ÊÇConfigXMLµÄSendMax
-		s32			send_Head;//·¢ËÍÊı¾İÍ·µÄÆ«ÒÆÁ¿ Ïû·ÑÕß »¬¶¯´°¿Ú
-		s32			send_Tail;//·¢ËÍÊı¾İÎ²µÄÆ«ÒÆÁ¿ Éú²úÕß
+		//ç”Ÿäº§è€…--å°åŒ…
+	//æ¶ˆè´¹è€…--å‘é€æ•°æ®
+		char*		sendBuf;//å‘é€ç¼“å†²åŒº,å¤§å°æ˜¯ConfigXMLçš„SendMax
+		s32			send_Head;//å‘é€æ•°æ®å¤´çš„åç§»é‡ æ¶ˆè´¹è€… æ»‘åŠ¨çª—å£
+		s32			send_Tail;//å‘é€æ•°æ®å°¾çš„åç§»é‡ ç”Ÿäº§è€…
 		s32			send_TempTail;//
-		bool			is_Sending;//ÊÇ·ñÕıÔÚ·¢ËÍÊı¾İ·â°ü
-		bool			is_SendCompleted;//ÊÇ·ñ·¢ËÍÍê±Ï
+		bool			is_Sending;//æ˜¯å¦æ­£åœ¨å‘é€æ•°æ®å°åŒ…
+		bool			is_SendCompleted;//æ˜¯å¦å‘é€å®Œæ¯•
 
-		//Ê±¼äÀà
-		s32			time_AutoConnect;//´æ·ÅÁ¬½ÓÊ±¼ä
-		s32			time_Heart;//¼ÇÂ¼ĞÄÌøÊ±¼ä
-		char			md5[MAX_MD5_LEN];//MD5Âë°²È«ÑéÖ¤
+		//æ—¶é—´ç±»
+		s32			time_AutoConnect;//å­˜æ”¾è¿æ¥æ—¶é—´
+		s32			time_Heart;//è®°å½•å¿ƒè·³æ—¶é—´
+		char			md5[MAX_MD5_LEN];//MD5ç å®‰å…¨éªŒè¯
 
 		void	Init(int sid);
 		void	reset();
@@ -131,7 +131,7 @@ namespace net
 
 	class ITcpServer;
 	class ITcpClient;
-	typedef void(*TCPSERVERNOTIFY_EVENT) (ITcpServer* tcp, S_CLIENT_BASE *c , const s32 code);//·şÎñÆ÷Ê§È¥Á¬½Ó£¬Òì³£Á¬½Ó£¬°²È«Á¬½ÓµÄÊ±ºò£¬½«ÊÂ¼şÅÉ·¢µ½ÒµÎñ²ã
+	typedef void(*TCPSERVERNOTIFY_EVENT) (ITcpServer* tcp, S_CLIENT_BASE *c , const s32 code);//æœåŠ¡å™¨å¤±å»è¿æ¥ï¼Œå¼‚å¸¸è¿æ¥ï¼Œå®‰å…¨è¿æ¥çš„æ—¶å€™ï¼Œå°†äº‹ä»¶æ´¾å‘åˆ°ä¸šåŠ¡å±‚
 	typedef void(*TCPSERVERNOTIFYERRO_EVENT) (ITcpServer* tcp, S_CLIENT_BASE* c, const s32 code, const char* err);
 	typedef void(*TCPCLIENTNOTIFY_EVENT) (ITcpClient* tcp, const s32 code);
 
@@ -143,19 +143,19 @@ namespace net
 		virtual void stopServer() =0;
 		
 	#ifdef ____WIN32_
-		virtual	S_CLIENT_BASE * client(SOCKET fd, bool issecurity) = 0;//Í¨¹ısocketIDÏÈ²éË÷Òı£¬È»ºó¾«È·¶¨Î»µ±Ç°S_CLIENT_BASEµÄÊı¾İ,Í¨¹ıË÷Òı²éÕÒÊÇ×î¿ìµÄ
+		virtual	S_CLIENT_BASE * client(SOCKET fd, bool issecurity) = 0;//é€šè¿‡socketIDå…ˆæŸ¥ç´¢å¼•ï¼Œç„¶åç²¾ç¡®å®šä½å½“å‰S_CLIENT_BASEçš„æ•°æ®,é€šè¿‡ç´¢å¼•æŸ¥æ‰¾æ˜¯æœ€å¿«çš„
 	#else
 		virtual	S_CLIENT_BASE* client(int fd, bool issecurity) = 0;
 	#endif
-		virtual	S_CLIENT_BASE* client(int index) = 0; //µÚ¶şÖÖ°ì·¨£¬Ö±½Ó´«Ë÷ÒıÖµ¾«È·¶¨Î»
+		virtual	S_CLIENT_BASE* client(int index) = 0; //ç¬¬äºŒç§åŠæ³•ï¼Œç›´æ¥ä¼ ç´¢å¼•å€¼ç²¾ç¡®å®šä½
 
 		virtual bool isID_T(const s32 id) = 0;
 		virtual bool isSecure_T(const s32 id, s32 secure) = 0;
-		virtual bool isSecure_F_Close(const s32 id, s32 secure) = 0;//Èç¹û²»ÊÇ°²È«Á¬½Ó¾ÍÖ±½Ó¹Øµô
+		virtual bool isSecure_F_Close(const s32 id, s32 secure) = 0;//å¦‚æœä¸æ˜¯å®‰å…¨è¿æ¥å°±ç›´æ¥å…³æ‰
 		virtual void parseCommand() = 0;
 		virtual void getSecurityCount(int& connectnum,int& securitycount) = 0;
 		
-		virtual void begin(const int id, const u16 cmd) = 0;// Íæ¼ÒÊı¾İË÷ÒıÏÂ±ê ºÍ Í·Ö¸Áî
+		virtual void begin(const int id, const u16 cmd) = 0;// ç©å®¶æ•°æ®ç´¢å¼•ä¸‹æ ‡ å’Œ å¤´æŒ‡ä»¤
 		virtual void end(const int id) = 0;
 		
 		virtual void sss(const int id, const s8 v) = 0;
@@ -194,11 +194,11 @@ namespace net
 		virtual void read(const int id, void* v, const u32 len) = 0;
 
 		virtual void setOnClientAccept(TCPSERVERNOTIFY_EVENT event) =0;
-		virtual void setOnClientSecureConnect(TCPSERVERNOTIFY_EVENT event) =0;//°²È«Á¬½Ó
-		virtual void setOnClientDisConnect(TCPSERVERNOTIFY_EVENT event) =0;//Ê§È¥Á¬½Ó
-		virtual void setOnClientTimeout(TCPSERVERNOTIFY_EVENT event) =0;//³¬Ê±Á¬½Ó
-		virtual void setOnClientExcept(TCPSERVERNOTIFY_EVENT event) =0;//Òì³£
-		virtual void registerCommand(int cmd, void* container) =0;//×¢²áÏûÏ¢
+		virtual void setOnClientSecureConnect(TCPSERVERNOTIFY_EVENT event) =0;//å®‰å…¨è¿æ¥
+		virtual void setOnClientDisConnect(TCPSERVERNOTIFY_EVENT event) =0;//å¤±å»è¿æ¥
+		virtual void setOnClientTimeout(TCPSERVERNOTIFY_EVENT event) =0;//è¶…æ—¶è¿æ¥
+		virtual void setOnClientExcept(TCPSERVERNOTIFY_EVENT event) =0;//å¼‚å¸¸
+		virtual void registerCommand(int cmd, void* container) =0;//æ³¨å†Œæ¶ˆæ¯
 		
 		
 	};
@@ -218,7 +218,7 @@ namespace net
 		virtual bool connectServer() = 0;
 		virtual void disconnectServer(const s32 errcode, const char* err) = 0;
 
-		virtual void begin( const u16 cmd) = 0;// Íæ¼ÒÊı¾İË÷ÒıÏÂ±ê ºÍ Í·Ö¸Áî
+		virtual void begin( const u16 cmd) = 0;// ç©å®¶æ•°æ®ç´¢å¼•ä¸‹æ ‡ å’Œ å¤´æŒ‡ä»¤
 		virtual void end() = 0;
 
 		virtual void sss( const s8 v) = 0;
@@ -257,15 +257,15 @@ namespace net
 		virtual void read(void* v, const u32 len) = 0;
 
 		virtual void parseCommand() = 0;
-		virtual void registerCommand(int cmd, void* container) = 0;//×¢²áÏûÏ¢
+		virtual void registerCommand(int cmd, void* container) = 0;//æ³¨å†Œæ¶ˆæ¯
 		virtual void setOnConnect(TCPCLIENTNOTIFY_EVENT event) = 0;
-		virtual void setOnSecure(TCPCLIENTNOTIFY_EVENT event) = 0;//°²È«Á¬½Ó
-		virtual void setOnDisConnect(TCPCLIENTNOTIFY_EVENT event) = 0;//Ê§È¥Á¬½Ó
-		virtual void setOnExcept(TCPCLIENTNOTIFY_EVENT event) = 0;//Òì³£
+		virtual void setOnSecure(TCPCLIENTNOTIFY_EVENT event) = 0;//å®‰å…¨è¿æ¥
+		virtual void setOnDisConnect(TCPCLIENTNOTIFY_EVENT event) = 0;//å¤±å»è¿æ¥
+		virtual void setOnExcept(TCPCLIENTNOTIFY_EVENT event) = 0;//å¼‚å¸¸
 	};
 
-	extern ITcpServer* NewTcpServer();//Éú³ÉÒ»¸öITcpServer¶ÔÏó
-	extern ITcpClient* NewTcpClient();//Éú³ÉÒ»¸öITcpClient¶ÔÏó
+	extern ITcpServer* NewTcpServer();//ç”Ÿæˆä¸€ä¸ªITcpServerå¯¹è±¡
+	extern ITcpClient* NewTcpClient();//ç”Ÿæˆä¸€ä¸ªITcpClientå¯¹è±¡
 }
 
 #endif

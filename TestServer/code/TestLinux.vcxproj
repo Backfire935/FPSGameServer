@@ -90,6 +90,7 @@
     </RemoteOutRelDir>
   </PropertyGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\engine\EpollServer.cpp" />
     <ClCompile Include="..\..\engine\INetBase.cpp" />
     <ClCompile Include="..\..\engine\IOPool.cpp" />
     <ClCompile Include="..\..\share\ShareFunction.cpp" />

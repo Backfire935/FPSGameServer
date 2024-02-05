@@ -26,6 +26,9 @@
     <ClCompile Include="..\..\engine\IOPool.cpp">
       <Filter>engine</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\engine\EpollServer.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="share">

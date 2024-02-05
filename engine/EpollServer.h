@@ -16,6 +16,7 @@ namespace net
 	public:
 		EpollServer();
 		virtual ~ITcpServer() {};
+
 	private:
 		u32	m_ConnectNum;//连接数
 		u32	m_SecurityCount;//安全连接数
@@ -43,19 +44,39 @@ namespace net
 		std::list<int>	m_Socketfds;//有新的数据连接的时候，就把socketfd放进这个链表里面
 		int					listenfd;
 		int					epollfd;
-		char*				recvBuf[10];//临时中转变量，存储从接收数据的线程中获得的数据
-		HashArray<S_CLIENT_BASE>*					Linkers;
-		HashArray<S_CLIENT_BASE_INDEX>*		LinkersIndex;
+		char* recvBuf[10];//临时中转变量，存储从接收数据的线程中获得的数据
+		HashArray<S_CLIENT_BASE>* Linkers;
+		HashArray<S_CLIENT_BASE_INDEX>* LinkersIndex;
 
 		TCPSERVERNOTIFY_EVENT onAcceptEvent;
 		TCPSERVERNOTIFY_EVENT onSecurityEvent;
 		TCPSERVERNOTIFY_EVENT onTimeoutEvent;
 		TCPSERVERNOTIFY_EVENT onDisconnectEvent;
 		TCPSERVERNOTIFY_EVENT onExceptEvent;
+	public:
+		inline  void	updateSecurityCount(bool isadd)
+		{
+			std::lock_guard<std::mutex> guard(m_SecurityMutex);
+			if (isadd)m_SecurityCount++;
+			else m_SecurityCount--;
+		}
 
+		inline  void	updateConnectCount(bool isadd)
+		{
+			std::lock_guard<std::mutex> guard(m_ConnectMutex);
+			if (isadd)m_ConnectNum++;
+			else m_ConnectNum--;
+		}
+
+		inline S_CLIENT_BASE_INDEX* GetClientIndex(const int socketfd)
+		{
+			if (socketfd < 0 || socketfd >= MAX_USER_SOCKETFD)return NULL;
+			S_CLIENT_BASE_INDEX* c = LinkersIndex->Value(socketfd);
+			return c;
+		}
 
 	public:
-		virtual void runServer(int num) ;
+		virtual void runServer(int num) ;//参数是传入的线程数量
 		virtual void stopServer() ;
 
 		virtual	S_CLIENT_BASE* client(int fd, bool issecurity) ;//通过socketID先查索引，然后精确定位当前S_CLIENT_BASE的数据,通过索引查找是最快的
@@ -114,6 +135,8 @@ namespace net
 
 
 	};
+
+	
 }
 
 #endif
