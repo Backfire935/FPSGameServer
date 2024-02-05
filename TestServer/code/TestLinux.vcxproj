@@ -101,6 +101,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\engine\EpollServer.h" />
     <ClInclude Include="..\..\engine\IContainer.h" />
     <ClInclude Include="..\..\engine\IDefine.h" />
     <ClInclude Include="..\..\engine\INetBase.h" />

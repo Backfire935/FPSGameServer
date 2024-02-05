@@ -63,6 +63,9 @@
     <ClInclude Include="..\..\engine\IOPool.h">
       <Filter>engine</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\engine\EpollServer.h">
+      <Filter>engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="..\exe\config_client.xml" />
