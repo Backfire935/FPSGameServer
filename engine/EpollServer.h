@@ -8,6 +8,8 @@
 #include<condition_variable>
 #include<thread>
 #include<list>
+#include<netinet/in.h>
+
 
 namespace net
 {
@@ -15,7 +17,7 @@ namespace net
 	{
 	public:
 		EpollServer();
-		virtual ~ITcpServer() {};
+		virtual ~EpollServer() {};
 
 	private:
 		u32	m_ConnectNum;//Á¬½ÓÊý
@@ -53,6 +55,13 @@ namespace net
 		TCPSERVERNOTIFY_EVENT onTimeoutEvent;
 		TCPSERVERNOTIFY_EVENT onDisconnectEvent;
 		TCPSERVERNOTIFY_EVENT onExceptEvent;
+
+	private:
+		int initSocket();
+		int add_event(int epollfd, int socketfd, int events);
+		int delete_event(int epollfd, int socketfd, int events);
+
+
 	public:
 		inline  void	updateSecurityCount(bool isadd)
 		{

@@ -4,6 +4,25 @@
   正在验证体系结构
   正在启动远程生成
   正在编译源:
+  EpollServer.cpp
+E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(2,9): warning : #pragma once in main file
+E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(2,9): warning :  #pragma once
+E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(2,9): warning :          ^~~~
+E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(136,5): warning : no return statement in function returning non-void [-Wreturn-type]
+E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(136,5): warning :      }
+E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(136,5): warning :      ^
+E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(140,5): warning : no return statement in function returning non-void [-Wreturn-type]
+E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(140,5): warning :      }
+E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(140,5): warning :      ^
+E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(144,5): warning : no return statement in function returning non-void [-Wreturn-type]
+E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(144,5): warning :      }
+E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(144,5): warning :      ^
+E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(148,5): warning : no return statement in function returning non-void [-Wreturn-type]
+E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(148,5): warning :      }
+E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(148,5): warning :      ^
+E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(152,5): warning : no return statement in function returning non-void [-Wreturn-type]
+E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(152,5): warning :      }
+E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(152,5): warning :      ^
   INetBase.cpp
 E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\INetBase.cpp(32,22): warning : conversion to ‘int’ from ‘ssize_t {aka long int}’ may alter its value [-Wconversion]
 E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\INetBase.cpp(32,22): warning :     int ret = readlink("/proc/self/exe", FileExePath, MAX_EXE_LEN);
