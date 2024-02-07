@@ -1,5 +1,4 @@
 
-#pragma once
 
 #include"EpollServer.h"
 
@@ -57,7 +56,9 @@ namespace net
         return value;
     }
 
-	//1.调用socket函数创建socket（侦听socket）
+
+
+    //1.调用socket函数创建socket（侦听socket）
 	//2.调用bind函数将socket绑定到某个ip和端口的二元组上
 	//3.调用listen函数开启侦听
 	//4.当用客户端请求连接之后，调用accept函数接受连接，产生一个新的socket
@@ -124,7 +125,10 @@ namespace net
     		cIndex->Reset();
     	}
     	//初始化socket
-    	
+        initSocket();
+        //调用初始化线程
+        runThread(num);
+
     }
 
     void EpollServer::stopServer()

@@ -61,7 +61,12 @@ namespace net
 		int add_event(int epollfd, int socketfd, int events);
 		int delete_event(int epollfd, int socketfd, int events);
 
+		void runThread(int num);
+		static void run_manager(EpollServer* epoll);
+		static void run_accept(EpollServer* epoll, int tid);
+		static void run_recv(EpollServer* epoll, int tid);
 
+		
 	public:
 		inline  void	updateSecurityCount(bool isadd)
 		{
