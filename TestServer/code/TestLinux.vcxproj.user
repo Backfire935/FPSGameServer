@@ -4,6 +4,7 @@
     <RemoteDebuggerCommand>~/projects/TestServer/exe//testlinux.out</RemoteDebuggerCommand>
     <RemoteDebuggerWorkingDirectory>/home/backfire/projects/</RemoteDebuggerWorkingDirectory>
     <DebuggerFlavor>LinuxDebugger</DebuggerFlavor>
-    <RemoteTarget>-1308368234;192.168.182.128 (username=, port=22, authentication=Password)</RemoteTarget>
+    <RemoteTarget>2142127191;192.168.182.129 (username=, port=22, authentication=Password)</RemoteTarget>
+    <RemoteDebuggingTarget>2142127191;192.168.182.129 (username=, port=22, authentication=Password)</RemoteDebuggingTarget>
   </PropertyGroup>
 </Project>

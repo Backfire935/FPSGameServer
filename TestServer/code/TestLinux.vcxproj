@@ -91,6 +91,7 @@
   </PropertyGroup>
   <ItemGroup>
     <ClCompile Include="..\..\engine\EpollServer.cpp" />
+    <ClCompile Include="..\..\engine\EpollServer_Funs.cpp" />
     <ClCompile Include="..\..\engine\EpollServer_Thread.cpp" />
     <ClCompile Include="..\..\engine\INetBase.cpp" />
     <ClCompile Include="..\..\engine\IOPool.cpp" />

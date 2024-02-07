@@ -2,11 +2,14 @@
 
 #include"EpollServer.h"
 
+
 #ifndef ____WIN32_
 #include <sys/socket.h>
 #include <sys/epoll.h>
 #include<unistd.h>
 #include<fcntl.h>
+#include<arpa/inet.h>
+#include <cstring>
 
 namespace net
 {
@@ -16,7 +19,7 @@ namespace net
         m_ConnectNum = 0;
     	m_SecurityCount = 0;
     	m_ThreadNum = 0;
-    	m_LinkNum = 0;
+    	m_LinkIndex = 0;
 
     	listenfd = -1;
     	epollfd = -1;
@@ -55,6 +58,48 @@ namespace net
         int value = epoll_ctl(epollfd, EPOLL_CTL_DEL, socketfd, &ev);
         return value;
     }
+
+    void EpollServer::onAccept()
+    {
+    	struct sockaddr_in addr;//存放客户端的IP端口号
+    	socklen_t client_len = sizeof(addr);
+    	int clientfd = accept(listenfd, (struct sockaddr*)& addr, &client_len);
+    	if(clientfd == -1)//没有新的连接
+    	{
+    		//输出一个错误
+    		perror("accept error:");
+    		return;
+    	}
+        S_CLIENT_BASE* c = getFreeLinker();//为空说明服务器已经满了
+        S_CLIENT_BASE_INDEX* cindex = getClientIndex(clientfd);
+        if( c == nullptr || cindex == NULL)
+        {
+            return;
+        }
+        cindex->index = c->ID;//索引等于玩家数据的ID
+        c->socketfd = clientfd;
+        c->time_Connect = (int)time(NULL);
+		c->port = ntohs(addr.sin_port);//网络字节序转换为主机字节序
+        c->time_Heart = (int)time(NULL);
+        c->state = func::C_Connect;
+        memcpy(c->ip, inet_ntoa(addr.sin_addr), MAX_IP_LEN);
+
+        setNonBlocking(clientfd);//设置为非阻塞socket
+		add_event(epollfd, c->socketfd, EPOLLIN | EPOLLET);//注册监听读事件 以边缘触发方式
+
+        this->updateConnectCount(true);
+
+        srand(time(NULL));
+        u8 rcode = rand() % 100 + 1;
+        begin(c->ID, CMD_RCODE);
+        sss(c->ID, rcode);
+        end(c->ID);
+        c->rCode = rcode;
+
+        if (onAcceptEvent != nullptr) this->onAcceptEvent(this, c ,0);
+
+    }
+
 
 
 

@@ -11,6 +11,7 @@ namespace net
 {
 	void EpollServer::run_manager(EpollServer* epoll)
 	{
+		LOG_MSG("run manager thread...\n");
 		struct epoll_event events[2048];
 
 		for(; ; )
@@ -46,10 +47,12 @@ namespace net
 			}
 
 		}
+		LOG_MSG("exit manager thread...\n");
 	}
 
 	void EpollServer::run_accept(EpollServer* epoll, int tid)
 	{
+		LOG_MSG("run accept thread...\n");
 		while(epoll->m_IsRunning)
 		{
 			{
@@ -57,12 +60,15 @@ namespace net
 				epoll->m_AcceptCond.wait(gurad);//阻塞
 			}
 			//接收处理新的连接
+			epoll->onAccept();
 
 		}
+		LOG_MSG("exit accept thread...\n");
 	}
 
 	void EpollServer::run_recv(EpollServer* epoll, int tid)
 	{
+		LOG_MSG("run recv thread...\n");
 		int socketfd = -1;
 
 		while (epoll->m_IsRunning)
@@ -79,14 +85,16 @@ namespace net
 			//接收处理新的数据
 
 		}
+		LOG_MSG("exit recv thread...\n");
 	}
 
 	void EpollServer::runThread(int num)
 	{
 		m_IsRunning = true;
-		m_ManagerThread.reset(new std::thread(EpollServer::run_manager, this ));
-		m_AcceptThread.reset(new std::thread(EpollServer::run_accept, this ));
-		m_RecvThread.reset(new std::thread(EpollServer::run_recv, this ));
+		m_ManagerThread.reset(new std::thread(EpollServer::run_manager, this));
+		m_AcceptThread.reset(new std::thread(EpollServer::run_accept, this ,1));
+		m_RecvThread.reset(new std::thread(EpollServer::run_recv, this ,2));
+
 
 		m_ManagerThread->detach();
 		m_AcceptThread->detach();

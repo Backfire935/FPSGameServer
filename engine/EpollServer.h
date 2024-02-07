@@ -23,7 +23,7 @@ namespace net
 		u32	m_ConnectNum;//连接数
 		u32	m_SecurityCount;//安全连接数
 		u32	m_ThreadNum;
-		u32	m_LinkNum;
+		u32	m_LinkIndex;
 		bool	m_IsRunning;
 
 		//条件变量
@@ -61,6 +61,9 @@ namespace net
 		int add_event(int epollfd, int socketfd, int events);
 		int delete_event(int epollfd, int socketfd, int events);
 
+		void onAccept();
+		S_CLIENT_BASE* getFreeLinker();
+		
 		void runThread(int num);
 		static void run_manager(EpollServer* epoll);
 		static void run_accept(EpollServer* epoll, int tid);
@@ -82,7 +85,7 @@ namespace net
 			else m_ConnectNum--;
 		}
 
-		inline S_CLIENT_BASE_INDEX* GetClientIndex(const int socketfd)
+		inline S_CLIENT_BASE_INDEX* getClientIndex(const int socketfd)
 		{
 			if (socketfd < 0 || socketfd >= MAX_USER_SOCKETFD)return NULL;
 			S_CLIENT_BASE_INDEX* c = LinkersIndex->Value(socketfd);
