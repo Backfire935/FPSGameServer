@@ -72,8 +72,15 @@ namespace net
     	}
         S_CLIENT_BASE* c = getFreeLinker();//为空说明服务器已经满了
         S_CLIENT_BASE_INDEX* cindex = getClientIndex(clientfd);
-        if( c == nullptr || cindex == NULL)
+        if( c == nullptr)
         {
+            closeSocket(clientfd, nullptr, 3004);
+            return;
+        }
+        if ( cindex == NULL)
+        {
+            c->Reset();
+            closeSocket(clientfd, nullptr, 3004);
             return;
         }
         cindex->index = c->ID;//索引等于玩家数据的ID
@@ -144,8 +151,6 @@ namespace net
     	return 0;
     }
 
-
-
     void EpollServer::runServer(int num)
     {
     	//开辟接收缓冲区空间
@@ -177,26 +182,6 @@ namespace net
     }
 
     void EpollServer::stopServer()
-    {
-    }
-
-    S_CLIENT_BASE* EpollServer::client(int fd, bool issecurity)
-    {
-    }
-
-    S_CLIENT_BASE* EpollServer::client(int index)
-    {
-    }
-
-    bool EpollServer::isID_T(const s32 id)
-    {
-    }
-
-    bool EpollServer::isSecure_T(const s32 id, s32 secure)
-    {
-    }
-
-    bool EpollServer::isSecure_F_Close(const s32 id, s32 secure)
     {
     }
 
@@ -334,6 +319,58 @@ namespace net
 
     void EpollServer::registerCommand(int cmd, void* container)
     {
+    }
+
+    int EpollServer::closeSocket(int socketfd, S_CLIENT_BASE* c, int kind)
+    {
+        if (socketfd == -1) return -1;
+        if(c != nullptr)
+        {
+            if (c->state == func::S_Free) return 0;
+            if(c->state == func::S_ConnectSecure)
+            {
+                this->updateSecurityCount(false);
+            }
+            auto cindex = getClientIndex(socketfd);
+            if (cindex != nullptr) cindex->Reset();
+        }
+
+        this->updateConnectCount(false);
+        delete_event(epollfd, socketfd, EPOLLIN | EPOLLET);
+        close(socketfd);
+        if (onDisconnectEvent != nullptr) this->onDisconnectEvent(this, c, kind);
+
+        //初始化
+        if(c->state == func::S_Connect || c->state == func::S_ConnectSecure)
+        c->Reset();
+        return 0;
+    }
+
+    //关闭socket
+    void EpollServer::shutDown(int socketfd, const int mode, S_CLIENT_BASE* c, int kind)
+    {
+        if( c!= nullptr )
+        {
+	        if(c->state == func::S_Free) return;//空闲状态不做处理
+            if (c->closeState == func::S_CLOSE_SHUTDOWN) return; //正在关闭状态
+            c->shutdown_kind = kind;
+            c->closeState = func::S_CLOSE_SHUTDOWN;
+            shutdown(socketfd, SHUT_RDWR);
+
+            if (onExceptEvent != nullptr) this->onExceptEvent(this, c, kind);
+            return;
+        }
+
+        auto c2 = client(socketfd, true);
+        if (c2 == nullptr) return;
+
+        if (c2->state == func::S_Free) return;//空闲状态不做处理
+        if (c2->closeState == func::S_CLOSE_SHUTDOWN) return; //正在关闭状态
+        c2->shutdown_kind = kind;
+        c2->closeState = func::S_CLOSE_SHUTDOWN;
+        shutdown(socketfd, SHUT_RDWR);
+
+        if (onExceptEvent != nullptr) this->onExceptEvent(this, c2, kind);
     }
 }
 

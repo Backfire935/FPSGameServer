@@ -58,6 +58,9 @@ namespace net
 
 	private:
 		int initSocket();
+		int closeSocket(int socketfd, S_CLIENT_BASE* c, int kind);
+		void shutDown(int socketfd, const int mode, S_CLIENT_BASE* c , int kind);
+
 		int add_event(int epollfd, int socketfd, int events);
 		int delete_event(int epollfd, int socketfd, int events);
 
@@ -96,8 +99,8 @@ namespace net
 		virtual void runServer(int num) ;//参数是传入的线程数量
 		virtual void stopServer() ;
 
-		virtual	S_CLIENT_BASE* client(int fd, bool issecurity) ;//通过socketID先查索引，然后精确定位当前S_CLIENT_BASE的数据,通过索引查找是最快的
-		virtual	S_CLIENT_BASE* client(int index) ; //第二种办法，直接传索引值精确定位
+		virtual	S_CLIENT_BASE* client(int socketfd, bool issecurity) ;//通过socketID先查索引，然后精确定位当前S_CLIENT_BASE的数据,通过索引查找是最快的
+		virtual	S_CLIENT_BASE* client(int id) ; //第二种办法，直接传索引值精确定位
 
 		virtual bool isID_T(const s32 id) ;
 		virtual bool isSecure_T(const s32 id, s32 secure) ;

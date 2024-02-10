@@ -1,56 +1,55 @@
-﻿  正在清理远程项目目录
-  正在验证源
-  正在将源远程复制到“192.168.182.129”
+﻿  正在验证源
+  正在将源远程复制到“192.168.73.128”
   正在验证体系结构
   正在验证体系结构
   正在启动远程生成
   正在编译源:
   EpollServer.cpp
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(92,19): warning : conversion to ‘unsigned int’ from ‘time_t {aka long int}’ may alter its value [-Wconversion]
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(92,19): warning :          srand(time(NULL));
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(92,19): warning :                ~~~~^~~~~~
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(93,33): warning : conversion to ‘u8 {aka unsigned char}’ from ‘int’ may alter its value [-Wconversion]
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(93,33): warning :          u8 rcode = rand() % 100 + 1;
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(93,33): warning :                     ~~~~~~~~~~~~~^~~
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(185,5): warning : no return statement in function returning non-void [-Wreturn-type]
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(185,5): warning :      }
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(185,5): warning :      ^
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(189,5): warning : no return statement in function returning non-void [-Wreturn-type]
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(189,5): warning :      }
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(189,5): warning :      ^
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(193,5): warning : no return statement in function returning non-void [-Wreturn-type]
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(193,5): warning :      }
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(193,5): warning :      ^
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(197,5): warning : no return statement in function returning non-void [-Wreturn-type]
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(197,5): warning :      }
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(197,5): warning :      ^
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(201,5): warning : no return statement in function returning non-void [-Wreturn-type]
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(201,5): warning :      }
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer.cpp(201,5): warning :      ^
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(92,19): warning : conversion from ‘time_t’ {aka ‘long int’} to ‘unsigned int’ may change value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(92,19): warning :    92 |         srand(time(NULL));
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(92,19): warning :       |               ~~~~^~~~~~
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(93,33): warning : conversion from ‘int’ to ‘u8’ {aka ‘unsigned char’} may change value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(93,33): warning :    93 |         u8 rcode = rand() % 100 + 1;
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(93,33): warning :       |                    ~~~~~~~~~~~~~^~~
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(185,5): warning : no return statement in function returning non-void [-Wreturn-type]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(185,5): warning :   185 |     }
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(185,5): warning :       |     ^
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(189,5): warning : no return statement in function returning non-void [-Wreturn-type]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(189,5): warning :   189 |     }
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(189,5): warning :       |     ^
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(193,5): warning : no return statement in function returning non-void [-Wreturn-type]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(193,5): warning :   193 |     }
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(193,5): warning :       |     ^
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(197,5): warning : no return statement in function returning non-void [-Wreturn-type]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(197,5): warning :   197 |     }
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(197,5): warning :       |     ^
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(201,5): warning : no return statement in function returning non-void [-Wreturn-type]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(201,5): warning :   201 |     }
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(201,5): warning :       |     ^
   EpollServer_Funs.cpp
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer_Funs.cpp(14,25): warning : comparison between signed and unsigned integer expressions [-Wsign-compare]
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer_Funs.cpp(14,25): warning :          if (m_LinkIndex >= Linkers->length) m_LinkIndex = 0;
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer_Funs.cpp(14,25): warning :              ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer_Funs.cpp(14,25): warning : comparison of integer expressions of different signedness: ‘u32’ {aka ‘unsigned int’} and ‘int’ [-Wsign-compare]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer_Funs.cpp(14,25): warning :    14 |         if (m_LinkIndex >= Linkers->length) m_LinkIndex = 0;
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer_Funs.cpp(14,25): warning :       |             ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
   EpollServer_Thread.cpp
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer_Thread.cpp(72,7): warning : variable ‘socketfd’ set but not used [-Wunused-but-set-variable]
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer_Thread.cpp(72,7): warning :    int socketfd = -1;
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\EpollServer_Thread.cpp(72,7): warning :        ^~~~~~~~
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer_Thread.cpp(72,7): warning : variable ‘socketfd’ set but not used [-Wunused-but-set-variable]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer_Thread.cpp(72,7): warning :    72 |   int socketfd = -1;
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer_Thread.cpp(72,7): warning :       |       ^~~~~~~~
   INetBase.cpp
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\INetBase.cpp(32,22): warning : conversion to ‘int’ from ‘ssize_t {aka long int}’ may alter its value [-Wconversion]
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\INetBase.cpp(32,22): warning :     int ret = readlink("/proc/self/exe", FileExePath, MAX_EXE_LEN);
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\INetBase.cpp(32,22): warning :               ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\INetBase.cpp(32,8): warning : unused variable ‘ret’ [-Wunused-variable]
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\INetBase.cpp(32,8): warning :     int ret = readlink("/proc/self/exe", FileExePath, MAX_EXE_LEN);
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\engine\INetBase.cpp(32,8): warning :         ^~~
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\INetBase.cpp(32,22): warning : conversion from ‘ssize_t’ {aka ‘long int’} to ‘int’ may change value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\INetBase.cpp(32,22): warning :    32 |    int ret = readlink("/proc/self/exe", FileExePath, MAX_EXE_LEN);
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\INetBase.cpp(32,22): warning :       |              ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\INetBase.cpp(32,8): warning : unused variable ‘ret’ [-Wunused-variable]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\INetBase.cpp(32,8): warning :    32 |    int ret = readlink("/proc/self/exe", FileExePath, MAX_EXE_LEN);
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\INetBase.cpp(32,8): warning :       |        ^~~
   IOPool.cpp
   ShareFunction.cpp
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\share\ShareFunction.cpp(43,40): warning : conversion to ‘u16 {aka short unsigned int}’ from ‘int’ may alter its value [-Wconversion]
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\share\ShareFunction.cpp(51,41): warning : conversion to ‘u8 {aka unsigned char}’ from ‘int’ may alter its value [-Wconversion]
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\share\ShareFunction.cpp(96,41): warning : conversion to ‘u8 {aka unsigned char}’ from ‘int’ may alter its value [-Wconversion]
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\share\ShareFunction.cpp(117,36): warning : conversion to ‘u16 {aka short unsigned int}’ from ‘int’ may alter its value [-Wconversion]
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\share\ShareFunction.cpp(117,36): warning :              serverList->Port = atoi(xmlNode->Attribute("Port"));
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\share\ShareFunction.cpp(117,36): warning :                                 ~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
-E:\CodeProgram\FPSGameServer\TestServer\code\..\..\share\ShareFunction.cpp(141,26): warning : comparison between signed and unsigned integer expressions [-Wsign-compare]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\share\ShareFunction.cpp(43,40): warning : conversion from ‘int’ to ‘u16’ {aka ‘short unsigned int’} may change value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\share\ShareFunction.cpp(51,41): warning : conversion from ‘int’ to ‘u8’ {aka ‘unsigned char’} may change value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\share\ShareFunction.cpp(96,41): warning : conversion from ‘int’ to ‘u8’ {aka ‘unsigned char’} may change value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\share\ShareFunction.cpp(117,36): warning : conversion from ‘int’ to ‘u16’ {aka ‘short unsigned int’} may change value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\share\ShareFunction.cpp(117,36): warning :   117 |             serverList->Port = atoi(xmlNode->Attribute("Port"));
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\share\ShareFunction.cpp(117,36): warning :       |                                ~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\share\ShareFunction.cpp(141,26): warning : comparison of integer expressions of different signedness: ‘int’ and ‘std::vector<func::ServerListXML*>::size_type’ {aka ‘long unsigned int’} [-Wsign-compare]
   md5.cpp
   tinystr.cpp
   tinyxml.cpp
@@ -58,8 +57,8 @@ E:\CodeProgram\FPSGameServer\TestServer\code\..\..\share\ShareFunction.cpp(141,2
   tinyxmlparser.cpp
   main.cpp
   正在链接对象
-E:\CodeProgram\FPSGameServer\TestServer\compiles\linux\Debug\x64\EpollServer_Thread.o : error : In function `std::thread::thread<void (&)(net::EpollServer*), net::EpollServer*>(void (&)(net::EpollServer*), net::EpollServer*&&)':
-/usr/include/c++/7/thread(122): error : undefined reference to `pthread_create'
-E:\CodeProgram\FPSGameServer\TestServer\compiles\linux\Debug\x64\EpollServer_Thread.o : error : In function `std::thread::thread<void (&)(net::EpollServer*, int), net::EpollServer*, int>(void (&)(net::EpollServer*, int), net::EpollServer*&&, int&&)':
-/usr/include/c++/7/thread(122): error : undefined reference to `pthread_create'
+/usr/bin/ld : error : /home/backfire/projects/obj/x64/Debug/EpollServer_Thread.o: in function `std::thread::thread<void (&)(net::EpollServer*), net::EpollServer*, void>(void (&)(net::EpollServer*), net::EpollServer*&&)':
+/usr/include/c++/9/thread(126): error : undefined reference to `pthread_create'
+/usr/bin/ld : error : /home/backfire/projects/obj/x64/Debug/EpollServer_Thread.o: in function `std::thread::thread<void (&)(net::EpollServer*, int), net::EpollServer*, int, void>(void (&)(net::EpollServer*, int), net::EpollServer*&&, int&&)':
+/usr/include/c++/9/thread(126): error : undefined reference to `pthread_create'
 collect2 : error : ld returned 1 exit status
