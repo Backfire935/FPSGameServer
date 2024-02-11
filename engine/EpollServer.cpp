@@ -143,8 +143,6 @@ namespace net
         		return;
         	}
             if(len < func::__ServerInfo->ReceOne) break;//没有数据了，收到的数据小于缓冲区大小
-
-			
         }
 		
 		
@@ -166,9 +164,69 @@ namespace net
         memcpy(&c->recvBuf[c->recv_Tail], buf, recvBytes);//将数据拷贝到缓冲区
     	c->recv_Tail += recvBytes;//尾指针后移
         c->is_RecvCompleted = true;//接收完成
-
         return 0;
         
+    }
+
+    //发送数据
+    int EpollServer::onSend(S_CLIENT_BASE* c)
+    {
+        if(c->ID < 0 || c->state == func::S_Free || c->socketfd == -1) return -1;
+        if(c->send_Tail <= c->send_Head) return 0;//没有数据需要发送，都发送完了
+        int sendlen = c->send_Tail - c->send_Head;
+        if(sendlen <= 0) return 0;
+
+
+        int send_bytes = send(c->socketfd, &c->sendBuf[c->send_Head], sendlen, 0);//发送数据
+        if (send_bytes < 0)//出错
+        {
+            if (errno == EINTR) return 0;
+            else if (errno == EAGAIN) return 0;
+            else
+            {
+                shutDown(c->socketfd, 0, c, 1006);
+                return -1;
+            }
+
+        }
+        else if (send_bytes == 0)//被动关闭了这个连接
+        {
+            shutDown(c->socketfd, 0, c, 3005);
+            return -3;
+        }
+        //发送成功
+        c->send_Head += send_bytes;//头指针后移
+        c->is_SendCompleted = true;//发送完成
+        return 1;
+
+#pragma region("使用while不停发送的参考")
+   //     while(true)//发送数据可能大于缓冲区大小，所以要循环发送,一直发送到出错为止
+   //     {
+	  //      int send_bytes = send(c->socketfd, &c->sendBuf[c->send_Head], sendlen, 0);//发送数据
+   //         if(send_bytes < 0)//出错
+   //         {
+   //             if (errno == EINTR) continue;
+   //             else if (errno == EAGAIN) return 1;
+			//	else
+			//	{
+			//		shutDown(c->socketfd, 0, c, 1006);
+			//		return -1;
+			//	}
+			//}
+			//else if(send_bytes == 0)//被动关闭了这个连接
+			//{
+			//	shutDown(c->socketfd, 0, c, 3005);
+			//	return -1;
+   //         }
+   //         //发送成功
+   //         c->send_Head += send_bytes;//头指针后移
+   //         if (c->send_Head == c->send_Tail) break;//发送完了
+   //         sendlen = c->send_Tail - c->send_Head;//剩余的数据
+
+   //     }
+   //     c->is_SendCompleted = true;//发送完成
+#pragma endregion
+
     }
 
 

@@ -1,1 +1,47 @@
-﻿D:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Application Type\Linux\1.0\Linux.targets(185,5): error : 无法连接到远程系统。请验证你的连接设置，并验证你的计算机是否已联网并且可访问。
+﻿  正在验证源
+  正在将源远程复制到“192.168.73.128”
+  正在验证体系结构
+  正在验证体系结构
+  正在启动远程生成
+  正在编译源:
+  EpollServer.cpp
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(100,19): warning : conversion from ‘time_t’ {aka ‘long int’} to ‘unsigned int’ may change value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(100,19): warning :   100 |         srand(time(NULL));
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(100,19): warning :       |               ~~~~^~~~~~
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(101,33): warning : conversion from ‘int’ to ‘u8’ {aka ‘unsigned char’} may change value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(101,33): warning :   101 |         u8 rcode = rand() % 100 + 1;
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(101,33): warning :       |                    ~~~~~~~~~~~~~^~~
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(121,18): warning : conversion from ‘ssize_t’ {aka ‘long int’} to ‘int’ may change value [-Wconversion]
+  EpollServer_Funs.cpp
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer_Funs.cpp(14,25): warning : comparison of integer expressions of different signedness: ‘u32’ {aka ‘unsigned int’} and ‘int’ [-Wsign-compare]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer_Funs.cpp(14,25): warning :    14 |         if (m_LinkIndex >= Linkers->length) m_LinkIndex = 0;
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer_Funs.cpp(14,25): warning :       |             ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
+  EpollServer_Thread.cpp
+  INetBase.cpp
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\INetBase.cpp(32,22): warning : conversion from ‘ssize_t’ {aka ‘long int’} to ‘int’ may change value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\INetBase.cpp(32,22): warning :    32 |    int ret = readlink("/proc/self/exe", FileExePath, MAX_EXE_LEN);
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\INetBase.cpp(32,22): warning :       |              ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\INetBase.cpp(32,8): warning : unused variable ‘ret’ [-Wunused-variable]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\INetBase.cpp(32,8): warning :    32 |    int ret = readlink("/proc/self/exe", FileExePath, MAX_EXE_LEN);
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\INetBase.cpp(32,8): warning :       |        ^~~
+  IOPool.cpp
+  ShareFunction.cpp
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\share\ShareFunction.cpp(43,40): warning : conversion from ‘int’ to ‘u16’ {aka ‘short unsigned int’} may change value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\share\ShareFunction.cpp(51,41): warning : conversion from ‘int’ to ‘u8’ {aka ‘unsigned char’} may change value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\share\ShareFunction.cpp(96,41): warning : conversion from ‘int’ to ‘u8’ {aka ‘unsigned char’} may change value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\share\ShareFunction.cpp(117,36): warning : conversion from ‘int’ to ‘u16’ {aka ‘short unsigned int’} may change value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\share\ShareFunction.cpp(117,36): warning :   117 |             serverList->Port = atoi(xmlNode->Attribute("Port"));
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\share\ShareFunction.cpp(117,36): warning :       |                                ~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\share\ShareFunction.cpp(141,26): warning : comparison of integer expressions of different signedness: ‘int’ and ‘std::vector<func::ServerListXML*>::size_type’ {aka ‘long unsigned int’} [-Wsign-compare]
+  md5.cpp
+  tinystr.cpp
+  tinyxml.cpp
+  tinyxmlerror.cpp
+  tinyxmlparser.cpp
+  main.cpp
+  正在链接对象
+/usr/bin/ld : error : /home/backfire/projects/obj/x64/Debug/EpollServer_Thread.o: in function `std::thread::thread<void (&)(net::EpollServer*), net::EpollServer*, void>(void (&)(net::EpollServer*), net::EpollServer*&&)':
+/usr/include/c++/9/thread(126): error : undefined reference to `pthread_create'
+/usr/bin/ld : error : /home/backfire/projects/obj/x64/Debug/EpollServer_Thread.o: in function `std::thread::thread<void (&)(net::EpollServer*, int), net::EpollServer*, int, void>(void (&)(net::EpollServer*, int), net::EpollServer*&&, int&&)':
+/usr/include/c++/9/thread(126): error : undefined reference to `pthread_create'
+collect2 : error : ld returned 1 exit status

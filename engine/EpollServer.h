@@ -67,6 +67,7 @@ namespace net
 		void onAccept();
 		void onRecv(int socketfd, int threadid);
 		int onRecv_SaveData(S_CLIENT_BASE *c , char* buf, int recvBytes);
+		int onSend(S_CLIENT_BASE* c,);
 
 		S_CLIENT_BASE* getFreeLinker();
 		
