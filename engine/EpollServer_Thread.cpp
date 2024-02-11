@@ -69,6 +69,7 @@ namespace net
 	void EpollServer::run_recv(EpollServer* epoll, int tid)
 	{
 		LOG_MSG("run recv thread...\n");
+
 		int socketfd = -1;
 
 		while (epoll->m_IsRunning)
@@ -83,7 +84,7 @@ namespace net
 				epoll->m_Socketfds.pop_front();//消费完数据就销毁
 			}
 			//接收处理新的数据
-
+			epoll->onRecv(socketfd, tid);
 		}
 		LOG_MSG("exit recv thread...\n");
 	}
@@ -92,8 +93,8 @@ namespace net
 	{
 		m_IsRunning = true;
 		m_ManagerThread.reset(new std::thread(EpollServer::run_manager, this));
-		m_AcceptThread.reset(new std::thread(EpollServer::run_accept, this ,1));
-		m_RecvThread.reset(new std::thread(EpollServer::run_recv, this ,2));
+		m_AcceptThread.reset(new std::thread(EpollServer::run_accept, this ,0));
+		m_RecvThread.reset(new std::thread(EpollServer::run_recv, this ,0));
 
 
 		m_ManagerThread->detach();

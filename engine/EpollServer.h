@@ -65,6 +65,9 @@ namespace net
 		int delete_event(int epollfd, int socketfd, int events);
 
 		void onAccept();
+		void onRecv(int socketfd, int threadid);
+		int onRecv_SaveData(S_CLIENT_BASE *c , char* buf, int recvBytes);
+
 		S_CLIENT_BASE* getFreeLinker();
 		
 		void runThread(int num);
