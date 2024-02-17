@@ -67,8 +67,8 @@ namespace func
 		case 2001: return "head error";
 		case 2002: return "timeout security error";
 		case 2003: return "timeout heart error";
-		case 2004: return "b error";
-		case 2005: return "e error";
+		case 2004: return "begin error";
+		case 2005: return "end error";
 		case 2006: return "closeclient error";
 
 		case 3001: return "iscomplete=false";
