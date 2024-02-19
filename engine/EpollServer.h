@@ -72,6 +72,10 @@ namespace net
 		S_CLIENT_BASE* getFreeLinker();
 		
 		void runThread(int num);
+		void parseCommand(S_CLIENT_BASE* c);
+		void parseCommand(S_CLIENT_BASE* c, u16 cmd);
+		void checkConnect(S_CLIENT_BASE* c);
+
 		static void run_manager(EpollServer* epoll);
 		static void run_accept(EpollServer* epoll, int tid);
 		static void run_recv(EpollServer* epoll, int tid);
