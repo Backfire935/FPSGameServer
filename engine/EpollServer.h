@@ -58,6 +58,7 @@ namespace net
 
 	private:
 		int initSocket();
+		void initCommands();
 		int closeSocket(int socketfd, S_CLIENT_BASE* c, int kind);
 		void shutDown(int socketfd, const int mode, S_CLIENT_BASE* c , int kind);
 
@@ -67,7 +68,7 @@ namespace net
 		void onAccept();
 		void onRecv(int socketfd, int threadid);
 		int onRecv_SaveData(S_CLIENT_BASE *c , char* buf, int recvBytes);
-		int onSend(S_CLIENT_BASE* c,);
+		int onSend(S_CLIENT_BASE* c);
 
 		S_CLIENT_BASE* getFreeLinker();
 		

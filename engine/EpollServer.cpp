@@ -11,8 +11,14 @@
 #include<arpa/inet.h>
 #include <cstring>
 
+
 namespace net
 {
+    ITcpServer* NewTcpServer()
+    {
+        return new net::EpollServer();
+    }
+
     EpollServer::EpollServer()
     {
         m_IsRunning = false;
@@ -180,12 +186,12 @@ namespace net
         int send_bytes = send(c->socketfd, &c->sendBuf[c->send_Head], sendlen, 0);//发送数据
         if (send_bytes < 0)//出错
         {
-            if (errno == EINTR) return 0;
-            else if (errno == EAGAIN) return 0;
+            if (errno == EINTR) return -1;
+            else if (errno == EAGAIN) return -1;
             else
             {
                 shutDown(c->socketfd, 0, c, 1006);
-                return -1;
+                return -2;
             }
 
         }
@@ -197,7 +203,7 @@ namespace net
         //发送成功
         c->send_Head += send_bytes;//头指针后移
         c->is_SendCompleted = true;//发送完成
-        return 1;
+        return 0;
 
 #pragma region("使用while不停发送的参考")
    //     while(true)//发送数据可能大于缓冲区大小，所以要循环发送,一直发送到出错为止
@@ -271,6 +277,7 @@ namespace net
     	return 0;
     }
 
+
     void EpollServer::runServer(int num)
     {
     	//开辟接收缓冲区空间
@@ -301,33 +308,7 @@ namespace net
 
     }
 
-    void EpollServer::stopServer()
-    {
-    }
 
-    void EpollServer::setOnClientAccept(TCPSERVERNOTIFY_EVENT event)
-    {
-    }
-
-    void EpollServer::setOnClientSecureConnect(TCPSERVERNOTIFY_EVENT event)
-    {
-    }
-
-    void EpollServer::setOnClientDisConnect(TCPSERVERNOTIFY_EVENT event)
-    {
-    }
-
-    void EpollServer::setOnClientTimeout(TCPSERVERNOTIFY_EVENT event)
-    {
-    }
-
-    void EpollServer::setOnClientExcept(TCPSERVERNOTIFY_EVENT event)
-    {
-    }
-
-    void EpollServer::registerCommand(int cmd, void* container)
-    {
-    }
 
     int EpollServer::closeSocket(int socketfd, S_CLIENT_BASE* c, int kind)
     {

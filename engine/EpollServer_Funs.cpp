@@ -8,20 +8,41 @@
 #include <cstring>
 #include <string.h>
 
+std::vector<IContainer*> __Commands;
 namespace net
 {
+    void EpollServer::initCommands()
+    {
+        __Commands.reserve(MAX_COMMAND_LEN);
+        for(int i = 0; i < MAX_COMMAND_LEN; i++)
+        {
+        	__Commands.push_back(nullptr);
+		}
+    }
+
+    void EpollServer::registerCommand(int cmd, void* container)
+    {
+        if(cmd >= MAX_COMMAND_LEN) return;
+        IContainer* icon = (IContainer*)container;
+        if(icon == nullptr) return;
+        __Commands[cmd] = icon; 
+    }
+
+    void EpollServer::stopServer()
+    {
+    }
 
     void EpollServer::parseCommand()
     {
-        for(int i =0; i < Linkers->length; i++)
+        for (int i = 0; i < Linkers->length; i++)
         {
-	        auto c = Linkers->Value(i);
-            if(c == nullptr) continue;
-            if(c->ID  == -1 ) continue;
-            if(c->state == func::S_Free) continue;
+            auto c = Linkers->Value(i);
+            if (c == nullptr) continue;
+            if (c->ID == -1) continue;
+            if (c->state == func::S_Free) continue;
 
             checkConnect(c);
-            if(c->closeState == func::S_CLOSE_SHUTDOWN) continue;
+            if (c->closeState == func::S_CLOSE_SHUTDOWN) continue;
             parseCommand(c);
             this->onSend(c);
         }
@@ -29,30 +50,30 @@ namespace net
 
     void EpollServer::parseCommand(S_CLIENT_BASE* c)
     {
-       if( ! c->is_RecvCompleted) return;
+        if (!c->is_RecvCompleted) return;
 
-        while(c->recv_Tail - c->recv_Head > 7)
+        while (c->recv_Tail - c->recv_Head > 7)
         {
             char head[2];
-        	head[0] = c->recvBuf[c->recv_Head + 0] ^ c->rCode;
+            head[0] = c->recvBuf[c->recv_Head + 0] ^ c->rCode;
             head[1] = c->recvBuf[c->recv_Head + 1] ^ c->rCode;
-            if ( head[0] != func::__ServerInfo->Head[0] || head[1] != func::__ServerInfo->Head[1])
+            if (head[0] != func::__ServerInfo->Head[0] || head[1] != func::__ServerInfo->Head[1])
             {
-                shutDown(c->socketfd, 0 ,c ,2001);
+                shutDown(c->socketfd, 0, c, 2001);
                 return;
             }
             int len = (*(u32*)(c->recvBuf + c->recv_Head + 2)) ^ c->rCode;
             u16 cmd = (*(u16*)(c->recvBuf + c->recv_Head + 6)) ^ c->rCode;
             //判断消息是否是完整的
-            if(c->recv_Tail < c->recv_Head + len + 8) break;
+            if (c->recv_Tail < c->recv_Head + len + 8) break;
 
-        	//处理消息
+            //处理消息
             c->recv_TempHead = c->recv_Head + 8;
             c->recv_TempTail = c->recv_Head + len;
 
             parseCommand(c, cmd);
 
-            if(c->state < func::S_Connect)
+            if (c->state < func::S_Connect)
             {
                 return;
             }
@@ -64,8 +85,19 @@ namespace net
 
     void EpollServer::parseCommand(S_CLIENT_BASE* c, u16 cmd)
     {
-        if(cmd < 65000)//是系统需要派发出去的消息
+        if (cmd < 65000)//是系统需要派发出去的消息
         {
+            if(cmd == CMD_HEART)//如果是心跳包的话更新心跳时间
+            {
+	            c->time_Heart = (int)time(NULL);
+                int value = 0;
+                read(c->ID, value);
+                return;
+            }
+            auto container = __Commands[cmd];
+            if(container == nullptr) return;
+
+            container->onServerCommand(this, c, cmd);
             return;
         }
 
@@ -73,7 +105,7 @@ namespace net
         {
         case CMD_SECURITY:
             char a[20];
-        	sprintf(a, "%s_d", func::__ServerInfo->SafeCode, c->rCode);
+            sprintf(a, "%s_d", func::__ServerInfo->SafeCode, c->rCode);
             memset(c->md5, 0, MAX_MD5_LEN);
 
             if (func::MD5str != NULL) func::MD5str(c->md5, (unsigned char*)a, strlen(a));
@@ -92,16 +124,16 @@ namespace net
             read(c->ID, version);
             read(c->ID, str5, MAX_MD5_LEN);
 
-            if( version != func::__ServerInfo->Version )//若双端版本不一致
+            if (version != func::__ServerInfo->Version)//若双端版本不一致
             {
                 begin(c->ID, CMD_SECURITY);
                 sss(c->ID, (u16)1);
-            	end(c->ID);
+                end(c->ID);
                 return;
             }
 
             int error = strcasecmp(c->md5, str5);//MD5码验证
-            if(error != 0)
+            if (error != 0)
             {
                 begin(c->ID, CMD_SECURITY);
                 sss(c->ID, (u16)2);
@@ -115,11 +147,11 @@ namespace net
 
             begin(c->ID, CMD_SECURITY);
             sss(c->ID, (u16)0);
-            end(c->ID); 
+            end(c->ID);
 
             //发送安全连接成功消息
             this->updateSecurityCount(true);
-            if(onSecurityEvent != nullptr) this->onSecurityEvent(this, c, 0);
+            if (onSecurityEvent != nullptr) this->onSecurityEvent(this, c, 0);
         }
 
     }
@@ -172,11 +204,11 @@ namespace net
         std::lock_guard<std::mutex> guard(this->m_FindLinkMutex);
         if (m_LinkIndex >= Linkers->length) m_LinkIndex = 0;
         int curindex = m_LinkIndex;
-        for(int i = curindex; i<Linkers->length; i++)
+        for (int i = curindex; i < Linkers->length; i++)
         {
             m_LinkIndex++;
             auto c = Linkers->Value(i);
-            if(c->state == func::S_Free)
+            if (c->state == func::S_Free)
             {
                 c->Reset();
                 c->ID = i;
@@ -191,22 +223,22 @@ namespace net
     {
         if (socketfd < 0 || socketfd >= MAX_USER_SOCKETFD) return nullptr;
         S_CLIENT_BASE_INDEX* cindex = LinkersIndex->Value(socketfd);
-        if(cindex == nullptr) return nullptr;
+        if (cindex == nullptr) return nullptr;
         if (cindex->index < 0) return nullptr;
         S_CLIENT_BASE* c = Linkers->Value(cindex->index);
         if (c == nullptr)  return nullptr;
-        if( issecurity )
+        if (issecurity)
         {
-	        if( ! c->isT(socketfd))return nullptr;
+            if (!c->isT(socketfd))return nullptr;
         }
         return c;
     }
 
     S_CLIENT_BASE* EpollServer::client(int id)
     {
-        if(id <0 || id>= Linkers->length) return nullptr;
+        if (id < 0 || id >= Linkers->length) return nullptr;
         auto c = Linkers->Value(id);
-        if(c == nullptr)  return nullptr;
+        if (c == nullptr)  return nullptr;
         return c;
     }
 
@@ -492,55 +524,211 @@ namespace net
         c->is_Sending = false;
     }
 
+    bool isValidClient(S_CLIENT_BASE* c, int num)
+    {
+        if (c->ID == -1 || c->state == func::S_Free
+            || c->recv_TempTail == 0
+            || c->recvBuf == nullptr
+			|| c->recv_TempHead + num > c->recv_TempTail)
+        {
+        	return false;
+        }
+        return true;
+    }
 
     void EpollServer::read(const int id, s8& v)
     {
+        auto c = client(id);
+        if (c == nullptr) return;
+        if(!isValidClient(c, 1) == false)
+        {
+            v = 0;
+            return;
+        }
 
+        v = (*(s8*)(c->recvBuf + c->recv_TempHead));
+        c->recv_TempHead += 1;
     }
 
     void EpollServer::read(const int id, u8& v)
     {
+        auto c = client(id);
+        if (c == nullptr) return;
+        if (!isValidClient(c, 1) == false)
+        {
+            v = 0;
+            return;
+        }
+
+        v = (*(u8*)(c->recvBuf + c->recv_TempHead));
+        c->recv_TempHead += 1;
     }
 
     void EpollServer::read(const int id, s16& v)
     {
+        auto c = client(id);
+        if (c == nullptr) return;
+        if (!isValidClient(c, 2) == false)
+        {
+            v = 0;
+            return;
+        }
+
+        v = (*(s16*)(c->recvBuf + c->recv_TempHead));
+        c->recv_TempHead += 2;
     }
 
     void EpollServer::read(const int id, u16& v)
     {
+        auto c = client(id);
+        if (c == nullptr) return;
+        if (!isValidClient(c, 2) == false)
+        {
+            v = 0;
+            return;
+        }
+
+        v = (*(u16*)(c->recvBuf + c->recv_TempHead));
+        c->recv_TempHead += 2;
     }
 
     void EpollServer::read(const int id, s32& v)
     {
+        auto c = client(id);
+        if (c == nullptr) return;
+        if (!isValidClient(c, 4) == false)
+        {
+            v = 0;
+            return;
+        }
+
+        v = (*(s32*)(c->recvBuf + c->recv_TempHead));
+        c->recv_TempHead += 4;
     }
 
     void EpollServer::read(const int id, u32& v)
     {
+        auto c = client(id);
+        if (c == nullptr) return;
+        if (!isValidClient(c, 4) == false)
+        {
+            v = 0;
+            return;
+        }
+
+        v = (*(u32*)(c->recvBuf + c->recv_TempHead));
+        c->recv_TempHead += 4;
     }
 
     void EpollServer::read(const int id, s64& v)
     {
+        auto c = client(id);
+        if (c == nullptr) return;
+        if (!isValidClient(c, 4) == false)
+        {
+            v = 0;
+            return;
+        }
+
+        v = (*(s64*)(c->recvBuf + c->recv_TempHead));
+        c->recv_TempHead += 8;
     }
 
     void EpollServer::read(const int id, u64& v)
     {
+        auto c = client(id);
+        if (c == nullptr) return;
+        if (!isValidClient(c, 8) == false)
+        {
+            v = 0;
+            return;
+        }
+
+        v = (*(u64*)(c->recvBuf + c->recv_TempHead));
+        c->recv_TempHead += 8;
     }
 
     void EpollServer::read(const int id, f32& v)
     {
+        auto c = client(id);
+        if (c == nullptr) return;
+        if (!isValidClient(c, 4) == false)
+        {
+            v = 0;
+            return;
+        }
+
+        v = (*(f32*)(c->recvBuf + c->recv_TempHead));
+        c->recv_TempHead += 4;
     }
 
     void EpollServer::read(const int id, f64& v)
     {
+        auto c = client(id);
+        if (c == nullptr) return;
+        if (!isValidClient(c, 8) == false)
+        {
+            v = 0;
+            return;
+        }
+
+        v = (*(f64*)(c->recvBuf + c->recv_TempHead));
+        c->recv_TempHead += 8;
     }
 
     void EpollServer::read(const int id, bool& v)
     {
+        auto c = client(id);
+        if (c == nullptr) return;
+        if (!isValidClient(c, 1) == false)
+        {
+            v = 0;
+            return;
+        }
+
+        v = (*(bool*)(c->recvBuf + c->recv_TempHead));
+        c->recv_TempHead += 1;
     }
 
     void EpollServer::read(const int id, void* v, const u32 len)
     {
+        auto c = client(id);
+        if (c == nullptr) return;
+        if (!isValidClient(c, len) == false)
+        {
+            v = 0;
+            return;
+        }
+        memcpy(v, &c->recvBuf[c->recv_TempHead], len);
+        c->recv_TempHead += len;
     }
+
+    void EpollServer::setOnClientAccept(TCPSERVERNOTIFY_EVENT event)
+    {
+        onAcceptEvent = event;
+    }
+
+    void EpollServer::setOnClientSecureConnect(TCPSERVERNOTIFY_EVENT event)
+    {
+    	onSecurityEvent = event;
+    }
+
+    void EpollServer::setOnClientDisConnect(TCPSERVERNOTIFY_EVENT event)
+    {
+        onDisconnectEvent = event;
+    }
+
+    void EpollServer::setOnClientTimeout(TCPSERVERNOTIFY_EVENT event)
+    {
+        onTimeoutEvent = event;
+    }
+
+    void EpollServer::setOnClientExcept(TCPSERVERNOTIFY_EVENT event)
+    {
+        onExceptEvent = event;
+    }
+
+
 }
 
 #endif
