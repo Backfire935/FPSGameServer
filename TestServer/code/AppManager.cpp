@@ -5,6 +5,11 @@
 #include "AppGlobal.h"
 #include "../../share/ShareFunction.h"
 #include "AppTest.h"
+
+#ifndef ____WIN32_
+#include <unistd.h>
+#endif
+
 namespace app
 {
 	AppManager* __AppManager = nullptr;
@@ -22,6 +27,7 @@ namespace app
 
 	void printInfo()
 	{
+#ifdef ____WIN32_
 		int temptime = (int)time(NULL) - temp_time;
 		if(temptime < 1) return;
 
@@ -32,6 +38,7 @@ namespace app
 		SetWindowTextA(GetConsoleWindow(),printfstr);
 		
 		temp_time = (int)time(NULL);
+#endif
 	}
 
 	void onUpdate()
@@ -44,7 +51,9 @@ namespace app
 	
 	void AppManager::init()
 	{
-		share::InitData();
+		bool isload = share::InitData();
+		if (!isload) return;
+		if (func::__ServerListInfo.size() < 1) return;
 
 		__TcpServer = net::NewTcpServer();
 
@@ -70,7 +79,12 @@ namespace app
 		while(true)
 		{
 			onUpdate();
+#ifdef ____WIN32_
 			Sleep(5);//2msÐÝÃßÒ»´Î
+#else
+			usleep(5);
+#endif
+
 		}
 	}
 

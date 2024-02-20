@@ -44,6 +44,7 @@ namespace app
 
     void ontestData_protobuff(net::ITcpServer* ts, net::S_CLIENT_BASE* c)
     {
+#ifdef ____WIN32_
 	    u8 length = 0;
         ts->read(c->ID, length);
         char* buffer = new char[length];
@@ -53,6 +54,7 @@ namespace app
 
         delete[] buffer;
         LOG_MSG("protobuff :%d-%d-%d \n",x.aa(),x.bb(),x.cc());
+#endif
     }
 
     void ontestData(net::ITcpServer* ts, net::S_CLIENT_BASE* c)
@@ -74,7 +76,7 @@ namespace app
     
     bool AppTest::onServerCommand(net::ITcpServer* ts, net::S_CLIENT_BASE* c, const u16 cmd)
     {
-        if(!ts->isSecure_F_Close(c->ID, func::S_ConnectSecure))
+        if(ts->isSecure_F_Close(c->ID, func::S_ConnectSecure))
         {
             LOG_MSG("AppTest err... line:%d \n ",__LINE__);
             return false;

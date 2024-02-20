@@ -4,7 +4,7 @@
     Port="13550"
     ID="4001"
     MaxUser="30"
-    MaxConnect="20000"
+    MaxConnect="2000"
     MaxAccept="64"
     MaxRece="100"
     MaxSend="100"

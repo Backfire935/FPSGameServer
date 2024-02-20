@@ -160,7 +160,7 @@ namespace net
             //指定了一个无效参数
             if(err == WSAEINVAL)
             {
-                LOG_MSG("----------------cleint 指定了一个无效参数.%d-%d\n", m_data.serverID, m_data.port);
+                LOG_MSG("----------------client 指定了一个无效参数.%d-%d\n", m_data.serverID, m_data.port);
                 return false;
             }
             //这个操作不能马上完成,正在连接中，是一个正常情况

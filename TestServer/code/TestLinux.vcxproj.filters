@@ -35,6 +35,15 @@
     <ClCompile Include="..\..\engine\EpollServer_Funs.cpp">
       <Filter>engine</Filter>
     </ClCompile>
+    <ClCompile Include="AppGlobal.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="AppManager.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="AppTest.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="share">
@@ -45,6 +54,9 @@
     </Filter>
     <Filter Include="share\tinyxml">
       <UniqueIdentifier>{699ef3af-9a41-4d24-84cb-0b2fdcb92238}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app">
+      <UniqueIdentifier>{b5fbfd13-4b7b-4691-8732-5831eeaf5c3f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -74,6 +86,15 @@
     </ClInclude>
     <ClInclude Include="..\..\engine\EpollServer.h">
       <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="AppGlobal.h">
+      <Filter>app</Filter>
+    </ClInclude>
+    <ClInclude Include="AppManager.h">
+      <Filter>app</Filter>
+    </ClInclude>
+    <ClInclude Include="AppTest.h">
+      <Filter>app</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

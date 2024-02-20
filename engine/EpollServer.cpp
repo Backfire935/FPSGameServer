@@ -16,7 +16,7 @@ namespace net
 {
     ITcpServer* NewTcpServer()
     {
-        return new net::EpollServer();
+        return new EpollServer();
     }
 
     EpollServer::EpollServer()
@@ -186,8 +186,8 @@ namespace net
         int send_bytes = send(c->socketfd, &c->sendBuf[c->send_Head], sendlen, 0);//发送数据
         if (send_bytes < 0)//出错
         {
-            if (errno == EINTR) return -1;
-            else if (errno == EAGAIN) return -1;
+            if (errno == EINTR) return 1;
+            else if (errno == EAGAIN) return 1;
             else
             {
                 shutDown(c->socketfd, 0, c, 1006);
@@ -305,7 +305,8 @@ namespace net
         initSocket();
         //调用初始化线程
         runThread(num);
-
+        //初始化指令集
+        initCommands();
     }
 
 

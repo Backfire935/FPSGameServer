@@ -101,6 +101,9 @@
     <ClCompile Include="..\..\share\tinyxml\tinyxml.cpp" />
     <ClCompile Include="..\..\share\tinyxml\tinyxmlerror.cpp" />
     <ClCompile Include="..\..\share\tinyxml\tinyxmlparser.cpp" />
+    <ClCompile Include="AppGlobal.cpp" />
+    <ClCompile Include="AppManager.cpp" />
+    <ClCompile Include="AppTest.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -113,6 +116,9 @@
     <ClInclude Include="..\..\share\tinyxml\md5.h" />
     <ClInclude Include="..\..\share\tinyxml\tinystr.h" />
     <ClInclude Include="..\..\share\tinyxml\tinyxml.h" />
+    <ClInclude Include="AppGlobal.h" />
+    <ClInclude Include="AppManager.h" />
+    <ClInclude Include="AppTest.h" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="..\exe\config_client.xml" />
@@ -124,8 +130,8 @@
       <AdditionalIncludeDirectories>..\..\engine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <LibraryDependencies>pthread;pthread_nonshared;%(LibraryDependencies)</LibraryDependencies>
-      <AdditionalLibraryDirectories>/usr/lib/x86_64-linux-gnu/libpthread.a;/usr/lib/x86_64-linux-gnu/lpthread_nonshared.a;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <LibraryDependencies>pthread;%(LibraryDependencies)</LibraryDependencies>
+      <AdditionalLibraryDirectories>/usr/lib/x86_64-linux-gnu/libpthread.a;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

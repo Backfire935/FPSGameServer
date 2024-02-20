@@ -139,7 +139,7 @@ namespace share
         LOG_MSG("clientxml:%s-%d-%d\n", func::__ClientInfo->Head,func::__ClientInfo->Version,func::__ClientInfo->RCode);
 
         for(int i = 0; i < func::__ServerListInfo.size(); i++)
-            LOG_MSG("cleintxml:%s-%d-%d\n",func::__ServerListInfo[i]->IP,func::__ServerListInfo[i]->Port,func::__ServerListInfo[i]->ID);
+            LOG_MSG("clientxml:%s-%d-%d\n",func::__ServerListInfo[i]->IP,func::__ServerListInfo[i]->Port,func::__ServerListInfo[i]->ID);
         return true;
     }
 }

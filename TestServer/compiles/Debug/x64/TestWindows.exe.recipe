@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>E:\CodeProgram\FPSGameServer\TestServer\exe\TestWindows.exe</FullPath>
+      <FullPath>D:\test\CPlusPlus\TestServer\TestServer\exe\TestWindows.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

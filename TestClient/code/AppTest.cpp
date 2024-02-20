@@ -69,13 +69,14 @@ namespace app
     void AppTest::onUpdate()
     {
         s32 tempTime = (s32)time(NULL) - temptime;
-        if (tempTime < 1)return;
+        if (tempTime < 2)return;
         temptime = (s32)time(NULL);
 
         for(int i = 0; i< TESTCONNECT ; i++)
         {
             auto c = __TcpGame[i];
-            if (c->getData()->state < func::C_ConnectSecure) continue;
+            if (c->getData()->state < func::C_ConnectSecure) 
+                continue;
 
             memset(&ttdata, 0, sizeof(testData));
 
@@ -89,9 +90,9 @@ namespace app
             ttdata.job = tp.millitm;
 #endif
 
-            ttdata.aa[0] = 20;
-            ttdata.aa[33] = 02;
-            ttdata.aa[99] = 908;
+            ttdata.aa[0] = 11;
+            ttdata.aa[33] = 34;
+            ttdata.aa[99] = 93;
 
             c->begin(1000);
             c->sss(i);
@@ -116,7 +117,7 @@ namespace app
         tc->read(index);
         tc->read(&ttdata, sizeof(testData));
 
-        if(index == 0)
+        if(index == 0)//只显示第一个连入的客户端数据，避免信息过多
         {
 #ifdef ____WIN32_
             int ftime = clock() - ttdata.curttime;
@@ -125,13 +126,14 @@ namespace app
             struct timeb tp;
             ftime(&tp);
             s32 fftime = (ttdata.curttime - tp.time) * 1000 + ttdata.job - tp.millitm;
-            LOG_MSG("AppTest :ftime:%d \n", fftime);
+            LOG_MSG("AppTest :%d-%d-%d ftime:%d \n", ttdata.aa[0], ttdata.aa[33], ttdata.aa[99], ftime);
 #endif
             
         }
 
     }
-    
+
+
     bool AppTest::onClientCommand(net::ITcpClient* tc, const u16 cmd)
     {
          auto c = tc->getData();
@@ -140,6 +142,10 @@ namespace app
          switch (cmd)
          {
          case 1000:
+             ontest(tc);
+             break;
+
+         case 2000:
              ontest(tc);
              break;
          }

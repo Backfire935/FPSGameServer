@@ -6,7 +6,6 @@
 #include<unistd.h>
 #include<fcntl.h>
 #include <cstring>
-#include <string.h>
 
 std::vector<IContainer*> __Commands;
 namespace net
@@ -65,7 +64,7 @@ namespace net
             int len = (*(u32*)(c->recvBuf + c->recv_Head + 2)) ^ c->rCode;
             u16 cmd = (*(u16*)(c->recvBuf + c->recv_Head + 6)) ^ c->rCode;
             //判断消息是否是完整的
-            if (c->recv_Tail < c->recv_Head + len + 8) break;
+            if (c->recv_Tail < c->recv_Head + len) break;
 
             //处理消息
             c->recv_TempHead = c->recv_Head + 8;
@@ -105,7 +104,7 @@ namespace net
         {
         case CMD_SECURITY:
             char a[20];
-            sprintf(a, "%s_d", func::__ServerInfo->SafeCode, c->rCode);
+            sprintf(a, "%s_%d", func::__ServerInfo->SafeCode, c->rCode);
             memset(c->md5, 0, MAX_MD5_LEN);
 
             if (func::MD5str != NULL) func::MD5str(c->md5, (unsigned char*)a, strlen(a));
@@ -296,7 +295,7 @@ namespace net
             //第7、8用来保存头指令，消息长度没法算 要在end里才能算
             c->sendBuf[c->send_Tail + 6] = a[0];
             c->sendBuf[c->send_Tail + 7] = a[1];
-            c->send_Tail += 8;
+            c->send_TempTail += 8;
             return;
         }
         shutDown(c->socketfd, 0, c, 2004);
@@ -540,7 +539,7 @@ namespace net
     {
         auto c = client(id);
         if (c == nullptr) return;
-        if(!isValidClient(c, 1) == false)
+        if(isValidClient(c, 1) == false)
         {
             v = 0;
             return;
@@ -554,7 +553,7 @@ namespace net
     {
         auto c = client(id);
         if (c == nullptr) return;
-        if (!isValidClient(c, 1) == false)
+        if (isValidClient(c, 1) == false)
         {
             v = 0;
             return;
@@ -568,7 +567,7 @@ namespace net
     {
         auto c = client(id);
         if (c == nullptr) return;
-        if (!isValidClient(c, 2) == false)
+        if (isValidClient(c, 2) == false)
         {
             v = 0;
             return;
@@ -582,7 +581,7 @@ namespace net
     {
         auto c = client(id);
         if (c == nullptr) return;
-        if (!isValidClient(c, 2) == false)
+        if (isValidClient(c, 2) == false)
         {
             v = 0;
             return;
@@ -596,7 +595,7 @@ namespace net
     {
         auto c = client(id);
         if (c == nullptr) return;
-        if (!isValidClient(c, 4) == false)
+        if (isValidClient(c, 4) == false)
         {
             v = 0;
             return;
@@ -610,7 +609,7 @@ namespace net
     {
         auto c = client(id);
         if (c == nullptr) return;
-        if (!isValidClient(c, 4) == false)
+        if (isValidClient(c, 4) == false)
         {
             v = 0;
             return;
@@ -624,7 +623,7 @@ namespace net
     {
         auto c = client(id);
         if (c == nullptr) return;
-        if (!isValidClient(c, 4) == false)
+        if (isValidClient(c, 4) == false)
         {
             v = 0;
             return;
@@ -638,7 +637,7 @@ namespace net
     {
         auto c = client(id);
         if (c == nullptr) return;
-        if (!isValidClient(c, 8) == false)
+        if (isValidClient(c, 8) == false)
         {
             v = 0;
             return;
@@ -652,7 +651,7 @@ namespace net
     {
         auto c = client(id);
         if (c == nullptr) return;
-        if (!isValidClient(c, 4) == false)
+        if (isValidClient(c, 4) == false)
         {
             v = 0;
             return;
@@ -666,7 +665,7 @@ namespace net
     {
         auto c = client(id);
         if (c == nullptr) return;
-        if (!isValidClient(c, 8) == false)
+        if (isValidClient(c, 8) == false)
         {
             v = 0;
             return;
@@ -680,7 +679,7 @@ namespace net
     {
         auto c = client(id);
         if (c == nullptr) return;
-        if (!isValidClient(c, 1) == false)
+        if (isValidClient(c, 1) == false)
         {
             v = 0;
             return;
@@ -694,7 +693,7 @@ namespace net
     {
         auto c = client(id);
         if (c == nullptr) return;
-        if (!isValidClient(c, len) == false)
+        if (isValidClient(c, len) == false)
         {
             v = 0;
             return;
