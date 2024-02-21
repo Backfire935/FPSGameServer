@@ -11,15 +11,15 @@
     SendMax="256"
     HeartTime="10"
     AutoTime="5"
-    SafeCode="testcode"
+    SafeCode="test"
     Head="DE"
     />
     <server 
     num="1"
     />
     <client1 
-    IP="127.0.0.1"
-    Port="13570"
+    IP="192.168.73.128"
+    Port="13550"
     ID="2000"
     Type="Game"
     />

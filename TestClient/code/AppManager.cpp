@@ -1,6 +1,9 @@
 #include "AppManager.h"
 
+#ifndef  ____WIN32_
 #include <ctime>
+#include <unistd.h>
+#endif
 
 #include "AppGlobal.h"
 #include "../../share/ShareFunction.h"
@@ -65,7 +68,7 @@ namespace app
 #ifdef ____WIN32_
 			Sleep(5);
 #else
-			usleep(2000);
+			usleep(2);
 #endif
 		}
 	}

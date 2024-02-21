@@ -66,7 +66,7 @@ namespace app
         ts->read(c->ID, &ttdata, sizeof(testData));
 
 
-        LOG_MSG("AppTest data:%d --id:%d/ time:%f job:%d  arr:%d/%d/%d \n", index,sizeof(ttdata), ttdata.curttime, ttdata.job, ttdata.aa[0], ttdata.aa[33], ttdata.aa[99]);
+        LOG_MSG("AppTest data:%d --id:%d / time:%f job:%d  arr:%d / %d / %d \n", index,sizeof(ttdata), ttdata.curttime, ttdata.job, ttdata.aa[0], ttdata.aa[33], ttdata.aa[99]);
 
         ts->begin(c->ID, 1000);
         ts->sss(c->ID,index);

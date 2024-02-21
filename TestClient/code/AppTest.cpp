@@ -1,5 +1,6 @@
 #include "AppTest.h"
 
+#include <cstring>
 #include <thread>
 
 #ifndef ____WIN32_
@@ -44,6 +45,7 @@ namespace app
     //序列化数据测试
     void sendProtoBuff(net::ITcpClient* client)
     {
+#ifdef  ____WIN32_
 	    test::Testxxx xx;
         xx.set_aa(100);
         xx.set_bb(32123);
@@ -60,7 +62,7 @@ namespace app
         client->end();
 
         delete [] c;
-
+#endif
     }
 
     int temptime = 0;
