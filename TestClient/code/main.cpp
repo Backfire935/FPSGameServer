@@ -18,5 +18,5 @@ int main()
 	//share::InitData();
  //   usleep(10000*1000);
     return 0;
-    // 因为VS2022在连接Linux的设置过于繁杂，导致目前本项目的生成路径和TestLinux项目的生成路径一直，因此本项目读取的是TestLinux项目的client_xml文件，因此测试时修改配置需要改TestLinux项目的，此处应在周末有空时，将本项目的生成路径和TestLinux项目的生成路径分开，然后再测试。
+    // 因为VS2022在Linux的生成目录设置过于繁杂，导致目前本项目的生成路径和TestLinux项目的生成路径一致，因此本项目读取的是TestLinux项目的client_xml文件，因此测试时修改配置需要改TestLinux项目的，此处应在周末有空时，将本项目的生成路径和TestLinux项目的生成路径分开，然后再测试。
 }

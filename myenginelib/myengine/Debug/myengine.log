@@ -1,0 +1,57 @@
+﻿  pch.cpp
+  INetBase.cpp
+D:\test\CPlusPlus\TestServer\myenginelib\myengine\INetBase.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\test\CPlusPlus\TestServer\myenginelib\myengine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“INetBase.cpp”)
+  
+  IOPool.cpp
+D:\test\CPlusPlus\TestServer\myenginelib\myengine\IOPool.cpp(88,31): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\myenginelib\myengine\IOPool.cpp(155,28): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\myenginelib\myengine\IOPool.cpp(223,28): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
+  myengine.cpp
+  TcpClient.cpp
+D:\test\CPlusPlus\TestServer\myenginelib\myengine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“TcpClient.cpp”)
+  
+D:\test\CPlusPlus\TestServer\myenginelib\myengine\TcpClient.cpp(100,20): warning C4244: “初始化”: 从“SOCKET”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\myenginelib\myengine\TcpClient.cpp(126,20): warning C4244: “初始化”: 从“SOCKET”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\myenginelib\myengine\TcpClient.cpp(204,17): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 3 拥有了类型“SOCKET”
+  D:\test\CPlusPlus\TestServer\myenginelib\myengine\TcpClient.cpp(204,17):
+  请考虑在格式字符串中使用“%lld”
+  D:\test\CPlusPlus\TestServer\myenginelib\myengine\TcpClient.cpp(204,17):
+  请考虑在格式字符串中使用“%Id”
+  D:\test\CPlusPlus\TestServer\myenginelib\myengine\TcpClient.cpp(204,17):
+  请考虑在格式字符串中使用“%I64d”
+  
+  TcpClient_Funs.cpp
+D:\test\CPlusPlus\TestServer\myenginelib\myengine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“TcpClient_Funs.cpp”)
+  
+D:\test\CPlusPlus\TestServer\myenginelib\myengine\TcpClient_Funs.cpp(101,89): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\myenginelib\myengine\TcpClient_Funs.cpp(375,52): warning C4018: “<”: 有符号/无符号不匹配
+  TcpClient_Thread.cpp
+D:\test\CPlusPlus\TestServer\myenginelib\myengine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“TcpClient_Thread.cpp”)
+  
+D:\test\CPlusPlus\TestServer\myenginelib\myengine\TcpClient_Thread.cpp(61,34): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
+  TcpServer.cpp
+D:\test\CPlusPlus\TestServer\myenginelib\myengine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“TcpServer.cpp”)
+  
+D:\test\CPlusPlus\TestServer\myenginelib\myengine\TcpServer.cpp(60,12): warning C4129: “ ”: 不可识别的字符转义序列
+D:\test\CPlusPlus\TestServer\myenginelib\myengine\TcpServer.cpp(276,52): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\myenginelib\myengine\TcpServer.cpp(308,13): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+  TcpServer_Funs.cpp
+D:\test\CPlusPlus\TestServer\myenginelib\myengine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“TcpServer_Funs.cpp”)
+  
+D:\test\CPlusPlus\TestServer\myenginelib\myengine\TcpServer_Funs.cpp(70,20): warning C4018: “<”: 有符号/无符号不匹配
+D:\test\CPlusPlus\TestServer\myenginelib\myengine\TcpServer_Funs.cpp(122,75): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\myenginelib\myengine\TcpServer_Funs.cpp(217,37): warning C4244: “参数”: 从“SOCKET”转换到“const int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\myenginelib\myengine\TcpServer_Funs.cpp(548,45): warning C4018: “<=”: 有符号/无符号不匹配
+  TcpServer_Thread.cpp
+D:\test\CPlusPlus\TestServer\myenginelib\myengine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“TcpServer_Thread.cpp”)
+  
+  正在生成代码...
+  myengine.vcxproj -> D:\test\CPlusPlus\TestServer\myenginelib\exe\myengine.lib
