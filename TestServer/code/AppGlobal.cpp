@@ -43,6 +43,11 @@ namespace app
 			//初始化一下
 			c->Reset();
 		}
+		else if(c->state == func::S_Login)
+		{
+			c->state = func::S_NeedSave;
+			LOG_MSG("AppGlobal leave...%d-%d \n", c->ID, (int)c->socketfd);
+		}
 	}
 
 	//只会在工作线程触发超时

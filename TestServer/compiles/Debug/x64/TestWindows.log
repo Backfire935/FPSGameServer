@@ -1,4 +1,8 @@
-﻿  AppManager.cpp
+﻿  AppGlobal.cpp
+D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  (编译源文件“AppGlobal.cpp”)
+  
+  AppManager.cpp
 D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
   (编译源文件“AppManager.cpp”)
   
@@ -6,17 +10,17 @@ D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包
 D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
   (编译源文件“AppPlayer.cpp”)
   
-D:\test\CPlusPlus\TestServer\TestServer\code\AppPlayer.cpp(57,12): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 4 拥有了类型“SOCKET”
-  D:\test\CPlusPlus\TestServer\TestServer\code\AppPlayer.cpp(57,12):
+D:\test\CPlusPlus\TestServer\TestServer\code\AppPlayer.cpp(50,15): warning C4244: “初始化”: 从“u64”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\TestServer\code\AppPlayer.cpp(124,12): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 4 拥有了类型“SOCKET”
+  D:\test\CPlusPlus\TestServer\TestServer\code\AppPlayer.cpp(124,12):
   请考虑在格式字符串中使用“%lld”
-  D:\test\CPlusPlus\TestServer\TestServer\code\AppPlayer.cpp(57,12):
+  D:\test\CPlusPlus\TestServer\TestServer\code\AppPlayer.cpp(124,12):
   请考虑在格式字符串中使用“%Id”
-  D:\test\CPlusPlus\TestServer\TestServer\code\AppPlayer.cpp(57,12):
+  D:\test\CPlusPlus\TestServer\TestServer\code\AppPlayer.cpp(124,12):
   请考虑在格式字符串中使用“%I64d”
   
-D:\test\CPlusPlus\TestServer\TestServer\code\AppPlayer.cpp(86,13): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
-D:\test\CPlusPlus\TestServer\TestServer\code\AppPlayer.cpp(90,23): warning C4244: “=”: 从“SOCKET”转换到“s32”，可能丢失数据
-  TestWindows.cpp
+D:\test\CPlusPlus\TestServer\TestServer\code\AppPlayer.cpp(153,13): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\TestServer\code\AppPlayer.cpp(157,23): warning C4244: “=”: 从“SOCKET”转换到“s32”，可能丢失数据
   正在生成代码...
 libprotobufd.lib(common.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(common.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
 libprotobufd.lib(coded_stream.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(coded_stream.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样

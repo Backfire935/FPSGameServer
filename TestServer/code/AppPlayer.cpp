@@ -25,9 +25,54 @@ namespace app
 		
 	 }
 
+
+	void playerLeave(u32 memid)
+	 {
+		auto it = __Onlines.begin();
+		while(it != __Onlines.end())
+		{
+			auto player = it->second;
+			auto c = __TcpServer->client((SOCKET)player->socketfd, true);
+			if(c == nullptr || player->memid == memid)
+			{
+				++it;
+				continue;
+			}
+			__TcpServer->begin(c->ID, CMD_LEAVE);
+			__TcpServer->sss(c->ID, memid);
+			__TcpServer->end(c->ID);
+			++it;
+		}
+	 }
+
 	 void AppPlayer::onUpdate()
 	 {
-		 
+		 int  value = clock() - temptime;
+		 if (value < 100) return;
+		temptime = clock();
+
+		auto it = __Onlines.begin();
+		while(it != __Onlines.end())//遍历在线玩家数据
+		{
+			auto player = it->second;
+			auto c = __TcpServer->client((SOCKET)player->socketfd, true);
+			if(c == nullptr)
+			{
+				++it;
+				continue;
+			}
+			if(c->state == func::S_NeedSave)//如果玩家需要保存数据
+			{
+				playerLeave(player->memid);
+				it = __Onlines.erase(it);//从在线玩家数据中删除玩家对象
+				player->init();
+				__PlayersPool.push_back(player);//将玩家对象放入到玩家对象池中
+
+				c->Reset();
+				continue;
+			}
+			++it;
+		}
 	 }
 
 	 bool AppPlayer::onServerCommand(net::ITcpServer* ts, net::S_CLIENT_BASE* c, const u16 cmd)
@@ -43,6 +88,28 @@ namespace app
 			 case CMD_LOGIN:onLogin(ts, c);break;
 			 case CMD_MOVE:onMove(ts, c); break;
 			 case CMD_PLAYERDATA:onGetPlayerData(ts, c); break;
+
+		 case 9999:
+			 {
+			 int len = 0;
+			 char* strl = NULL;
+			 char str2[20];
+			 memset(str2, 0, 20);
+
+			   ts->read(c->ID, len);
+		 		strl = new char[len];
+				ts->read(c->ID, strl, len);
+
+				ts->read(c->ID, str2, 20);
+				//返回
+				ts->begin(c->ID, 9999);
+				ts->sss(c->ID, len);
+		 		ts->sss(c->ID, strl, len);
+				ts->sss(c->ID, str2, 20);
+				ts->end(c->ID);
+
+				delete[] strl;//释放内存
+			 }
 		 }
 		 return false; 
 	 }
@@ -101,6 +168,7 @@ namespace app
 		LOG_MSG("player login successfully... %d-%d\n", player->memid, (int)c->socketfd);
 	 }
 
+	//2000 玩家移动
 	 void AppPlayer::onMove(net::ITcpServer* ts, net::S_CLIENT_BASE* c)
 	 {
 		 s32 memid;
@@ -140,8 +208,22 @@ namespace app
 		}
 	 }
 
+	//获取其他玩家数据
 	 void AppPlayer::onGetPlayerData(net::ITcpServer* ts, net::S_CLIENT_BASE* c)
 	 {
+		 s32 memid;
+		 ts->read(c->ID, memid);
+
+		 auto it = __Onlines.find(memid);
+		 if (it == __Onlines.end()) return;
+
+		 auto player = it->second;
+		 auto c2 = ts->client((SOCKET)player->socketfd, true);
+		 if (c2 == nullptr) return;
+
+		 ts->begin( c->ID, CMD_PLAYERDATA );
+		 ts->sss(c->ID, player ,sizeof(S_PLAYER_BASE));
+		 ts->end(c->ID);
 
 	 }
 }

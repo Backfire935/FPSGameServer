@@ -46,6 +46,7 @@ namespace app
 		if(__TcpServer == nullptr) return;
 		//不停的检查连接，解析指令,不停的投递数据
 		__TcpServer->parseCommand();
+		__AppPlayer->onUpdate();//玩家数据更新
 		printInfo();
 	}
 	
@@ -75,6 +76,8 @@ namespace app
 		__TcpServer->registerCommand(CMD_LOGIN, __AppPlayer);
 		__TcpServer->registerCommand(CMD_MOVE, __AppPlayer);
 		__TcpServer->registerCommand(CMD_PLAYERDATA, __AppPlayer);
+
+		__TcpServer->registerCommand(9999, __AppPlayer);//测试用的
 		//Sleep(5000);
 		//__TcpServer->stopServer();
 		
