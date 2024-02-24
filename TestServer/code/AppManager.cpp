@@ -5,7 +5,7 @@
 #include "AppGlobal.h"
 #include "../../share/ShareFunction.h"
 #include "AppTest.h"
-
+#include "AppPlayer.h"
 #ifndef ____WIN32_
 #include <unistd.h>
 #endif
@@ -71,8 +71,10 @@ namespace app
 		__TcpServer->runServer(2);//开辟两个线程
 
 		__AppTest = new AppTest();
-		__TcpServer->registerCommand(1000, __AppTest);
-		__TcpServer->registerCommand(2000, __AppTest);
+		__AppPlayer = new AppPlayer();
+		__TcpServer->registerCommand(CMD_LOGIN, __AppPlayer);
+		__TcpServer->registerCommand(CMD_MOVE, __AppPlayer);
+		__TcpServer->registerCommand(CMD_PLAYERDATA, __AppPlayer);
 		//Sleep(5000);
 		//__TcpServer->stopServer();
 		
