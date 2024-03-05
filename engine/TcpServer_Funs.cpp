@@ -97,6 +97,9 @@ namespace net
 			
 			if(cmd == CMD_HEART)
 			{
+				begin(c->ID, CMD_HEART);//服务端返回心跳包
+				sss(c->ID, 1);
+				end(c->ID);
 				//通过注册消息的方式 派发到业务逻辑层
 				return;
 			}

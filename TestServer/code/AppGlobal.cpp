@@ -4,14 +4,14 @@ namespace app
 {
 	net::ITcpServer*  __TcpServer = nullptr;
 	
-	//¹¤×÷Ïß³ÌÖĞµ÷ÓÃµÄ
+	//å·¥ä½œçº¿ç¨‹ä¸­è°ƒç”¨çš„
 	void onClientAccept(net::ITcpServer* tcp, net::S_CLIENT_BASE* c, const s32 code)
 	{
 		if (c == nullptr || tcp == nullptr)return;
 		LOG_MSG("new connect...%d [%s:%d] %d\n", (int)c->socketfd, c->ip, c->port, c->threadID);
 
 	}
-	//Ö÷Ïß³Ì Ò²¾ÍÊÇÒµÎñÏß³ÌÖĞµ÷ÓÃ
+	//ä¸»çº¿ç¨‹ ä¹Ÿå°±æ˜¯ä¸šåŠ¡çº¿ç¨‹ä¸­è°ƒç”¨
 	void onClientSecureConnect(net::ITcpServer* tcp, net::S_CLIENT_BASE* c, const s32 code)
 	{
 		if (c == nullptr || tcp == nullptr)return;
@@ -23,7 +23,7 @@ namespace app
 		func::SetConsoleColor(7);
 	}
 
-	//Ö÷Ïß³Ì
+	//ä¸»çº¿ç¨‹
 	void onClientDisconnect(net::ITcpServer* tcp, net::S_CLIENT_BASE* c, const s32 code)
 	{
 		if (c == nullptr || tcp == nullptr)return;
@@ -37,10 +37,10 @@ namespace app
 		LOG_MSG("disconnect...%d [%s:%s] [connect:%d-%d]\n", (int)c->socketfd, str1, str2, aa, bb);
 		func::SetConsoleColor(7);
 
-		//Èç¹ûµ±Ç°µÄÁ¬½ÓÊÇ°²È«µÄ
+		//å¦‚æœå½“å‰çš„è¿æ¥æ˜¯å®‰å…¨çš„
 		if(c->state == func::S_Connect || c->state == func::S_ConnectSecure)
 		{
-			//³õÊ¼»¯Ò»ÏÂ
+			//åˆå§‹åŒ–ä¸€ä¸‹
 			c->Reset();
 		}
 		else if(c->state == func::S_Login)
@@ -50,7 +50,7 @@ namespace app
 		}
 	}
 
-	//Ö»»áÔÚ¹¤×÷Ïß³Ì´¥·¢³¬Ê±
+	//åªä¼šåœ¨å·¥ä½œçº¿ç¨‹è§¦å‘è¶…æ—¶
 	void onClientTimeout(net::ITcpServer* tcp, net::S_CLIENT_BASE* c, const s32 code)
 	{
 		if (c == nullptr || tcp == nullptr)return;

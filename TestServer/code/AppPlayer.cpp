@@ -77,7 +77,12 @@ namespace app
 
 	 bool AppPlayer::onServerCommand(net::ITcpServer* ts, net::S_CLIENT_BASE* c, const u16 cmd)
 	 {
-		 if(ts->isSecure_F_Close(c->ID, func::C_ConnectSecure))
+	 	//玩家客户端刚连接服务端的时候，因为还没有和服务端建立安全连接，所以在服务端加一个判断，是否是登陆等操作，不然就会认为连接不安全，直接关闭连接
+	 	if(cmd == CMD_LOGIN || cmd == CMD_MOVE || cmd == CMD_PLAYERDATA)
+	 	{
+	 		
+	 	}
+		 else if(ts->isSecure_F_Close(c->ID, func::C_ConnectSecure) == false)
 		 {
 			LOG_MSG("AppPlayer err... line:%d \n ",__LINE__);
 			return  false;
@@ -114,7 +119,7 @@ namespace app
 		 return false; 
 	 }
 
-	S_PLAYER_BASE* findPlayer(u32 memid, net::S_CLIENT_BASE* c)
+	 S_PLAYER_BASE* findPlayer(u32 memid, net::S_CLIENT_BASE* c)
 	 {
 		 auto it = __Onlines.find(memid);//查找玩家对象
 		 if (it == __Onlines.end())return nullptr;
