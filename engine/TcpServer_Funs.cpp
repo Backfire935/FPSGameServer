@@ -97,9 +97,13 @@ namespace net
 			
 			if(cmd == CMD_HEART)
 			{
-				begin(c->ID, CMD_HEART);//服务端返回心跳包
-				sss(c->ID, 1);
-				end(c->ID);
+				c->time_Heart = (int)time(NULL);
+				u32 value = 0;
+				read(c->ID, value);
+
+				//begin(c->ID, CMD_HEART);//服务端返回心跳包
+				//sss(c->ID, 1);
+				//end(c->ID);
 				//通过注册消息的方式 派发到业务逻辑层
 				return;
 			}
@@ -263,11 +267,11 @@ namespace net
 	{
 		if(id <0 || id >= Linkers->length)return false;//检查ID下标的合法性
 		auto c = Linkers->Value(id);
-		if(c->state >= secure) return true;//大于安全状态
+		if(c->state >= secure) return false;//大于安全状态
 
 		//不然就要关闭
 		shutDown(c->socketfd, 0, c, 2006);
-		return false;
+		return true;
 	}
 
 

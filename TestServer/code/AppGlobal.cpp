@@ -54,14 +54,14 @@ namespace app
 	void onClientTimeout(net::ITcpServer* tcp, net::S_CLIENT_BASE* c, const s32 code)
 	{
 		if (c == nullptr || tcp == nullptr)return;
-		LOG_MSG("onClientTimeout:%d\r\n", code);
+		LOG_MSG("onClientTimeout:%d\n", code);
 
 	}
 
 	void onClientExcept(net::ITcpServer* tcp, net::S_CLIENT_BASE* c, const s32 code)
 	{
 		if (c == nullptr || tcp == nullptr)return;
-		LOG_MSG("onClientExcept:%d\r\n", code);
+		LOG_MSG("onClientExcept:%d\n", code);
 
 	}
 }

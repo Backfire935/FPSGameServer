@@ -82,7 +82,8 @@ namespace app
 	 	{
 	 		
 	 	}
-		 else if(ts->isSecure_F_Close(c->ID, func::C_ConnectSecure) == false)
+		 else
+			if(ts->isSecure_F_Close(c->ID, func::C_ConnectSecure) )
 		 {
 			LOG_MSG("AppPlayer err... line:%d \n ",__LINE__);
 			return  false;

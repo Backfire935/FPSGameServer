@@ -281,7 +281,7 @@ namespace net
 		if (c == nullptr)
 		{
 			//获取不到空闲结构说明服务器已满
-			LOG_MSG("Server is full!!! ...\n\r");
+			LOG_MSG("Server is full!!! ...\n");
 			return -5;
 		}
 
