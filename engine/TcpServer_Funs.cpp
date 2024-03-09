@@ -101,9 +101,9 @@ namespace net
 				u32 value = 0;
 				read(c->ID, value);
 
-				//begin(c->ID, CMD_HEART);//服务端返回心跳包
-				//sss(c->ID, 1);
-				//end(c->ID);
+				begin(c->ID, CMD_HEART);//服务端返回心跳包
+				sss(c->ID, 1);
+				end(c->ID);
 				//通过注册消息的方式 派发到业务逻辑层
 				return;
 			}
@@ -301,7 +301,7 @@ namespace net
 			c->is_Sending = true;
 			c->sendBuf[c->send_Tail + 0] = func::__ServerInfo->Head[0] ^ c->rCode;//异或封装两个字节的消息头
 			c->sendBuf[c->send_Tail + 1] = func::__ServerInfo->Head[1] ^ c->rCode;//异或封装两个字节的消息头
-			if (cmd != 65001 && cmd != 65002) printf("\n");
+			//if (cmd != 65001 && cmd != 65002) printf("\n");
 			u16 newcmd = cmd ^ c->rCode;
 			char* a = (char*)&newcmd;
 
@@ -552,7 +552,7 @@ namespace net
 		//发送结构体
 		auto c = client(id);
 		if(c== nullptr)return;
-		if(c->is_Sending && c->send_TempTail +len <= func::__ServerInfo->SendMax)
+		if(c->is_Sending && c->send_TempTail +len < func::__ServerInfo->SendMax)
 		{
 			memcpy(&c->sendBuf[c->send_TempTail], v , len);//拷贝数据
 			c->send_TempTail += len;

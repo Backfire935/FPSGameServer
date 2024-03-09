@@ -179,6 +179,8 @@ namespace app
 	 {
 		 s32 memid;
 		 f32 speed;
+		 f32 temp1,temp2 = 0;
+
 		 S_VECTOR pos;
 		 S_VECTOR rot;
 		 ts->read(c->ID, memid);
@@ -186,7 +188,14 @@ namespace app
 		 ts->read(c->ID, &pos, sizeof(S_VECTOR));
 		 ts->read(c->ID, &rot, sizeof(S_VECTOR));
 
-		auto player = findPlayer(memid, c);
+		 //temp1 = rot.x;
+		 //temp2 = rot.y;
+		 //rot.x = rot.z;
+		 //rot.y= temp1;
+	 	// rot.z = temp2;
+
+		 printf("rot %.2f %.2f %.2f\n", rot.x, rot.y, rot.z);
+		S_PLAYER_BASE* player = findPlayer(memid, c);
 		if (player == nullptr) return;
 
 		player->speed = speed;
@@ -204,12 +213,12 @@ namespace app
 				continue;
 			}
 
-			ts->begin(c->ID, CMD_MOVE);
-			ts->sss(c->ID, memid);
-			ts->sss(c->ID, speed);
-			ts->sss(c->ID, &pos, sizeof(S_VECTOR));
-			ts->sss(c->ID, &rot, sizeof(S_VECTOR));
-			ts->end(c->ID);
+			ts->begin(c2->ID, CMD_MOVE);
+			ts->sss(c2->ID, memid);
+			ts->sss(c2->ID, speed);
+			ts->sss(c2->ID, &pos, sizeof(S_VECTOR));
+			ts->sss(c2->ID, &rot, sizeof(S_VECTOR));
+			ts->end(c2->ID);
 			++it;
 		}
 	 }
