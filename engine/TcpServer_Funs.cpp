@@ -101,9 +101,9 @@ namespace net
 				u32 value = 0;
 				read(c->ID, value);
 
-				begin(c->ID, CMD_HEART);//服务端返回心跳包
+				/*begin(c->ID, CMD_HEART);//服务端返回心跳包
 				sss(c->ID, 1);
-				end(c->ID);
+				end(c->ID);*/
 				//通过注册消息的方式 派发到业务逻辑层
 				return;
 			}

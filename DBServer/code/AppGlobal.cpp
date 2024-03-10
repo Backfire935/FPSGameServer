@@ -19,7 +19,7 @@ namespace app
 		int bb = 0;
 		tcp->getSecurityCount( aa, bb );
 		func::SetConsoleColor(10);
-		LOG_MSG("security connect...%d [%s:%d] [connect:%d-%d]\n", (int)c->socketfd, c->ip, c->port, aa, bb);
+		LOG_MSG("security connect...%d [%s:%d] [connect:%d-%d] clientID:%d\n", (int)c->socketfd, c->ip, c->port, aa, bb,c->ClientID);
 		func::SetConsoleColor(7);
 	}
 

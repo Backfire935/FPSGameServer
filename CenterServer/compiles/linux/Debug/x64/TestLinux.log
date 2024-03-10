@@ -1,0 +1,76 @@
+﻿  正在清理远程项目目录
+  正在验证源
+  正在将源远程复制到“192.168.73.128”
+  正在验证体系结构
+  正在验证体系结构
+  正在启动远程生成
+  正在编译源:
+  EpollServer.cpp
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(208): warning : ignoring #pragma region  [-Wunknown-pragmas]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(208): warning :   208 | #pragma region("使用while不停发送的参考")
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(208): warning :       |
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(234): warning : ignoring #pragma endregion  [-Wunknown-pragmas]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(234): warning :   234 | #pragma endregion
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(234): warning :       |
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(106,19): warning : conversion from ‘time_t’ {aka ‘long int’} to ‘unsigned int’ may change value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(106,19): warning :   106 |         srand(time(NULL));
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(106,19): warning :       |               ~~~~^~~~~~
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(107,33): warning : conversion from ‘int’ to ‘u8’ {aka ‘unsigned char’} may change value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(107,33): warning :   107 |         u8 rcode = rand() % 100 + 1;
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(107,33): warning :       |                    ~~~~~~~~~~~~~^~~
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(127,18): warning : conversion from ‘ssize_t’ {aka ‘long int’} to ‘int’ may change value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(186,30): warning : conversion from ‘ssize_t’ {aka ‘long int’} to ‘int’ may change value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(186,30): warning :   186 |         int send_bytes = send(c->socketfd, &c->sendBuf[c->send_Head], sendlen, 0);//发送数据
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer.cpp(186,30): warning :       |                          ~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  EpollServer_Funs.cpp
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer_Funs.cpp(57,52): warning : conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer_Funs.cpp(57,52): warning :    57 |             head[0] = c->recvBuf[c->recv_Head + 0] ^ c->rCode;
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer_Funs.cpp(57,52): warning :       |                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer_Funs.cpp(58,52): warning : conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer_Funs.cpp(58,52): warning :    58 |             head[1] = c->recvBuf[c->recv_Head + 1] ^ c->rCode;
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer_Funs.cpp(58,52): warning :       |                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer_Funs.cpp(65,64): warning : conversion from ‘int’ to ‘u16’ {aka ‘short unsigned int’} may change value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer_Funs.cpp(65,64): warning :    65 |             u16 cmd = (*(u16*)(c->recvBuf + c->recv_Head + 6)) ^ c->rCode;
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer_Funs.cpp(65,64): warning :       |                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer_Funs.cpp(110,85): warning : conversion from ‘size_t’ {aka ‘long unsigned int’} to ‘int’ may change value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer_Funs.cpp(126,25): warning : comparison of integer expressions of different signedness: ‘u32’ {aka ‘unsigned int’} and ‘s32’ {aka ‘int’} [-Wsign-compare]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer_Funs.cpp(116,17): warning : unused variable ‘len’ [-Wunused-variable]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer_Funs.cpp(116,17): warning :   116 |             u32 len = 0;
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer_Funs.cpp(116,17): warning :       |                 ^~~
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer_Funs.cpp(204,25): warning : comparison of integer expressions of different signedness: ‘u32’ {aka ‘unsigned int’} and ‘int’ [-Wsign-compare]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer_Funs.cpp(204,25): warning :   204 |         if (m_LinkIndex >= Linkers->length) m_LinkIndex = 0;
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer_Funs.cpp(204,25): warning :       |             ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer_Funs.cpp(290,72): warning : conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer_Funs.cpp(291,72): warning : conversion from ‘int’ to ‘char’ may change value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer_Funs.cpp(293,30): warning : conversion from ‘int’ to ‘u16’ {aka ‘short unsigned int’} may change value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer_Funs.cpp(293,30): warning :   293 |             u16 newcmd = cmd ^ c->rCode;
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer_Funs.cpp(293,30): warning :       |                          ~~~~^~~~~~~~~~
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\EpollServer_Funs.cpp(517,53): warning : comparison of integer expressions of different signedness: ‘unsigned int’ and ‘s32’ {aka ‘int’} [-Wsign-compare]
+  EpollServer_Thread.cpp
+  INetBase.cpp
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\INetBase.cpp(32,22): warning : conversion from ‘ssize_t’ {aka ‘long int’} to ‘int’ may change value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\INetBase.cpp(32,22): warning :    32 |    int ret = readlink("/proc/self/exe", FileExePath, MAX_EXE_LEN);
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\INetBase.cpp(32,22): warning :       |              ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\INetBase.cpp(32,8): warning : unused variable ‘ret’ [-Wunused-variable]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\INetBase.cpp(32,8): warning :    32 |    int ret = readlink("/proc/self/exe", FileExePath, MAX_EXE_LEN);
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\engine\INetBase.cpp(32,8): warning :       |        ^~~
+  IOPool.cpp
+  ShareFunction.cpp
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\share\ShareFunction.cpp(43,40): warning : conversion from ‘int’ to ‘u16’ {aka ‘short unsigned int’} may change value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\share\ShareFunction.cpp(51,41): warning : conversion from ‘int’ to ‘u8’ {aka ‘unsigned char’} may change value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\share\ShareFunction.cpp(96,41): warning : conversion from ‘int’ to ‘u8’ {aka ‘unsigned char’} may change value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\share\ShareFunction.cpp(117,36): warning : conversion from ‘int’ to ‘u16’ {aka ‘short unsigned int’} may change value [-Wconversion]
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\share\ShareFunction.cpp(117,36): warning :   117 |             serverList->Port = atoi(xmlNode->Attribute("Port"));
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\share\ShareFunction.cpp(117,36): warning :       |                                ~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+D:\test\CPlusPlus\TestServer\TestServer\code\..\..\share\ShareFunction.cpp(141,26): warning : comparison of integer expressions of different signedness: ‘int’ and ‘std::vector<func::ServerListXML*>::size_type’ {aka ‘long unsigned int’} [-Wsign-compare]
+  md5.cpp
+  tinystr.cpp
+  tinyxml.cpp
+  tinyxmlerror.cpp
+  tinyxmlparser.cpp
+  AppGlobal.cpp
+  AppManager.cpp
+  AppTest.cpp
+  main.cpp
+  正在链接对象
+  TestLinux.vcxproj -> D:\test\CPlusPlus\TestServer\TestServer\exe\testlinux.out

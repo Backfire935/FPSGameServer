@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="..\..\share\ShareFunction.cpp">
+      <Filter>share</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\share\tinyxml\md5.cpp">
+      <Filter>share\tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\share\tinyxml\tinystr.cpp">
+      <Filter>share\tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\share\tinyxml\tinyxml.cpp">
+      <Filter>share\tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\share\tinyxml\tinyxmlerror.cpp">
+      <Filter>share\tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\share\tinyxml\tinyxmlparser.cpp">
+      <Filter>share\tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\INetBase.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\IOPool.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\EpollServer.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\EpollServer_Thread.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\EpollServer_Funs.cpp">
+      <Filter>engine</Filter>
+    </ClCompile>
+    <ClCompile Include="AppGlobal.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="AppManager.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="AppTest.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="share">
+      <UniqueIdentifier>{553c3ff1-8df3-4b5d-843c-729f5162eed5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine">
+      <UniqueIdentifier>{925b19ef-fa32-482f-a94f-799eca7a4555}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="share\tinyxml">
+      <UniqueIdentifier>{699ef3af-9a41-4d24-84cb-0b2fdcb92238}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app">
+      <UniqueIdentifier>{b5fbfd13-4b7b-4691-8732-5831eeaf5c3f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\share\ShareFunction.h">
+      <Filter>share</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\share\tinyxml\md5.h">
+      <Filter>share\tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\share\tinyxml\tinystr.h">
+      <Filter>share\tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\share\tinyxml\tinyxml.h">
+      <Filter>share\tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\IContainer.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\IDefine.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\INetBase.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\IOPool.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\EpollServer.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="AppGlobal.h">
+      <Filter>app</Filter>
+    </ClInclude>
+    <ClInclude Include="AppManager.h">
+      <Filter>app</Filter>
+    </ClInclude>
+    <ClInclude Include="AppTest.h">
+      <Filter>app</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\exe\config_client.xml" />
+    <Xml Include="..\exe\config_server.xml" />
+  </ItemGroup>
+</Project>

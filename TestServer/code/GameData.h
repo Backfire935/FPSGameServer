@@ -15,8 +15,7 @@ namespace app
 		f64 z;
 	};
 	;
-
-
+	
 	struct S_PLAYER_BASE
 	{
 		s32  memid;
