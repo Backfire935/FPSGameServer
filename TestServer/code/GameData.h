@@ -10,9 +10,9 @@ namespace app
 
 	struct S_VECTOR
 	{
-		f32 x;
-		f32 y;
-		f32 z;
+		f64 x;
+		f64 y;
+		f64 z;
 	};
 	;
 
