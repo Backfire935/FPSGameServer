@@ -30,11 +30,11 @@ namespace app
 #ifdef ____WIN32_
 		int temptime = (int)time(NULL) - temp_time;
 		if(temptime < 1) return;
-
+		if(func::__ServerInfo == nullptr) return;
 		int concount = 0;
 		int securitycount = 0;
-		__TcpServer->getSecurityCount(concount, securitycount);//´òÓ¡°²È«Á¬½ÓÊýÁ¿
-		sprintf_s(printfstr, "connect:%d, security:%d", concount, securitycount);
+		__TcpServer->getSecurityCount(concount, securitycount);//ï¿½ï¿½Ó¡ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		sprintf_s(printfstr, "GameServer [%d-%d] connect:%d, security:%d", func::__ServerInfo->ID, func::__ServerInfo->Port,concount, securitycount);
 		SetWindowTextA(GetConsoleWindow(),printfstr);
 		
 		temp_time = (int)time(NULL);
@@ -44,7 +44,7 @@ namespace app
 	void onUpdate()
 	{
 		if(__TcpServer == nullptr) return;
-		//²»Í£µÄ¼ì²éÁ¬½Ó£¬½âÎöÖ¸Áî,²»Í£µÄÍ¶µÝÊý¾Ý
+		//ï¿½ï¿½Í£ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Ó£ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½,ï¿½ï¿½Í£ï¿½ï¿½Í¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		__TcpServer->parseCommand();
 		__TcpDB->parseCommand();
 		__TcpCenter->parseCommand();
@@ -60,18 +60,18 @@ namespace app
 
 		__TcpServer = net::NewTcpServer();
 
-		//ÉèÖÃÐÂµÄÁ¬½Ó
+		//ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½ï¿½
 		__TcpServer->setOnClientAccept(onClientAccept);
-		//ÉèÖÃ°²È«Á¬½Ó
+		//ï¿½ï¿½ï¿½Ã°ï¿½È«ï¿½ï¿½ï¿½ï¿½
 		__TcpServer->setOnClientSecureConnect(onClientSecureConnect);
-		//ÉèÖÃÊ§È¥Á¬½Ó
+		//ï¿½ï¿½ï¿½ï¿½Ê§È¥ï¿½ï¿½ï¿½ï¿½
 		__TcpServer->setOnClientDisConnect(onClientDisconnect);
-		//ÉèÖÃ³¬Ê±Á¬½Ó
+		//ï¿½ï¿½ï¿½Ã³ï¿½Ê±ï¿½ï¿½ï¿½ï¿½
 		__TcpServer->setOnClientTimeout(onClientTimeout);
-		//ÉèÖÃÒì³£Á¬½Ó
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ì³£ï¿½ï¿½ï¿½ï¿½
 		__TcpServer->setOnClientExcept(onClientExcept);
-		//ÔËÐÐ·þÎñ¶Ë
-		__TcpServer->runServer(1);//¿ª±ÙÁ½¸öÏß³Ì
+		//ï¿½ï¿½ï¿½Ð·ï¿½ï¿½ï¿½ï¿½
+		__TcpServer->runServer(1);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½
 
 		auto xml = func::__ServerListInfo[0];
 		 __TcpDB = net::NewTcpClient();
@@ -103,7 +103,7 @@ namespace app
 		{
 			onUpdate();
 #ifdef ____WIN32_
-			Sleep(5);//2msÐÝÃßÒ»´Î
+			Sleep(5);//2msï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
 #else
 			usleep(5);
 #endif

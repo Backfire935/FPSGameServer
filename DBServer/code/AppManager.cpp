@@ -29,11 +29,11 @@ namespace app
 #ifdef ____WIN32_
 		int temptime = (int)time(NULL) - temp_time;
 		if(temptime < 1) return;
-
+		if(func::__ServerInfo == nullptr) return;
 		int concount = 0;
 		int securitycount = 0;
 		__TcpServer->getSecurityCount(concount, securitycount);//��ӡ��ȫ��������
-		sprintf_s(printfstr, "connect:%d, security:%d", concount, securitycount);
+		sprintf_s(printfstr, "DBServer [%d-%d] connect:%d, security:%d", func::__ServerInfo->ID, func::__ServerInfo->Port,concount, securitycount);
 		SetWindowTextA(GetConsoleWindow(),printfstr);
 		
 		temp_time = (int)time(NULL);
