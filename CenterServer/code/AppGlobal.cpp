@@ -76,7 +76,7 @@ namespace app
 	void onSecureConnect(net::ITcpClient* tcp, const s32 code)
 	{
 		func::SetConsoleColor(10);
-		LOG_MSG("----------client security connect... 代码:%d ID:%d [%s:%d]\n", code, tcp->getData()->ID, tcp->getData()->ip, tcp->getData()->port);
+		LOG_MSG("----------client security connect... [currID:%d-servID:%d] [%s:%d]\n", tcp->getData()->ID, tcp->getData()->serverID, tcp->getData()->ip, tcp->getData()->port);
 		func::SetConsoleColor(7);
 	}
 

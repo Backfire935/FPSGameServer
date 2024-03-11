@@ -5,7 +5,6 @@
 #include "AppGlobal.h"
 #include "../../share/ShareFunction.h"
 #include "AppTest.h"
-#include "AppPlayer.h"
 #ifndef ____WIN32_
 #include <unistd.h>
 #endif
@@ -33,7 +32,7 @@ namespace app
 
 		int concount = 0;
 		int securitycount = 0;
-		__TcpServer->getSecurityCount(concount, securitycount);//´òÓ¡°²È«Á¬½ÓÊýÁ¿
+		__TcpServer->getSecurityCount(concount, securitycount);//ï¿½ï¿½Ó¡ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		sprintf_s(printfstr, "connect:%d, security:%d", concount, securitycount);
 		SetWindowTextA(GetConsoleWindow(),printfstr);
 		
@@ -44,9 +43,8 @@ namespace app
 	void onUpdate()
 	{
 		if(__TcpServer == nullptr) return;
-		//²»Í£µÄ¼ì²éÁ¬½Ó£¬½âÎöÖ¸Áî,²»Í£µÄÍ¶µÝÊý¾Ý
+		//ï¿½ï¿½Í£ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Ó£ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½,ï¿½ï¿½Í£ï¿½ï¿½Í¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		__TcpServer->parseCommand();
-		__AppPlayer->onUpdate();//Íæ¼ÒÊý¾Ý¸üÐÂ
 		printInfo();
 	}
 	
@@ -58,26 +56,21 @@ namespace app
 
 		__TcpServer = net::NewTcpServer();
 
-		//ÉèÖÃÐÂµÄÁ¬½Ó
+		//ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½ï¿½
 		__TcpServer->setOnClientAccept(onClientAccept);
-		//ÉèÖÃ°²È«Á¬½Ó
+		//ï¿½ï¿½ï¿½Ã°ï¿½È«ï¿½ï¿½ï¿½ï¿½
 		__TcpServer->setOnClientSecureConnect(onClientSecureConnect);
-		//ÉèÖÃÊ§È¥Á¬½Ó
+		//ï¿½ï¿½ï¿½ï¿½Ê§È¥ï¿½ï¿½ï¿½ï¿½
 		__TcpServer->setOnClientDisConnect(onClientDisconnect);
-		//ÉèÖÃ³¬Ê±Á¬½Ó
+		//ï¿½ï¿½ï¿½Ã³ï¿½Ê±ï¿½ï¿½ï¿½ï¿½
 		__TcpServer->setOnClientTimeout(onClientTimeout);
-		//ÉèÖÃÒì³£Á¬½Ó
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ì³£ï¿½ï¿½ï¿½ï¿½
 		__TcpServer->setOnClientExcept(onClientExcept);
-		//ÔËÐÐ·þÎñ¶Ë
-		__TcpServer->runServer(1);//¿ª±ÙÁ½¸öÏß³Ì
+		//ï¿½ï¿½ï¿½Ð·ï¿½ï¿½ï¿½ï¿½
+		__TcpServer->runServer(1);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½
 
 		__AppTest = new AppTest();
-		__AppPlayer = new AppPlayer();
-		__TcpServer->registerCommand(CMD_LOGIN, __AppPlayer);
-		__TcpServer->registerCommand(CMD_MOVE, __AppPlayer);
-		__TcpServer->registerCommand(CMD_PLAYERDATA, __AppPlayer);
 
-		__TcpServer->registerCommand(9999, __AppPlayer);//²âÊÔÓÃµÄ
 		//Sleep(5000);
 		//__TcpServer->stopServer();
 		
@@ -88,7 +81,7 @@ namespace app
 		{
 			onUpdate();
 #ifdef ____WIN32_
-			Sleep(5);//2msÐÝÃßÒ»´Î
+			Sleep(5);//2msï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
 #else
 			usleep(5);
 #endif
