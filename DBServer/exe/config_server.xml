@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-    <server
-    Port="13100"
-    ID="1000"
-    MaxUser="1000"
-    MaxConnect="10"
-    MaxAccept="5"
-    MaxRece="5"
-    MaxSend="5"
-    CCode="97"
-    Version="20231028"
-    ReceOne="512"
-    ReceMax="4096"
-    SendOne="512"
-    SendMax="4096"
-    HeartTime="60"
-    AutoSave="30"
-    SafeCode="test"
-    Head="DE"
-    />
-   
+	<server
+		Port="13100"
+		ID="1000"
+		MaxUser="1000"
+		MaxConnect="10"
+		MaxAccept="5"
+		MaxRece="5"
+		MaxSend="5"
+		CCode="97"
+		Version="20231028"
+		ReceOne="512"
+		ReceMax="4096"
+		SendOne="512"
+		SendMax="4096"
+		HeartTime="60"
+		AutoSave="30"
+		SafeCode="test"
+		Head="DE"
+	/>
+
 </root>

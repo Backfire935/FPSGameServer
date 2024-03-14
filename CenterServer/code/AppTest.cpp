@@ -74,7 +74,38 @@ namespace app
 //        ts->sss(c->ID, &ttdata,sizeof(testData));
 //        ts->end(c->ID);
 //    }
-    
+
+    void Test_1000(net::ITcpServer* ts, net::S_CLIENT_BASE* c)
+    {
+        u32 gate_socketfd;
+        u16 gate_port;
+        char name[20];
+        char key[20];
+
+        ts->read(c->ID, gate_socketfd);
+        ts->read(c->ID, gate_port);
+        ts->read(c->ID, name, 20);
+        ts->read(c->ID, key, 20);
+        if (__TcpDB->getData()->state < func::C_Connect)
+        {
+            LOG_MSG("DB server not connect...\n");
+            return;
+        }
+
+        share::S_LOGIN_1000 login;
+        login.gate_socketfd     = gate_socketfd;
+        login.gate_port            = gate_port;
+        login.center_socketfd = c->socketfd;
+        login.center_port    = c->port;
+
+
+        __TcpDB->begin(1000);
+        __TcpDB->sss(name, 20);
+        __TcpDB->sss(key, 20);
+        __TcpDB->sss(&login, sizeof(share::S_LOGIN_1000));//
+        __TcpDB->end();
+    }
+
     bool AppTest::onServerCommand(net::ITcpServer* ts, net::S_CLIENT_BASE* c, const u16 cmd)
     {
         if(ts->isSecure_F_Close(c->ID, func::S_ConnectSecure))
@@ -83,17 +114,49 @@ namespace app
             return false;
         }
 
-   //     switch (cmd)
-   //     {
-   //     case 1000:
-   //         ontestData(ts,c);
-   //         break;
-   //     case 2000:
-   //         ontestData_protobuff(ts,c);
-			//break;
-   //     }
+        switch (cmd)
+        {
+        case 1000:
+            Test_1000(ts, c);
+            break;
+            //case 2000:
+                //ontestData_protobuff(ts,c);
+                //break;
+        }
         
         return false;
+    }
+
+    void OnRecv_1000(net::ITcpClient* tc)
+    {
+        share::S_LOGIN_1000 login;
+        tc->read(&login, sizeof(share::S_LOGIN_1000));
+
+        auto c = __TcpServer->client((SOCKET)login.center_socketfd, true);
+    	if (c == nullptr)
+    	{
+    		LOG_MSG("AppTest err... line:%d \n ", __LINE__);
+			return;
+		}
+
+        __TcpServer->begin(c->ID, 1000);
+        __TcpServer->sss(c->ID, &login, sizeof(share::S_LOGIN_1000));
+    	__TcpServer->end(c->ID);
+    }
+
+    bool AppTest::onClientCommand(net::ITcpClient* tc, const u16 cmd)
+    {
+        auto c = tc->getData();
+        if (c->state < func::C_ConnectSecure) return false;
+
+        switch (cmd)
+        {
+	        case 1000:
+                OnRecv_1000(tc);
+			break;
+        }
+
+        return true;
     }
 }
 

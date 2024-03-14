@@ -9,7 +9,7 @@
 #endif
 
 
-#define MAX_USER_SOCKETFD	60000 //最大连接数量
+#define MAX_USER_SOCKETFD	100000 //最大连接数量
 #define MAX_EXE_LEN			200 //exe路径最大长度
 #define MAX_FILENAME_LEN	250 //文件名最大长度
 #define SIO_KEEPALIVE_VALS IOC_IN | IOC_VENDOR | 4 //Windows下心跳包的宏定义

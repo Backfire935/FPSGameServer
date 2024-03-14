@@ -1,9 +1,6 @@
 ﻿D:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: 中间目录(..\compiles\Debug\x64\)包含从另一个项目(CenterServer.vcxproj, DBServer.vcxproj, TestWindows.vcxproj)共享的文件。   这会导致错误的清除和重新生成行为。
-  AppManager.cpp
-D:\test\CPlusPlus\TestServer\GateServer\code\AppManager.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  AppTest.cpp
 D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\test\CPlusPlus\TestServer\GateServer\code\AppManager.cpp(51,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-D:\test\CPlusPlus\TestServer\GateServer\code\AppManager.cpp(52,21): warning C4018: “<”: 有符号/无符号不匹配
-D:\test\CPlusPlus\TestServer\GateServer\code\AppManager.cpp(81,12): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-D:\test\CPlusPlus\TestServer\GateServer\code\AppManager.cpp(83,22): warning C4018: “<”: 有符号/无符号不匹配
+D:\test\CPlusPlus\TestServer\share\google\protobuf\wire_format_lite.h(935,41): warning C4244: “参数”: 从“google::protobuf::uint64”转换到“google::protobuf::uint32”，可能丢失数据
+D:\test\CPlusPlus\TestServer\share\google\protobuf\parse_context.h(269,28): warning C4244: “-=”: 从“google::protobuf::stringpiece_ssize_type”转换到“int”，可能丢失数据
   GateServer.vcxproj -> D:\test\CPlusPlus\TestServer\GateServer\exe\GateServer.exe

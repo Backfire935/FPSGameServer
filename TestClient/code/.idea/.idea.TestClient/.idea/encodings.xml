@@ -2,6 +2,7 @@
 <project version="4">
   <component name="Encoding" addBOMForNewFiles="with BOM under Windows, with no BOM otherwise">
     <file url="file://$PROJECT_DIR$/AppManager.cpp" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/AppTest.cpp" charset="GBK" />
     <file url="file://$PROJECT_DIR$/../../engine/INetBase.h" charset="GBK" />
     <file url="file://$PROJECT_DIR$/../../engine/TcpClient.h" charset="GBK" />
   </component>

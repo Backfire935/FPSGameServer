@@ -58,7 +58,7 @@ namespace app
 
 			//¿Í»§¶Ë×¢²áÖ¸Áî
 			client->registerCommand(1000, __AppTest);
-			client->registerCommand(2000, __AppTest);
+			//client->registerCommand(2000, __AppTest);
 		}
 
 		

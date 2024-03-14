@@ -14,7 +14,7 @@ namespace app
 		virtual void onInit();
 		virtual void onUpdate();
 		virtual bool onServerCommand(net::ITcpServer* ts, net::S_CLIENT_BASE* c, const u16 cmd);
-
+		virtual bool onClientCommand(net::ITcpClient* tc,  const u16 cmd);
 	};
 
 	extern IContainer* __AppTest;//全局变量

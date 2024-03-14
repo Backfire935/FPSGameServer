@@ -83,7 +83,8 @@ namespace app
 		 __TcpDB->getData()->ID = 0;
 
 		__AppTest = new AppTest();
-
+		__TcpServer->registerCommand(1000, __AppTest);
+		__TcpDB->registerCommand(1000, __AppTest);
 		//Sleep(5000);
 		//__TcpServer->stopServer();
 		

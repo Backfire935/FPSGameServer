@@ -1,5 +1,5 @@
 ﻿D:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: 中间目录(..\compiles\Debug\x64\)包含从另一个项目(TestWindows.vcxproj)共享的文件。   这会导致错误的清除和重新生成行为。
   AppManager.cpp
-D:\test\CPlusPlus\TestServer\DBServer\code\AppManager.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-  DBServer.vcxproj -> D:\test\CPlusPlus\TestServer\DBServer\exe\DBServer.exe
+D:\test\CPlusPlus\Serve\FPSGameServer\DBServer\code\AppManager.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\test\CPlusPlus\Serve\FPSGameServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  DBServer.vcxproj -> D:\test\CPlusPlus\Serve\FPSGameServer\DBServer\exe\DBServer.exe

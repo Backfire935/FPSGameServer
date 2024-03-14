@@ -3,6 +3,8 @@
 #include <cstring>
 #include <thread>
 
+#include "ShareFunction.h"
+
 #ifndef ____WIN32_
 #include<sys/timeb.h>
 #endif
@@ -46,7 +48,7 @@ namespace app
     void sendProtoBuff(net::ITcpClient* client)
     {
 #ifdef  ____WIN32_
-	    test::Testxxx xx;
+        test::Testxxx xx;
         xx.set_aa(100);
         xx.set_bb(32123);
         xx.set_cc(12321);
@@ -74,7 +76,8 @@ namespace app
         if (tempTime < 2)return;
         temptime = (s32)time(NULL);
 
-        for(int i = 0; i< TESTCONNECT ; i++)
+#pragma region 
+        /*for(int i = 0; i< TESTCONNECT ; i++)
         {
             auto c = __TcpGame[i];
             if (c->getData()->state < func::C_ConnectSecure) 
@@ -102,13 +105,26 @@ namespace app
             c->end();
 
             sendProtoBuff(c);
-        }
+        }*/
+#pragma endregion
+        char name[20];
+        char key[20];
+        sprintf(name,"wwww1");
+        sprintf(key, "sss11122");
+
+        //Ä£ÄâÕËºÅ µÇÂ½ÓÎÏ··þÎñÆ÷
+        auto c = __TcpGame[0];
+        c->begin(1000);
+        c->sss(name,20);
+        c->sss(key,20);  
+        c->end();
+        return;
     }
     
     
     bool AppTest::onServerCommand(net::ITcpServer* ts, net::S_CLIENT_BASE* c, const u16 cmd)
     {
-		
+        
         return false;
     }
 
@@ -135,6 +151,13 @@ namespace app
 
     }
 
+    void OnRecv_1000(net::ITcpClient* tc)
+    {
+        share::S_LOGIN_1000 login;
+        tc->read(&login, sizeof(share::S_LOGIN_1000));
+
+        LOG_MSG("Login success!!!:%d %d\n ", login.memid, login.rolenum);
+    }
 
     bool AppTest::onClientCommand(net::ITcpClient* tc, const u16 cmd)
     {
@@ -144,11 +167,12 @@ namespace app
          switch (cmd)
          {
          case 1000:
-             ontest(tc);
+             //ontest(tc);
+             OnRecv_1000(tc);
              break;
 
          case 2000:
-             ontest(tc);
+             //ontest(tc);
              break;
          }
 

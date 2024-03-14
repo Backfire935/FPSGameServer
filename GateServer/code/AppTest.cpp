@@ -58,22 +58,25 @@ namespace app
 //    };
 //#pragma pack(pop,packing)
 //
-//    void ontestData(net::ITcpServer* ts, net::S_CLIENT_BASE* c)
-//    {
-//        testData ttdata;
-//
-//        s32 index = 0;
-//        ts->read(c->ID, index);
-//        ts->read(c->ID, &ttdata, sizeof(testData));
-//
-//
-//        LOG_MSG("AppTest data:%d --id:%d / time:%f job:%d  arr:%d / %d / %d \n", index,sizeof(ttdata), ttdata.curttime, ttdata.job, ttdata.aa[0], ttdata.aa[33], ttdata.aa[99]);
-//
-//        ts->begin(c->ID, 1000);
-//        ts->sss(c->ID,index);
-//        ts->sss(c->ID, &ttdata,sizeof(testData));
-//        ts->end(c->ID);
-//    }
+    void Test_1000(net::ITcpServer* ts, net::S_CLIENT_BASE* c)
+    {
+        char name[20];
+        char key[20];
+        ts->read(c->ID, name, 20);
+        ts->read(c->ID, key, 20);
+        if(__TcpCenter->getData()->state < func::C_Connect)
+        {
+            LOG_MSG("Center server not connect...\n");
+            return;
+        }
+
+        __TcpCenter->begin(1000);
+        __TcpCenter->sss((u32)c->socketfd);
+        __TcpCenter->sss(c->port);
+        __TcpCenter->sss(name, 20);
+        __TcpCenter->sss(key, 20);
+    	__TcpCenter->end();
+    }
     
     bool AppTest::onServerCommand(net::ITcpServer* ts, net::S_CLIENT_BASE* c, const u16 cmd)
     {
@@ -83,18 +86,52 @@ namespace app
             return false;
         }
 
-   //     switch (cmd)
-   //     {
-   //     case 1000:
-   //         ontestData(ts,c);
-   //         break;
-   //     case 2000:
-   //         ontestData_protobuff(ts,c);
+        switch (cmd)
+        {
+        case 1000:
+            Test_1000(ts,c);
+            break;
+        //case 2000:
+            //ontestData_protobuff(ts,c);
 			//break;
-   //     }
+        }
         
         return false;
     }
+
+    void OnRecv_1000(net::ITcpClient* tc)
+    {
+        share::S_LOGIN_1000 login;
+        tc->read(&login, sizeof(share::S_LOGIN_1000));
+        auto c = __TcpServer->client((SOCKET)login.gate_socketfd, true);
+        LOG_MSG("%d %d %d %d \n ", login.center_port, login.center_socketfd, login.memid,login.rolenum);
+        if (c == nullptr || c->port != login.gate_port )
+        {
+            LOG_MSG("AppTest err... line:%d \n ", __LINE__);
+            return;
+        }
+
+        __TcpServer->begin(c->ID, 1000);
+        __TcpServer->sss(c->ID, &login, sizeof(share::S_LOGIN_1000));
+        __TcpServer->end(c->ID);
+    }
+
+    bool AppTest::onClientCommand(net::ITcpClient* tc, const u16 cmd)
+    {
+        auto c = tc->getData();
+        if (c->state < func::C_ConnectSecure) return false;
+
+        switch (cmd)
+        {
+        case 1000:
+            OnRecv_1000(tc);
+            break;
+        }
+
+        return true;
+    }
+
+
 }
 
 

@@ -91,8 +91,9 @@ namespace app
 		 __TcpCenter->runClient(xml->ID, xml->IP, xml->Port);
 		 __TcpCenter->getData()->ID = 1;
 
-		__AppTest = new AppTest();
-
+		/*__AppTest = new AppTest();
+		__TcpServer->registerCommand(1000, __AppTest);
+		__TcpDB->registerCommand(1000, __AppTest);*/
 		//Sleep(5000);
 		//__TcpServer->stopServer();
 		

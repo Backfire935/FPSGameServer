@@ -93,8 +93,7 @@ namespace app
 			 client->runClient(xml->ID, xml->IP, xml->Port);
 			 client->getData()->ID = i;
 
-			 //客户端注册指令
-			 client->registerCommand(1000, __AppTest);
+			
 			 if (i == 0)
 			 {
 				 __TcpCenter = client;
@@ -102,6 +101,14 @@ namespace app
 		 }
 
 		__AppTest = new AppTest();
+		//服务端注册指令
+		__TcpServer->registerCommand(1000, __AppTest);
+		 //客户端注册指令
+		for(u32 i = 0; i < len; i++)
+		{
+			auto client = __TcpGame[i];
+			client->registerCommand(1000, __AppTest);
+		}
 		LOG_MSG("GateServer start ok...%d-%d \n", func
 			::__ServerInfo->ID,func::__ServerInfo->Port);
 
