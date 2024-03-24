@@ -54,7 +54,31 @@
     <ClCompile Include="..\..\share\protobuff\xxx.pb.cc">
       <Filter>protobuff</Filter>
     </ClCompile>
+    <ClCompile Include="DBBuffer.cpp">
+      <Filter>app\mysql</Filter>
+    </ClCompile>
+    <ClCompile Include="DBConnetor.cpp">
+      <Filter>app\mysql</Filter>
+    </ClCompile>
+    <ClCompile Include="DBManager.cpp">
+      <Filter>app\mysql</Filter>
+    </ClCompile>
+    <ClCompile Include="DBManager_Read.cpp">
+      <Filter>app\mysql</Filter>
+    </ClCompile>
+    <ClCompile Include="DBManager_Serialize.cpp">
+      <Filter>app\mysql</Filter>
+    </ClCompile>
+    <ClCompile Include="DBManager_Write.cpp">
+      <Filter>app\mysql</Filter>
+    </ClCompile>
+    <ClCompile Include="MySqlConnetor.cpp">
+      <Filter>app\mysql</Filter>
+    </ClCompile>
     <ClCompile Include="AppPlayer.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="GameData.cpp">
       <Filter>app</Filter>
     </ClCompile>
   </ItemGroup>
@@ -73,6 +97,9 @@
     </Filter>
     <Filter Include="protobuff">
       <UniqueIdentifier>{74d8523f-aaaf-49e0-8556-b31bb522eec6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="app\mysql">
+      <UniqueIdentifier>{fc051c56-cd68-4ec1-bcfb-5e37b94af992}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -119,6 +146,21 @@
     <ClInclude Include="GameData.h">
       <Filter>app</Filter>
     </ClInclude>
+    <ClInclude Include="DBBuffer.h">
+      <Filter>app\mysql</Filter>
+    </ClInclude>
+    <ClInclude Include="DBConnetor.h">
+      <Filter>app\mysql</Filter>
+    </ClInclude>
+    <ClInclude Include="DBManager.h">
+      <Filter>app\mysql</Filter>
+    </ClInclude>
+    <ClInclude Include="MySqlConnetor.h">
+      <Filter>app\mysql</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadSafeQueue.h">
+      <Filter>app\mysql</Filter>
+    </ClInclude>
     <ClInclude Include="AppPlayer.h">
       <Filter>app</Filter>
     </ClInclude>
@@ -126,6 +168,7 @@
   <ItemGroup>
     <Xml Include="..\exe\config_client.xml" />
     <Xml Include="..\exe\config_server.xml" />
+    <Xml Include="..\exe\config_db.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\share\protobuff\xxx.proto">

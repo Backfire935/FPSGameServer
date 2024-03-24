@@ -111,15 +111,15 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>false</SDLCheck>
-      <PreprocessorDefinitions>____WIN32_;_CRT_SECURE_NO_DEPRECATE;_CONSOLE;%(PreprocessorDefinitions);____WIN32_;</PreprocessorDefinitions>
+      <PreprocessorDefinitions>____WIN32_;_CRT_SECURE_NO_DEPRECATE;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\engine;..\..\share</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\engine;..\..\share;..\..\share\libs</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\..\share\libs</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>mysql;../../share/libs</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -156,7 +156,16 @@
     <ClCompile Include="..\..\share\tinyxml\tinyxmlparser.cpp" />
     <ClCompile Include="AppGlobal.cpp" />
     <ClCompile Include="AppManager.cpp" />
+    <ClCompile Include="AppPlayer.cpp" />
     <ClCompile Include="AppTest.cpp" />
+    <ClCompile Include="DBBuffer.cpp" />
+    <ClCompile Include="DBConnetor.cpp" />
+    <ClCompile Include="DBManager.cpp" />
+    <ClCompile Include="DBManager_Read.cpp" />
+    <ClCompile Include="DBManager_Serialize.cpp" />
+    <ClCompile Include="DBManager_Write.cpp" />
+    <ClCompile Include="GameData.cpp" />
+    <ClCompile Include="MySqlConnetor.cpp" />
     <ClCompile Include="TestWindows.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -173,11 +182,18 @@
     <ClInclude Include="..\..\share\tinyxml\tinyxml.h" />
     <ClInclude Include="AppGlobal.h" />
     <ClInclude Include="AppManager.h" />
+    <ClInclude Include="AppPlayer.h" />
     <ClInclude Include="AppTest.h" />
+    <ClInclude Include="DBBuffer.h" />
+    <ClInclude Include="DBConnetor.h" />
+    <ClInclude Include="DBManager.h" />
     <ClInclude Include="GameData.h" />
+    <ClInclude Include="MySqlConnetor.h" />
+    <ClInclude Include="ThreadSafeQueue.h" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="..\exe\config_client.xml" />
+    <Xml Include="..\exe\config_db.xml" />
     <Xml Include="..\exe\config_server.xml" />
   </ItemGroup>
   <ItemGroup>

@@ -63,7 +63,8 @@ public:
 	virtual void onInit(){}
 	virtual void onUpdate(){}
 	virtual bool onServerCommand(net::ITcpServer* ts, net::S_CLIENT_BASE* c, const u16 cmd) {return false;}
-	virtual bool onClientCommand(net::ITcpClient* ctc, const u16 cmd) {return false;};
+	virtual bool onClientCommand(net::ITcpClient* ctc, const u16 cmd) {return false;}
+	virtual bool  OnDBCommand(void* buff) { return false; }
 };
 
 #endif 

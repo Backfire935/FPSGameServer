@@ -15,5 +15,14 @@ D:\test\CPlusPlus\TestServer\share\tinyxml\tinyxmlerror.cpp;D:\test\CPlusPlus\Te
 D:\test\CPlusPlus\TestServer\share\tinyxml\tinyxmlparser.cpp;D:\test\CPlusPlus\TestServer\DBServer\compiles\Debug\x64\tinyxmlparser.obj
 D:\test\CPlusPlus\TestServer\DBServer\code\AppGlobal.cpp;D:\test\CPlusPlus\TestServer\DBServer\compiles\Debug\x64\AppGlobal.obj
 D:\test\CPlusPlus\TestServer\DBServer\code\AppManager.cpp;D:\test\CPlusPlus\TestServer\DBServer\compiles\Debug\x64\AppManager.obj
+D:\test\CPlusPlus\TestServer\DBServer\code\AppPlayer.cpp;D:\test\CPlusPlus\TestServer\DBServer\compiles\Debug\x64\AppPlayer.obj
 D:\test\CPlusPlus\TestServer\DBServer\code\AppTest.cpp;D:\test\CPlusPlus\TestServer\DBServer\compiles\Debug\x64\AppTest.obj
+D:\test\CPlusPlus\TestServer\DBServer\code\DBBuffer.cpp;D:\test\CPlusPlus\TestServer\DBServer\compiles\Debug\x64\DBBuffer.obj
+D:\test\CPlusPlus\TestServer\DBServer\code\DBConnetor.cpp;D:\test\CPlusPlus\TestServer\DBServer\compiles\Debug\x64\DBConnetor.obj
+D:\test\CPlusPlus\TestServer\DBServer\code\DBManager.cpp;D:\test\CPlusPlus\TestServer\DBServer\compiles\Debug\x64\DBManager.obj
+D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Read.cpp;D:\test\CPlusPlus\TestServer\DBServer\compiles\Debug\x64\DBManager_Read.obj
+D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Serialize.cpp;D:\test\CPlusPlus\TestServer\DBServer\compiles\Debug\x64\DBManager_Serialize.obj
+D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Write.cpp;D:\test\CPlusPlus\TestServer\DBServer\compiles\Debug\x64\DBManager_Write.obj
+D:\test\CPlusPlus\TestServer\DBServer\code\GameData.cpp;D:\test\CPlusPlus\TestServer\DBServer\compiles\Debug\x64\GameData.obj
+D:\test\CPlusPlus\TestServer\DBServer\code\MySqlConnetor.cpp;D:\test\CPlusPlus\TestServer\DBServer\compiles\Debug\x64\MySqlConnetor.obj
 D:\test\CPlusPlus\TestServer\DBServer\code\TestWindows.cpp;D:\test\CPlusPlus\TestServer\DBServer\compiles\Debug\x64\TestWindows.obj

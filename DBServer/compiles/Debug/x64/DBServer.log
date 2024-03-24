@@ -1,5 +1,156 @@
-﻿D:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: 中间目录(..\compiles\Debug\x64\)包含从另一个项目(TestWindows.vcxproj)共享的文件。   这会导致错误的清除和重新生成行为。
+﻿  INetBase.cpp
+D:\test\CPlusPlus\TestServer\engine\INetBase.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  IOPool.cpp
+D:\test\CPlusPlus\TestServer\engine\IOPool.cpp(88,31): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\engine\IOPool.cpp(155,28): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\engine\IOPool.cpp(223,28): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
+  TcpClient.cpp
+D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\test\CPlusPlus\TestServer\engine\TcpClient.cpp(100,20): warning C4244: “初始化”: 从“SOCKET”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\engine\TcpClient.cpp(126,20): warning C4244: “初始化”: 从“SOCKET”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\engine\TcpClient.cpp(141,43): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+D:\test\CPlusPlus\TestServer\engine\TcpClient.cpp(204,17): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 3 拥有了类型“SOCKET”
+D:\test\CPlusPlus\TestServer\engine\TcpClient.cpp(204,17): message : 请考虑在格式字符串中使用“%lld”
+D:\test\CPlusPlus\TestServer\engine\TcpClient.cpp(204,17): message : 请考虑在格式字符串中使用“%Id”
+D:\test\CPlusPlus\TestServer\engine\TcpClient.cpp(204,17): message : 请考虑在格式字符串中使用“%I64d”
+  TcpClient_Funs.cpp
+D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\test\CPlusPlus\TestServer\engine\TcpClient_Funs.cpp(101,89): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\engine\TcpClient_Funs.cpp(375,52): warning C4018: “<”: 有符号/无符号不匹配
+  TcpClient_Thread.cpp
+D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\test\CPlusPlus\TestServer\engine\TcpClient_Thread.cpp(61,34): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
+  TcpServer.cpp
+D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\test\CPlusPlus\TestServer\engine\TcpServer.cpp(60,12): warning C4129: “ ”: 不可识别的字符转义序列
+D:\test\CPlusPlus\TestServer\engine\TcpServer.cpp(276,52): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\engine\TcpServer.cpp(308,13): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\engine\TcpServer.cpp(292,17): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  TcpServer_Funs.cpp
+D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\test\CPlusPlus\TestServer\engine\TcpServer_Funs.cpp(70,20): warning C4018: “<”: 有符号/无符号不匹配
+D:\test\CPlusPlus\TestServer\engine\TcpServer_Funs.cpp(129,75): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\engine\TcpServer_Funs.cpp(155,16): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+D:\test\CPlusPlus\TestServer\engine\TcpServer_Funs.cpp(224,37): warning C4244: “参数”: 从“SOCKET”转换到“const int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\engine\TcpServer_Funs.cpp(555,45): warning C4018: “<”: 有符号/无符号不匹配
+  TcpServer_Thread.cpp
+D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  xxx.pb.cc
+D:\test\CPlusPlus\TestServer\share\google\protobuf\wire_format_lite.h(935,41): warning C4244: “参数”: 从“google::protobuf::uint64”转换到“google::protobuf::uint32”，可能丢失数据
+D:\test\CPlusPlus\TestServer\share\google\protobuf\parse_context.h(269,28): warning C4244: “-=”: 从“google::protobuf::stringpiece_ssize_type”转换到“int”，可能丢失数据
+  ShareFunction.cpp
+D:\test\CPlusPlus\TestServer\share\ShareFunction.h(61,53): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+  md5.cpp
+  tinystr.cpp
+  tinyxml.cpp
+  tinyxmlerror.cpp
+  tinyxmlparser.cpp
+  AppGlobal.cpp
+D:\test\CPlusPlus\TestServer\DBServer\code\AppGlobal.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
   AppManager.cpp
-D:\test\CPlusPlus\Serve\FPSGameServer\DBServer\code\AppManager.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\test\CPlusPlus\Serve\FPSGameServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-  DBServer.vcxproj -> D:\test\CPlusPlus\Serve\FPSGameServer\DBServer\exe\DBServer.exe
+D:\test\CPlusPlus\TestServer\DBServer\code\AppManager.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\test\CPlusPlus\TestServer\share\ShareFunction.h(61,53): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+D:\test\CPlusPlus\TestServer\DBServer\code\GameData.h(52,53): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+  AppPlayer.cpp
+D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\test\CPlusPlus\TestServer\DBServer\code\GameData.h(52,53): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+D:\test\CPlusPlus\TestServer\share\ShareFunction.h(61,53): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+D:\test\CPlusPlus\TestServer\DBServer\code\AppPlayer.cpp(52,13): warning C4244: “初始化”: 从“u64”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\DBServer\code\AppPlayer.cpp(140,12): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 4 拥有了类型“SOCKET”
+D:\test\CPlusPlus\TestServer\DBServer\code\AppPlayer.cpp(140,12): message : 请考虑在格式字符串中使用“%lld”
+D:\test\CPlusPlus\TestServer\DBServer\code\AppPlayer.cpp(140,12): message : 请考虑在格式字符串中使用“%Id”
+D:\test\CPlusPlus\TestServer\DBServer\code\AppPlayer.cpp(140,12): message : 请考虑在格式字符串中使用“%I64d”
+D:\test\CPlusPlus\TestServer\DBServer\code\AppPlayer.cpp(175,19): warning C4244: “=”: 从“SOCKET”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\DBServer\code\AppPlayer.cpp(245,21): warning C4244: “=”: 从“SOCKET”转换到“int”，可能丢失数据
+  AppTest.cpp
+D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\test\CPlusPlus\TestServer\share\ShareFunction.h(61,53): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+D:\test\CPlusPlus\TestServer\share\google\protobuf\wire_format_lite.h(935,41): warning C4244: “参数”: 从“google::protobuf::uint64”转换到“google::protobuf::uint32”，可能丢失数据
+D:\test\CPlusPlus\TestServer\share\google\protobuf\parse_context.h(269,28): warning C4244: “-=”: 从“google::protobuf::stringpiece_ssize_type”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\DBServer\code\AppTest.cpp(111,9): warning C4060: switch 语句没有包含“case”或“default”标签
+  DBBuffer.cpp
+  正在生成代码...
+  正在编译...
+  DBConnetor.cpp
+  DBManager.cpp
+D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\test\CPlusPlus\TestServer\DBServer\code\GameData.h(52,53): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+D:\test\CPlusPlus\TestServer\share\ShareFunction.h(61,53): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+  DBManager_Read.cpp
+D:\test\CPlusPlus\TestServer\DBServer\code\GameData.h(52,53): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+D:\test\CPlusPlus\TestServer\share\ShareFunction.h(61,53): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Read.cpp(49,11): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 2 拥有了类型“unsigned __int64”
+D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Read.cpp(49,11): message : 请考虑在格式字符串中使用“%zd”
+D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Read.cpp(49,11): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 3 拥有了类型“int64_t”
+D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Read.cpp(49,11): message : 请考虑在格式字符串中使用“%lld”
+D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Read.cpp(49,11): message : 请考虑在格式字符串中使用“%Id”
+D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Read.cpp(49,11): message : 请考虑在格式字符串中使用“%I64d”
+D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Read.cpp(80,22): warning C4244: “=”: 从“int64_t”转换到“s32”，可能丢失数据
+D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Read.cpp(105,12): warning C4477: “printf”: 格式字符串“%ld”需要类型“long”的参数，但可变参数 2 拥有了类型“int64_t”
+D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Read.cpp(105,12): message : 请考虑在格式字符串中使用“%lld”
+D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Read.cpp(105,12): message : 请考虑在格式字符串中使用“%Id”
+D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Read.cpp(105,12): message : 请考虑在格式字符串中使用“%I64d”
+D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Read.cpp(105,130): warning C4474: printf: 格式字符串中传递的参数太多
+D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Read.cpp(105,130): message : 占位符和其参数预计 4 可变参数，但提供的却是 5 参数
+D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Read.cpp(111,51): warning C4244: “=”: 从“int”转换到“f32”，可能丢失数据
+  DBManager_Serialize.cpp
+D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Serialize.cpp(34,11): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Serialize.cpp(38,18): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+  DBManager_Write.cpp
+D:\test\CPlusPlus\TestServer\DBServer\code\GameData.h(52,53): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+D:\test\CPlusPlus\TestServer\share\ShareFunction.h(61,53): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Write.cpp(34,18): warning C4244: “初始化”: 从“u64”转换到“s32”，可能丢失数据
+D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Write.cpp(56,18): warning C4244: “初始化”: 从“int64_t”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Write.cpp(57,25): warning C4244: “=”: 从“my_ulonglong”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Write.cpp(74,10): warning C4244: “初始化”: 从“f64”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Write.cpp(75,10): warning C4244: “初始化”: 从“f64”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Write.cpp(76,10): warning C4244: “初始化”: 从“f64”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Write.cpp(77,10): warning C4244: “初始化”: 从“f64”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Write.cpp(78,10): warning C4244: “初始化”: 从“f64”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Write.cpp(79,10): warning C4244: “初始化”: 从“f64”转换到“int”，可能丢失数据
+  GameData.cpp
+D:\test\CPlusPlus\TestServer\DBServer\code\GameData.h(52,53): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+  MySqlConnetor.cpp
+D:\test\CPlusPlus\TestServer\DBServer\code\MySqlConnetor.cpp(123,66): warning C4267: “参数”: 从“size_t”转换到“unsigned long”，可能丢失数据
+D:\test\CPlusPlus\TestServer\DBServer\code\MySqlConnetor.cpp(182,12): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  TestWindows.cpp
+  正在生成代码...
+libprotobufd.lib(common.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(common.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+libprotobufd.lib(coded_stream.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(coded_stream.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+libprotobufd.lib(arena.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(arena.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+libprotobufd.lib(message_lite.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(message_lite.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+libprotobufd.lib(wire_format_lite.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(wire_format_lite.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+libprotobufd.lib(generated_message_util.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(generated_message_util.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+libprotobufd.lib(unknown_field_set.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(unknown_field_set.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+libprotobufd.lib(message.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(message.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+libprotobufd.lib(generated_message_reflection.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(generated_message_reflection.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+libprotobufd.lib(reflection_ops.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(reflection_ops.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+libprotobufd.lib(wire_format.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(wire_format.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+libprotobufd.lib(status.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(status.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+libprotobufd.lib(int128.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(int128.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+libprotobufd.lib(stringpiece.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(stringpiece.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+libprotobufd.lib(zero_copy_stream.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(zero_copy_stream.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+libprotobufd.lib(zero_copy_stream_impl_lite.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(zero_copy_stream_impl_lite.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+libprotobufd.lib(structurally_valid.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(structurally_valid.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+libprotobufd.lib(repeated_field.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(repeated_field.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+libprotobufd.lib(stringprintf.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(stringprintf.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+libprotobufd.lib(extension_set.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(extension_set.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+libprotobufd.lib(descriptor.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(descriptor.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+libprotobufd.lib(strutil.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(strutil.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+libprotobufd.lib(map_field.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(map_field.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+libprotobufd.lib(zero_copy_stream_impl.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(zero_copy_stream_impl.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+libprotobufd.lib(extension_set_heavy.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(extension_set_heavy.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+libprotobufd.lib(implicit_weak_message.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(implicit_weak_message.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+libprotobufd.lib(text_format.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(text_format.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+libprotobufd.lib(descriptor.pb.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(descriptor.pb.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+libprotobufd.lib(strtod.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(strtod.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+libprotobufd.lib(tokenizer.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(tokenizer.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+libprotobufd.lib(descriptor_database.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(descriptor_database.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+libprotobufd.lib(dynamic_message.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(dynamic_message.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+libprotobufd.lib(substitute.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(substitute.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+libprotobufd.lib(io_win32.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(io_win32.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+libprotobufd.lib(any.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(any.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
+  DBServer.vcxproj -> D:\test\CPlusPlus\TestServer\DBServer\exe\DBServer.exe

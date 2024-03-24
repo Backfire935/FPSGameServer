@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="GB2312"?>
+<root>
+    <gamedb Port="3306"
+            IP="127.0.0.1"
+            UserName="root"
+            UserPass="qq2657348679"
+            DBName="mygamedb"/>
+    <accountdb Port="3306"
+            IP="127.0.0.1"
+            UserName="root"
+            UserPass="qq2657348679"
+            DBName="myaccount"/>
+</root>

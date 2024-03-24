@@ -74,23 +74,23 @@ namespace app
 //        ts->sss(c->ID, &ttdata,sizeof(testData));
 //        ts->end(c->ID);
 //    }
-    void Test_1000(net::ITcpServer* ts, net::S_CLIENT_BASE* c)
-    {
-        share::S_LOGIN_1000 login;
-        char name[20];
-        char key[20];
-        ts->read(c->ID, name, 20);
-        ts->read(c->ID, key, 20);
-        ts->read(c->ID, &login, sizeof(share::S_LOGIN_1000));
+    //void Test_1000(net::ITcpServer* ts, net::S_CLIENT_BASE* c)
+    //{
+    //    share::S_LOGIN_1000 login;
+    //    char name[20];
+    //    char key[20];
+    //    ts->read(c->ID, name, 20);
+    //    ts->read(c->ID, key, 20);
+    //    ts->read(c->ID, &login, sizeof(share::S_LOGIN_1000));
 
-        //返回数据
-        login.memid = 1000012345;
-        login.rolenum = 3;
-        ts->begin(c->ID, 1000);
-        ts->sss(c->ID, &login, sizeof(share::S_LOGIN_1000));
-        ts->end(c->ID);
+    //    //返回数据
+    //    login.memid = 1000012345;
+    //    login.rolenum = 3;
+    //    ts->begin(c->ID, 1000);
+    //    ts->sss(c->ID, &login, sizeof(share::S_LOGIN_1000));
+    //    ts->end(c->ID);
 
-    }
+    //}
 
     bool AppTest::onServerCommand(net::ITcpServer* ts, net::S_CLIENT_BASE* c, const u16 cmd)
     {
@@ -102,9 +102,9 @@ namespace app
 
         switch (cmd)
         {
-        case 1000:
+       /* case 1000:
             Test_1000(ts, c);
-            break;
+            break;*/
         /*case 2000:
             ontestData_protobuff(ts,c);
 			break;*/
