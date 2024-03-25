@@ -3,6 +3,7 @@
 #include <ctime>
 
 #include "AppGlobal.h"
+#include "AppPlayer.h"
 #include "../../share/ShareFunction.h"
 #include "AppTest.h"
 
@@ -45,7 +46,6 @@ namespace app
 	void onUpdate()
 	{
 		if(__TcpServer == nullptr) return;
-		//��ͣ�ļ�����ӣ�����ָ��,��ͣ��Ͷ������
 		__TcpServer->parseCommand();
 		__TcpDB->parseCommand();
 		printInfo();
@@ -59,18 +59,12 @@ namespace app
 
 		__TcpServer = net::NewTcpServer();
 
-		//�����µ�����
 		__TcpServer->setOnClientAccept(onClientAccept);
-		//���ð�ȫ����
 		__TcpServer->setOnClientSecureConnect(onClientSecureConnect);
-		//����ʧȥ����
 		__TcpServer->setOnClientDisConnect(onClientDisconnect);
-		//���ó�ʱ����
 		__TcpServer->setOnClientTimeout(onClientTimeout);
-		//�����쳣����
 		__TcpServer->setOnClientExcept(onClientExcept);
-		//���з����
-		__TcpServer->runServer(1);//���������߳�
+		__TcpServer->runServer(1);
 
 		auto xml = func::__ServerListInfo[0];
 		 __TcpDB = net::NewTcpClient();
@@ -82,9 +76,18 @@ namespace app
 		 __TcpDB->runClient(xml->ID, xml->IP, xml->Port);
 		 __TcpDB->getData()->ID = 0;
 
-		__AppTest = new AppTest();
-		__TcpServer->registerCommand(1000, __AppTest);
-		__TcpDB->registerCommand(1000, __AppTest);
+		//__AppTest = new AppTest();
+		__AppPlayer = new AppPlayer();
+		__TcpServer->registerCommand(CMD_REIGSTER, __AppPlayer);
+		__TcpServer->registerCommand(CMD_LOGIN, __AppPlayer);
+		__TcpServer->registerCommand(CMD_PLAYERDATA, __AppPlayer);
+		__TcpServer->registerCommand(9999, __AppPlayer);
+
+		__TcpDB->registerCommand(CMD_REIGSTER, __AppPlayer);
+		__TcpDB->registerCommand(CMD_LOGIN, __AppPlayer);
+		__TcpDB->registerCommand(CMD_MOVE, __AppPlayer);
+		__TcpDB->registerCommand(CMD_PLAYERDATA, __AppPlayer);
+		__TcpDB->registerCommand(9999, __AppPlayer);
 		//Sleep(5000);
 		//__TcpServer->stopServer();
 		
@@ -95,7 +98,7 @@ namespace app
 		{
 			onUpdate();
 #ifdef ____WIN32_
-			Sleep(5);//2ms����һ��
+			Sleep(5);//2ms
 #else
 			usleep(5);
 #endif

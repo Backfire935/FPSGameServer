@@ -54,6 +54,12 @@
     <ClCompile Include="..\..\share\protobuff\xxx.pb.cc">
       <Filter>protobuff</Filter>
     </ClCompile>
+    <ClCompile Include="AppPlayer.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="GameData.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">
@@ -114,6 +120,9 @@
       <Filter>protobuff</Filter>
     </ClInclude>
     <ClInclude Include="GameData.h">
+      <Filter>app</Filter>
+    </ClInclude>
+    <ClInclude Include="AppPlayer.h">
       <Filter>app</Filter>
     </ClInclude>
   </ItemGroup>

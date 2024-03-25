@@ -57,6 +57,9 @@
     <ClCompile Include="AppPlayer.cpp">
       <Filter>app</Filter>
     </ClCompile>
+    <ClCompile Include="GameData.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="engine">

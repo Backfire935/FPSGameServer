@@ -101,7 +101,7 @@ namespace app
 
     void OnRecv_1000(net::ITcpClient* tc)
     {
-        share::S_LOGIN_1000 login;
+      /*  share::S_LOGIN_1000 login;
         tc->read(&login, sizeof(share::S_LOGIN_1000));
         auto c = __TcpServer->client((SOCKET)login.gate_socketfd, true);
         LOG_MSG("%d %d %d %d \n ", login.center_port, login.center_socketfd, login.memid,login.rolenum);
@@ -113,7 +113,7 @@ namespace app
 
         __TcpServer->begin(c->ID, 1000);
         __TcpServer->sss(c->ID, &login, sizeof(share::S_LOGIN_1000));
-        __TcpServer->end(c->ID);
+        __TcpServer->end(c->ID);*/
     }
 
     bool AppTest::onClientCommand(net::ITcpClient* tc, const u16 cmd)

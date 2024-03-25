@@ -38,7 +38,7 @@ namespace app
 		__TcpServer->getSecurityCount(concount, securtiycount);
 
 
-		sprintf_s(printfstr, "connect-%d  security-%d", concount, securtiycount);
+		sprintf_s(printfstr, "DBServer connect-%d  security-%d", concount, securtiycount);
 		SetWindowTextA(GetConsoleWindow(), printfstr);
 #endif
 	}

@@ -3,8 +3,9 @@
 #include <ctime>
 
 #include "AppGlobal.h"
+#include "AppPlayer.h"
 #include "../../share/ShareFunction.h"
-#include "AppTest.h"
+//#include "AppTest.h"
 
 #ifndef ____WIN32_
 #include <unistd.h>
@@ -33,7 +34,7 @@ namespace app
 		if (func::__ServerInfo == nullptr) return;
 		int concount = 0;
 		int securitycount = 0;
-		__TcpServer->getSecurityCount(concount, securitycount);//��ӡ��ȫ��������
+		__TcpServer->getSecurityCount(concount, securitycount);//
 		sprintf_s(printfstr, "GateServer [%d-%d] connect:%d, security:%d", func::__ServerInfo->ID, func::__ServerInfo->Port, concount, securitycount);
 		SetWindowTextA(GetConsoleWindow(),printfstr);
 		
@@ -44,9 +45,8 @@ namespace app
 	void onUpdate()
 	{
 		if(__TcpServer == nullptr) return;
-		//��ͣ�ļ�����ӣ�����ָ��,��ͣ��Ͷ������
 		__TcpServer->parseCommand();
-		//__TcpCenter->parseCommand();
+		__TcpCenter->parseCommand();
 
 		int len = __TcpGame.size();
 		for (u32 i = 0; i < len; i++)
@@ -63,18 +63,12 @@ namespace app
 
 		__TcpServer = net::NewTcpServer();
 
-		//�����µ�����
 		__TcpServer->setOnClientAccept(onClientAccept);
-		//���ð�ȫ����
 		__TcpServer->setOnClientSecureConnect(onClientSecureConnect);
-		//����ʧȥ����
 		__TcpServer->setOnClientDisConnect(onClientDisconnect);
-		//���ó�ʱ����
 		__TcpServer->setOnClientTimeout(onClientTimeout);
-		//�����쳣����
 		__TcpServer->setOnClientExcept(onClientExcept);
-		//���з����
-		__TcpServer->runServer(1);//���������߳�
+		__TcpServer->runServer(1);//
 
 		
 		
@@ -96,18 +90,37 @@ namespace app
 			
 			 if (i == 0)
 			 {
-				 __TcpCenter = client;
+				 __TcpCenter = client;//CenterServer在这里绑定
 			 }
 		 }
 
-		__AppTest = new AppTest();
+		//__AppTest = new AppTest();
+		__AppPlayer = new AppPlayer();
 		//服务端注册指令
-		__TcpServer->registerCommand(1000, __AppTest);
+		__TcpServer->registerCommand(CMD_REIGSTER, __AppPlayer);
+		__TcpServer->registerCommand(CMD_LOGIN, __AppPlayer);
+		__TcpServer->registerCommand(CMD_PLAYERDATA, __AppPlayer);
+		__TcpServer->registerCommand(9999, __AppPlayer);
 		 //客户端注册指令
 		for(u32 i = 0; i < len; i++)
 		{
 			auto client = __TcpGame[i];
-			client->registerCommand(1000, __AppTest);
+			//client->registerCommand(1000, __AppPlayer);
+			if( i == 0)//这部分职能只由CenterServer处理
+			{
+				client->registerCommand(CMD_REIGSTER, __AppPlayer);
+				client->registerCommand(CMD_LOGIN, __AppPlayer);
+				client->registerCommand(CMD_MOVE, __AppPlayer);
+				client->registerCommand(CMD_PLAYERDATA, __AppPlayer);
+				client->registerCommand(9999, __AppPlayer);
+			}
+			else//其他服务器处理,可以在这里注册
+			{
+				
+			}
+			//如有两个服务器都需要处理的指令,可以在这里注册
+
+
 		}
 		LOG_MSG("GateServer start ok...%d-%d \n", func
 			::__ServerInfo->ID,func::__ServerInfo->Port);
@@ -116,7 +129,7 @@ namespace app
 		{
 			onUpdate();
 #ifdef ____WIN32_
-			Sleep(5);//2ms����һ��
+			Sleep(5);//2ms
 #else
 			usleep(5);
 #endif

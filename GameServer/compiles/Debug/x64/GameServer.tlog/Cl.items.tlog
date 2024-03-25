@@ -15,5 +15,7 @@ D:\test\CPlusPlus\TestServer\share\tinyxml\tinyxmlerror.cpp;D:\test\CPlusPlus\Te
 D:\test\CPlusPlus\TestServer\share\tinyxml\tinyxmlparser.cpp;D:\test\CPlusPlus\TestServer\GameServer\compiles\Debug\x64\tinyxmlparser.obj
 D:\test\CPlusPlus\TestServer\GameServer\code\AppGlobal.cpp;D:\test\CPlusPlus\TestServer\GameServer\compiles\Debug\x64\AppGlobal.obj
 D:\test\CPlusPlus\TestServer\GameServer\code\AppManager.cpp;D:\test\CPlusPlus\TestServer\GameServer\compiles\Debug\x64\AppManager.obj
+D:\test\CPlusPlus\TestServer\GameServer\code\AppPlayer.cpp;D:\test\CPlusPlus\TestServer\GameServer\compiles\Debug\x64\AppPlayer.obj
 D:\test\CPlusPlus\TestServer\GameServer\code\AppTest.cpp;D:\test\CPlusPlus\TestServer\GameServer\compiles\Debug\x64\AppTest.obj
+D:\test\CPlusPlus\TestServer\GameServer\code\GameData.cpp;D:\test\CPlusPlus\TestServer\GameServer\compiles\Debug\x64\GameData.obj
 D:\test\CPlusPlus\TestServer\GameServer\code\TestWindows.cpp;D:\test\CPlusPlus\TestServer\GameServer\compiles\Debug\x64\TestWindows.obj

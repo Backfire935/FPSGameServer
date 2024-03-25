@@ -77,33 +77,32 @@ namespace app
 
     void Test_1000(net::ITcpServer* ts, net::S_CLIENT_BASE* c)
     {
-        u32 gate_socketfd;
-        u16 gate_port;
-        char name[20];
-        char key[20];
+        //u32 gate_socketfd;
+        //u16 gate_port;
+        //char name[20];
+        //char key[20];
 
-        ts->read(c->ID, gate_socketfd);
-        ts->read(c->ID, gate_port);
-        ts->read(c->ID, name, 20);
-        ts->read(c->ID, key, 20);
-        if (__TcpDB->getData()->state < func::C_Connect)
-        {
-            LOG_MSG("DB server not connect...\n");
-            return;
-        }
+        //ts->read(c->ID, gate_socketfd);
+        //ts->read(c->ID, gate_port);
+        //ts->read(c->ID, name, 20);
+        //ts->read(c->ID, key, 20);
+        //if (__TcpDB->getData()->state < func::C_Connect)
+        //{
+        //    LOG_MSG("DB server not connect...\n");
+        //    return;
+        //}
 
-        share::S_LOGIN_1000 login;
-        login.gate_socketfd     = gate_socketfd;
-        login.gate_port            = gate_port;
-        login.center_socketfd = c->socketfd;
-        login.center_port    = c->port;
+        //share::S_LOGIN_1000 login;
+        //login.gate_socketfd     = gate_socketfd;
+        //login.gate_port            = gate_port;
+        //login.center_socketfd = c->socketfd;
+        //login.center_port    = c->port;
 
-
-        __TcpDB->begin(1000);
-        __TcpDB->sss(name, 20);
-        __TcpDB->sss(key, 20);
-        __TcpDB->sss(&login, sizeof(share::S_LOGIN_1000));//
-        __TcpDB->end();
+        //__TcpDB->begin(1000);
+        //__TcpDB->sss(name, 20);
+        //__TcpDB->sss(key, 20);
+        //__TcpDB->sss(&login, sizeof(share::S_LOGIN_1000));//
+        //__TcpDB->end();
     }
 
     bool AppTest::onServerCommand(net::ITcpServer* ts, net::S_CLIENT_BASE* c, const u16 cmd)
@@ -129,7 +128,7 @@ namespace app
 
     void OnRecv_1000(net::ITcpClient* tc)
     {
-        share::S_LOGIN_1000 login;
+      /*  share::S_LOGIN_1000 login;
         tc->read(&login, sizeof(share::S_LOGIN_1000));
 
         auto c = __TcpServer->client((SOCKET)login.center_socketfd, true);
@@ -141,7 +140,7 @@ namespace app
 
         __TcpServer->begin(c->ID, 1000);
         __TcpServer->sss(c->ID, &login, sizeof(share::S_LOGIN_1000));
-    	__TcpServer->end(c->ID);
+    	__TcpServer->end(c->ID);*/
     }
 
     bool AppTest::onClientCommand(net::ITcpClient* tc, const u16 cmd)

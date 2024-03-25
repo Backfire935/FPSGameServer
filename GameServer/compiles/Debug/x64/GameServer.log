@@ -1,4 +1,5 @@
-﻿  AppManager.cpp
-D:\test\CPlusPlus\TestServer\GameServer\code\AppManager.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+﻿  AppPlayer.cpp
 D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\test\CPlusPlus\TestServer\GameServer\code\GameData.h(52,53): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+D:\test\CPlusPlus\TestServer\share\ShareFunction.h(61,53): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
   GameServer.vcxproj -> D:\test\CPlusPlus\TestServer\GameServer\exe\GameServer.exe

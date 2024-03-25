@@ -3,8 +3,9 @@
 #include <ctime>
 
 #include "AppGlobal.h"
+#include "AppPlayer.h"
 #include "../../share/ShareFunction.h"
-#include "AppTest.h"
+//#include "AppTest.h"
 
 #ifndef ____WIN32_
 #include <unistd.h>
@@ -33,7 +34,7 @@ namespace app
 		if(func::__ServerInfo == nullptr) return;
 		int concount = 0;
 		int securitycount = 0;
-		__TcpServer->getSecurityCount(concount, securitycount);//��ӡ��ȫ��������
+		__TcpServer->getSecurityCount(concount, securitycount);
 		sprintf_s(printfstr, "GameServer [%d-%d] connect:%d, security:%d", func::__ServerInfo->ID, func::__ServerInfo->Port,concount, securitycount);
 		SetWindowTextA(GetConsoleWindow(),printfstr);
 		
@@ -44,7 +45,7 @@ namespace app
 	void onUpdate()
 	{
 		if(__TcpServer == nullptr) return;
-		//��ͣ�ļ�����ӣ�����ָ��,��ͣ��Ͷ������
+
 		__TcpServer->parseCommand();
 		__TcpDB->parseCommand();
 		__TcpCenter->parseCommand();
@@ -60,18 +61,12 @@ namespace app
 
 		__TcpServer = net::NewTcpServer();
 
-		//�����µ�����
 		__TcpServer->setOnClientAccept(onClientAccept);
-		//���ð�ȫ����
 		__TcpServer->setOnClientSecureConnect(onClientSecureConnect);
-		//����ʧȥ����
 		__TcpServer->setOnClientDisConnect(onClientDisconnect);
-		//���ó�ʱ����
 		__TcpServer->setOnClientTimeout(onClientTimeout);
-		//�����쳣����
 		__TcpServer->setOnClientExcept(onClientExcept);
-		//���з����
-		__TcpServer->runServer(1);//���������߳�
+		__TcpServer->runServer(1);
 
 		auto xml = func::__ServerListInfo[0];
 		 __TcpDB = net::NewTcpClient();
@@ -91,9 +86,22 @@ namespace app
 		 __TcpCenter->runClient(xml->ID, xml->IP, xml->Port);
 		 __TcpCenter->getData()->ID = 1;
 
-		/*__AppTest = new AppTest();
-		__TcpServer->registerCommand(1000, __AppTest);
-		__TcpDB->registerCommand(1000, __AppTest);*/
+		//__AppTest = new AppTest();
+		 __AppPlayer = new AppPlayer();
+		 //自身作为服务器注册的指令
+		__TcpServer->registerCommand(CMD_REIGSTER, __AppPlayer);
+		__TcpServer->registerCommand(CMD_LOGIN, __AppPlayer);
+		__TcpServer->registerCommand(CMD_PLAYERDATA, __AppPlayer);
+		__TcpServer->registerCommand(9999, __AppPlayer);
+		//连接DB作为客户端注册的指令
+		__TcpDB->registerCommand(CMD_REIGSTER, __AppPlayer);
+		__TcpDB->registerCommand(CMD_LOGIN, __AppPlayer);
+		__TcpDB->registerCommand(CMD_MOVE, __AppPlayer);
+		__TcpDB->registerCommand(CMD_PLAYERDATA, __AppPlayer);
+		__TcpDB->registerCommand(9999, __AppPlayer);
+		//连接Center作为客户端注册的指令
+
+
 		//Sleep(5000);
 		//__TcpServer->stopServer();
 		
@@ -104,7 +112,7 @@ namespace app
 		{
 			onUpdate();
 #ifdef ____WIN32_
-			Sleep(5);//2ms����һ��
+			Sleep(5);//2ms
 #else
 			usleep(5);
 #endif
