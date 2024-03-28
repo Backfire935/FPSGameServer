@@ -88,8 +88,11 @@ namespace app
 		memset(name, 0, USER_MAX_MEMBER);
 		memset(password, 0, USER_MAX_MEMBER);
 		//读取接受到的数据
-		ts->read(c->ID, name, USER_MAX_MEMBER);
-		ts->read(c->ID, password, USER_MAX_MEMBER);
+		s32 len = 0;
+		ts->read(c->ID, len);;
+		ts->read(c->ID, name, len);
+		ts->read(c->ID, len);;
+		ts->read(c->ID, password, len);
 		if (__TcpCenter->getData()->state < func::C_Connect)
 		{
 			LOG_MSG("Center server not connect...\n");

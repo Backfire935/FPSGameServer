@@ -43,7 +43,7 @@ namespace db
 	
 		stringstream sql;
 		sql << "insert user_account(username,password,createtime,logintime) values("
-			<< "'" << data.name << "','" << data.password << "'," << createtime << "," << createtime << ");";
+			<< "'" << data.name << "','" << data.password << "'," << createtime << "," << createtime << ");" <<endl;
 
 		auto mysql = db->GetMysqlConnector();
 		int64_t ftime = clock();

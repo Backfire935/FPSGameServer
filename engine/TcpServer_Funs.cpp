@@ -84,7 +84,7 @@ namespace net
 			c->recv_Head += length;//c->recv_Head追赶到c->recv_TempTail
 			
 		}
-		
+		c->is_RecvCompleted = false;
 	}
 
 	//业务逻辑层
@@ -566,7 +566,7 @@ namespace net
 	bool isValidClient(S_CLIENT_BASE* c, int len)
 	{
 		//非法
-		if(c->ID == -1 || c->state == func::S_Free || c->recv_TempTail ==0 || c->recvBuf == nullptr || c->recv_TempHead + len > c->recv_TempTail)
+		if(c->ID == -1 || c->state == func::S_Free || c->recv_TempTail ==0 || c->recvBuf == nullptr )//|| c->recv_TempHead + len > c->recv_TempTail)
 		{
 			return false;
 		}
