@@ -19,13 +19,10 @@ namespace app
 		virtual bool  onServerCommand(net::ITcpServer* ts, net::S_CLIENT_BASE* c, const u16 cmd);
 		virtual bool onClientCommand(net::ITcpClient* tc, const u16 cmd);
 
-		void onSendReigster(net::ITcpServer* ts, net::S_CLIENT_BASE* c);
-		void onSendLogin(net::ITcpServer* ts, net::S_CLIENT_BASE* c);
+	
 		void onSendMove(net::ITcpServer* ts, net::S_CLIENT_BASE* c);
 		void onSendGetPlayerData(net::ITcpServer* ts, net::S_CLIENT_BASE* c);
 
-		void OnRecvReigster(net::ITcpClient* tc);
-		void OnRecvLogin(net::ITcpClient* tc);
 		void OnRecvGetPlayerData(net::ITcpClient* tc);
 	};
 

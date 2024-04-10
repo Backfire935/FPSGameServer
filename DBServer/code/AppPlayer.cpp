@@ -4,6 +4,8 @@
 #include "../../share/ShareFunction.h"
 #include "GameData.h"
 #include "DBManager.h"
+#include "ErrorCode.h"
+
 namespace app
 {
 	IContainer* __AppPlayer = NULL;
@@ -151,35 +153,30 @@ namespace app
 	//100 注册
 	void AppPlayer::onReigster(net::ITcpServer* ts, net::S_CLIENT_BASE* c)
 	{
-		char name[USER_MAX_MEMBER];
-		char password[USER_MAX_MEMBER];
-		memset(name, 0, USER_MAX_MEMBER);
-		memset(password, 0, USER_MAX_MEMBER);
-
-		ts->read(c->ID, name, USER_MAX_MEMBER);
-		ts->read(c->ID, password, USER_MAX_MEMBER);
+		S_REGISTER_BASE registerData;
+		ts->read(c->ID, &registerData, sizeof(S_REGISTER_BASE));
+		registerData.db_socketfd = c->socketfd;
+		registerData.db_port = c->port;
+		//LOG_MSG("AppPlayer db_fd:%d center_fd:%d gate_fd:%d\n %d", registerData.db_socketfd, registerData.center_socketfd, registerData.gate_socketfd,__LINE__);
 
 		//1、查找账号  账号已经存在
-		std::string fname(name);
+		std::string fname(registerData.name);
 		auto mem = app::FindMember(fname);
 		if (mem != nullptr)
 		{
 			ts->begin(c->ID, CMD_REIGSTER);
-			ts->sss(c->ID, 1001);
+			ts->sss(c->ID, &registerData, sizeof(S_REGISTER_BASE));
+			ts->sss(c->ID, app::ErrorCode_Account::EC_FAILED);
 			ts->end(c->ID);
 			return;
 		}
 
-		//向DB 申请注册
-		S_REGISTER_BASE reg;
-		reg.socketfd = c->socketfd;
-		memcpy(reg.name, name, USER_MAX_MEMBER);
-		memcpy(reg.password, password, USER_MAX_MEMBER);
-
+		//向数据库申请数据 获取玩家游戏数据
+		registerData.ID = mem->ID;
 		auto db = __DBManager->DBAccount;
 		auto buff = db->PopBuffer();
 		buff->b(CMD_REIGSTER);
-		buff->s(&reg, sizeof(S_REGISTER_BASE));
+		buff->s(&registerData, sizeof(S_REGISTER_BASE));
 		buff->e();
 		db->PushToThread(buff);
 	}
@@ -192,20 +189,18 @@ namespace app
 			return;
 		}
 
-		char name[USER_MAX_MEMBER];
-		char password[USER_MAX_MEMBER];
-		memset(name, 0, USER_MAX_MEMBER);
-		memset(password, 0, USER_MAX_MEMBER);
-
-		ts->read(c->ID, name, USER_MAX_MEMBER);
-		ts->read(c->ID, password, USER_MAX_MEMBER);
+		S_REGISTER_BASE loginData;
+		ts->read(c->ID, &loginData, sizeof(S_REGISTER_BASE));
+		loginData.db_socketfd = c->socketfd;
+		loginData.db_port = c->port;
 
 		//1、查找账号  账号不存在
-		std::string fname(name);
+		std::string fname(loginData.name);
 		auto mem = app::FindMember(fname);
 		if (mem == nullptr)
 		{
 			ts->begin(c->ID, CMD_LOGIN);
+			ts->sss(c->ID, &loginData, sizeof(S_REGISTER_BASE));
 			ts->sss(c->ID, 1001);
 			ts->end(c->ID);
 			return;
@@ -215,6 +210,7 @@ namespace app
 			if (mem->state >= M_LOGIN)
 			{
 				ts->begin(c->ID, CMD_LOGIN);
+				ts->sss(c->ID, &loginData, sizeof(S_REGISTER_BASE));
 				ts->sss(c->ID, 1003);
 				ts->end(c->ID);
 				return;
@@ -222,33 +218,32 @@ namespace app
 
 		}
 		//2、密码不正确
-		int value = strcmp(password, mem->password);
+		int value = strcmp(loginData.password, mem->password);
 		if(value != 0)
 		{
 			ts->begin(c->ID, CMD_LOGIN);
+			ts->sss(c->ID, &loginData, sizeof(S_REGISTER_BASE));
 			ts->sss(c->ID, 1002);
 			ts->end(c->ID);
 			return;
 		}
-		//3、查找玩家在线不？
+		//3、查找玩家在线不？防止挤号
 		auto player = findPlayer(mem->ID);
 		if (player != nullptr)
 		{
 			ts->begin(c->ID, CMD_LOGIN);
-			ts->sss(c->ID, 1003);
+			ts->sss(c->ID, &loginData, sizeof(S_REGISTER_BASE));
+			ts->sss(c->ID, EC_ACCOUNT_LOGIN_OTHER);
 			ts->end(c->ID);
 			return;
 		}
 		
 		//向数据库申请数据 获取玩家游戏数据
-		S_LOGIN_BASE login;
-		login.socketfd = c->socketfd;
-		login.ID = mem->ID;
-
+		loginData.ID = mem->ID;
 		auto db = __DBManager->GetDBSource(ETT_USERREAD);
 		auto buff = db->PopBuffer();
 		buff->b(CMD_LOGIN);
-		buff->s(&login, sizeof(S_LOGIN_BASE));
+		buff->s(&loginData, sizeof(S_LOGIN_BASE));
 		buff->e();
 		db->PushToThread(buff);
 
@@ -330,10 +325,10 @@ namespace app
 		app::S_REGISTER_BASE data;
 		buf->r(&data, sizeof(app::S_REGISTER_BASE));
 
-		auto c = __TcpServer->client((SOCKET)data.socketfd, true);
+		auto c = __TcpServer->client((SOCKET)data.db_socketfd, true);
 		if (c == nullptr)
 		{
-			LOG_MSG("reg err...%d \n", data.socketfd);
+			LOG_MSG("reg err...%d \n", data.db_socketfd);
 			return;
 		}
 
@@ -350,26 +345,29 @@ namespace app
 
 		//返回给客户端 注册成功消息
 		__TcpServer->begin(c->ID, CMD_REIGSTER);
-		__TcpServer->sss(c->ID, 0);
+		__TcpServer->sss(c->ID, &data, sizeof(app::S_REGISTER_BASE));
+		__TcpServer->sss(c->ID, app::ErrorCode_Account::EC_ACCOUNT_ACTIVE);
 		__TcpServer->end(c->ID);
 	}
 	//200 db登录返回
 	void OnDB_Login(DBBuffer* buf)
 	{
-		app::S_PLAYER_BASE playerdata;
-		buf->r(&playerdata, sizeof(app::S_PLAYER_BASE));
+		app::S_REGISTER_BASE logindata;
+		S_PLAYER_BASE player_data;
+		buf->r(&logindata, sizeof(app::S_REGISTER_BASE));
+		buf->r(&player_data, sizeof(app::S_PLAYER_BASE));
 
 
-		auto c = __TcpServer->client((SOCKET)playerdata.socketfd, true);
+		auto c = __TcpServer->client((SOCKET)logindata.db_socketfd, true);
 		if (c == nullptr)
 		{
-			LOG_MSG("OnDB_Login err...%d line:%d\n", playerdata.socketfd,__LINE__);
+			LOG_MSG("OnDB_Login err...%d line:%d\n", logindata.db_socketfd,__LINE__);
 			return;
 		}
-		auto mem = app::FindMember(playerdata.memid);
+		auto mem = app::FindMember(logindata.ID);
 		if (mem == nullptr)
 		{
-			LOG_MSG("OnDB_Login err...%d line:%d\n", playerdata.socketfd, __LINE__);
+			LOG_MSG("OnDB_Login err...%d line:%d\n", logindata.db_socketfd, __LINE__);
 			return;
 		}
 		mem->timeLastLogin = (int)time(NULL);
@@ -378,7 +376,8 @@ namespace app
 		auto db = __DBManager->DBAccount;
 		auto buff = db->PopBuffer();
 		buff->b(CMD_UPDATELOGIN);
-		buff->s(playerdata.memid);
+		//buff->s(player_data.memid);
+		buff->s(&logindata, sizeof(app::S_REGISTER_BASE));
 		buff->e();
 		db->PushToThread(buff);
 		//**************************************************************
@@ -397,16 +396,14 @@ namespace app
 		}
 
 		c->state = func::S_Login;
-		memcpy(player, &playerdata, sizeof(S_PLAYER_BASE));
+		memcpy(player, &player_data, sizeof(S_PLAYER_BASE));
 		__Onlines.insert(std::make_pair(player->memid, player));
 
-
 		__TcpServer->begin(c->ID, CMD_LOGIN);
-		__TcpServer->sss(c->ID, 0);
-		__TcpServer->sss(c->ID, player, sizeof(S_PLAYER_BASE));
+		__TcpServer->sss(c->ID, &logindata, sizeof(S_REGISTER_BASE));
+		__TcpServer->sss(c->ID, &player_data, sizeof(S_PLAYER_BASE));
+		__TcpServer->sss(c->ID, EC_ACCOUNT_LOGINED);
 		__TcpServer->end(c->ID);
-
-
 
 		LOG_MSG("player login successfully...%d-%d\n", player->memid, (int)c->socketfd);
 	}

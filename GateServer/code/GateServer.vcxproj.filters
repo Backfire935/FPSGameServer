@@ -20,7 +20,6 @@
       <Filter>share\tinyxml</Filter>
     </ClCompile>
     <ClCompile Include="TestWindows.cpp" />
-    <ClCompile Include="..\..\share\ShareFunction.cpp" />
     <ClCompile Include="..\..\engine\IOPool.cpp">
       <Filter>engine</Filter>
     </ClCompile>
@@ -57,8 +56,11 @@
     <ClCompile Include="AppPlayer.cpp">
       <Filter>app</Filter>
     </ClCompile>
-    <ClCompile Include="GameData.cpp">
-      <Filter>app</Filter>
+    <ClCompile Include="..\..\share\ShareFunction.cpp">
+      <Filter>share</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\share\GameData.cpp">
+      <Filter>share</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -94,7 +96,6 @@
     <ClInclude Include="..\..\share\tinyxml\tinyxml.h">
       <Filter>share\tinyxml</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\share\ShareFunction.h" />
     <ClInclude Include="..\..\engine\IContainer.h">
       <Filter>engine</Filter>
     </ClInclude>
@@ -119,11 +120,17 @@
     <ClInclude Include="..\..\share\protobuff\xxx.pb.h">
       <Filter>protobuff</Filter>
     </ClInclude>
-    <ClInclude Include="GameData.h">
-      <Filter>app</Filter>
-    </ClInclude>
     <ClInclude Include="AppPlayer.h">
       <Filter>app</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\share\ShareFunction.h">
+      <Filter>share</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\share\GameData.h">
+      <Filter>share</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\ErrorCode.h">
+      <Filter>engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

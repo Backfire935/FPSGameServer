@@ -158,7 +158,6 @@
     <ClCompile Include="AppManager.cpp" />
     <ClCompile Include="AppPlayer.cpp" />
     <ClCompile Include="AppTest.cpp" />
-    <ClCompile Include="GameData.cpp" />
     <ClCompile Include="TestWindows.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -177,7 +176,6 @@
     <ClInclude Include="AppManager.h" />
     <ClInclude Include="AppPlayer.h" />
     <ClInclude Include="AppTest.h" />
-    <ClInclude Include="GameData.h" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="..\exe\config_client.xml" />

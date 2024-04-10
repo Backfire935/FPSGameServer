@@ -82,13 +82,13 @@ namespace app
 	//100 注册
 	void AppPlayer::onSendReigster(net::ITcpServer* ts, net::S_CLIENT_BASE* c)
 	{
-		char name[USER_MAX_MEMBER];
-		char password[USER_MAX_MEMBER];
-		memset(name, 0, USER_MAX_MEMBER);
-		memset(password, 0, USER_MAX_MEMBER);
 		//读取接受到的数据
-		ts->read(c->ID, name, USER_MAX_MEMBER);
-		ts->read(c->ID, password, USER_MAX_MEMBER);
+		S_REGISTER_BASE registerData;
+		ts->read(c->ID, &registerData, sizeof(S_REGISTER_BASE));
+		//ts->read(c->ID, password, USER_MAX_MEMBER);
+		registerData.center_socketfd = c->socketfd;
+		registerData.center_port = c->port;
+
 		if (__TcpDB->getData()->state < func::C_Connect)
 		{
 			LOG_MSG("DB server not connect...\n");
@@ -96,20 +96,17 @@ namespace app
 		}
 		//将接收到的数据发往DBServer
 		__TcpDB->begin(CMD_REIGSTER);
-		__TcpDB->sss(name, USER_MAX_MEMBER);
-		__TcpDB->sss(password, USER_MAX_MEMBER);
+		__TcpDB->sss(&registerData, sizeof(S_REGISTER_BASE));
 		__TcpDB->end();
 	}
 	//1000 登陆
 	void AppPlayer::onSendLogin(net::ITcpServer* ts, net::S_CLIENT_BASE* c)
 	{
-		char name[USER_MAX_MEMBER];
-		char password[USER_MAX_MEMBER];
-		memset(name, 0, USER_MAX_MEMBER);
-		memset(password, 0, USER_MAX_MEMBER);
-		//读取接受到的数据
-		ts->read(c->ID, name, USER_MAX_MEMBER);
-		ts->read(c->ID, password, USER_MAX_MEMBER);
+		S_REGISTER_BASE loginData;
+		ts->read(c->ID, &loginData, sizeof(S_REGISTER_BASE));
+		//ts->read(c->ID, password, USER_MAX_MEMBER);
+		loginData.center_socketfd = c->socketfd;
+		loginData.center_port = c->port;
 		if (__TcpDB->getData()->state < func::C_Connect)
 		{
 			LOG_MSG("DB server not connect...\n");
@@ -117,8 +114,7 @@ namespace app
 		}
 		//将接收到的数据发往DBServer
 		__TcpDB->begin(CMD_LOGIN);
-		__TcpDB->sss(name, USER_MAX_MEMBER);
-		__TcpDB->sss( password, USER_MAX_MEMBER);
+		__TcpDB->sss(&loginData, sizeof(S_REGISTER_BASE));
 		__TcpDB->end();
 
 	}
@@ -177,25 +173,31 @@ namespace app
 	void AppPlayer::OnRecvReigster(net::ITcpClient* tc)
 	{
 		s32 registerCode;//注册情况
+		S_REGISTER_BASE registerData;
+		tc->read(&registerData, sizeof(S_REGISTER_BASE));
 		tc->read(registerCode);
 
-		auto c = __TcpServer->client(tc->getSocket(), true);
+		auto c = __TcpServer->client(registerData.center_socketfd, true);
 		if (c == nullptr)
 		{
-			LOG_MSG("AppPlayer err... line:%d __TcpServer == nullptr \n ", __LINE__);
+			LOG_MSG("AppPlayer err... line:%d __TcpServer == nullptr fd:%d \n ", __LINE__, registerData.center_socketfd);
 			return;
 		}
-		//返回给客户端 注册成功消息
+
+		//返回给客户端 注册情况
 		__TcpServer->begin(c->ID, CMD_REIGSTER);
+		__TcpServer->sss(c->ID, &registerData, sizeof(app::S_REGISTER_BASE));
 		__TcpServer->sss(c->ID, registerCode);
 		__TcpServer->end(c->ID);
 	}
 	void AppPlayer::OnRecvLogin(net::ITcpClient* tc)
 	{
-		S_PLAYER_BASE* playerdata;//注册情况
-		tc->read(&playerdata, sizeof(app::S_PLAYER_BASE));
+		s32 loginCode;//注册情况
+		S_REGISTER_BASE loginData;
+		tc->read(&loginData, sizeof(S_REGISTER_BASE));
+		tc->read(loginCode);
 
-		auto c = __TcpServer->client(tc->getSocket(), true);
+		auto c = __TcpServer->client(loginData.center_socketfd, true);
 		if (c == nullptr)
 		{
 			LOG_MSG("AppPlayer err... line:%d S_CLIENT_BASE c == nullptr \n ", __LINE__);
@@ -203,8 +205,8 @@ namespace app
 		}
 		//返回给客户端 注册成功消息
 		__TcpServer->begin(c->ID, CMD_LOGIN);
-		__TcpServer->sss(c->ID, 0);
-		__TcpServer->sss(c->ID, playerdata, sizeof(S_PLAYER_BASE));
+		__TcpServer->sss(c->ID, &loginData, sizeof(S_REGISTER_BASE));
+		__TcpServer->sss(c->ID, loginCode);
 		__TcpServer->end(c->ID);
 	}
 

@@ -6,6 +6,7 @@ D:\test\CPlusPlus\TestServer\engine\TcpClient_Thread.cpp;D:\test\CPlusPlus\TestS
 D:\test\CPlusPlus\TestServer\engine\TcpServer.cpp;D:\test\CPlusPlus\TestServer\CenterServer\compiles\Debug\x64\TcpServer.obj
 D:\test\CPlusPlus\TestServer\engine\TcpServer_Funs.cpp;D:\test\CPlusPlus\TestServer\CenterServer\compiles\Debug\x64\TcpServer_Funs.obj
 D:\test\CPlusPlus\TestServer\engine\TcpServer_Thread.cpp;D:\test\CPlusPlus\TestServer\CenterServer\compiles\Debug\x64\TcpServer_Thread.obj
+D:\test\CPlusPlus\TestServer\share\GameData.cpp;D:\test\CPlusPlus\TestServer\CenterServer\compiles\Debug\x64\GameData.obj
 D:\test\CPlusPlus\TestServer\share\protobuff\xxx.pb.cc;D:\test\CPlusPlus\TestServer\CenterServer\compiles\Debug\x64\xxx.pb.obj
 D:\test\CPlusPlus\TestServer\share\ShareFunction.cpp;D:\test\CPlusPlus\TestServer\CenterServer\compiles\Debug\x64\ShareFunction.obj
 D:\test\CPlusPlus\TestServer\share\tinyxml\md5.cpp;D:\test\CPlusPlus\TestServer\CenterServer\compiles\Debug\x64\md5.obj
@@ -17,5 +18,4 @@ D:\test\CPlusPlus\TestServer\CenterServer\code\AppGlobal.cpp;D:\test\CPlusPlus\T
 D:\test\CPlusPlus\TestServer\CenterServer\code\AppManager.cpp;D:\test\CPlusPlus\TestServer\CenterServer\compiles\Debug\x64\AppManager.obj
 D:\test\CPlusPlus\TestServer\CenterServer\code\AppPlayer.cpp;D:\test\CPlusPlus\TestServer\CenterServer\compiles\Debug\x64\AppPlayer.obj
 D:\test\CPlusPlus\TestServer\CenterServer\code\AppTest.cpp;D:\test\CPlusPlus\TestServer\CenterServer\compiles\Debug\x64\AppTest.obj
-D:\test\CPlusPlus\TestServer\CenterServer\code\GameData.cpp;D:\test\CPlusPlus\TestServer\CenterServer\compiles\Debug\x64\GameData.obj
 D:\test\CPlusPlus\TestServer\CenterServer\code\TestWindows.cpp;D:\test\CPlusPlus\TestServer\CenterServer\compiles\Debug\x64\TestWindows.obj

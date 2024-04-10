@@ -57,9 +57,9 @@ namespace db
 	//100 玩家登录获取数据
 	void   DBManager::Read_UserLogin(DBBuffer* buff, DBConnetor* db)
 	{
-		app::S_LOGIN_BASE  data;
-		buff->r(&data, sizeof(app::S_LOGIN_BASE));
-		
+
+		app::S_REGISTER_BASE data;
+		buff->r(&data, sizeof(app::S_REGISTER_BASE));
 
 		auto mysql = db->GetMysqlConnector();
 		stringstream sql;
@@ -76,9 +76,9 @@ namespace db
 		int ftimevalue = clock() - ftime;
 		int rownum = mysql->GetQueryRowNum();
 		app::S_PLAYER_BASE player;
-		memset(&player, 0, sizeof(app::S_PLAYER_BASE));
+		memset(&player, 0, sizeof(app::S_REGISTER_BASE));
 		player.memid = data.ID;
-		player.socketfd = data.socketfd;
+		player.socketfd = data.db_socketfd;
 		
 		//没有数据 就创建一条玩家的数据
 		if (rownum == 0)
@@ -121,6 +121,7 @@ namespace db
 		//读取角色数据
 		DBBuffer* main_buff = PopPool();
 		main_buff->b(CMD_LOGIN);
+		main_buff->s(&data, sizeof(app::S_REGISTER_BASE));
 		main_buff->s(&player, sizeof(app::S_PLAYER_BASE));
 		main_buff->e();
 		PushToMainThread(main_buff);

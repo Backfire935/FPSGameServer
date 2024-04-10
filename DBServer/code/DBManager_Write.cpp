@@ -6,7 +6,7 @@
 #include <string>
 #include "GameData.h"
 #include "ShareFunction.h"
-
+#include"ErrorCode.h"
 namespace db
 {
 
@@ -15,8 +15,11 @@ namespace db
 	//200 更新用户登录时间
 	void  DBManager::Write_UserLoginTime(DBBuffer* buff, DBConnetor* db)
 	{
-		s64 memid = 0;
-		buff->r(memid);
+		app::S_REGISTER_BASE data;
+		buff->r(&data, sizeof(app::S_REGISTER_BASE));
+		LOG_MSG("db_fd login:%d center_fd:%d gate_fd:%d\n line:%d", data.db_socketfd, data.center_socketfd, data.gate_socketfd, __LINE__);
+
+		s64 memid = data.ID;
 		time_t logintime = time(NULL);
 		stringstream sql;
 		sql << "update user_account set logintime = " << logintime << " where id = " << memid << ";";
@@ -40,7 +43,7 @@ namespace db
 		int64_t createtime = time(NULL);
 		app::S_REGISTER_BASE data;
 		_buff->r(&data, sizeof(app::S_REGISTER_BASE));
-	
+		//LOG_MSG("db_fd:%d center_fd:%d gate_fd:%d\n line:%d",data.db_socketfd, data.center_socketfd, data.gate_socketfd,__LINE__);
 		stringstream sql;
 		sql << "insert user_account(username,password,createtime,logintime) values("
 			<< "'" << data.name << "','" << data.password << "'," << createtime << "," << createtime << ");" <<endl;
@@ -51,6 +54,12 @@ namespace db
 		if (ret != 0)
 		{
 			LOG_MSG("[thread:%d] cmd:200 register error:-%d-%d-%s line:%d\n", db->GetThreadID(), ret, mysql->GetErrorCode(),mysql->GetErrorStr(),  __LINE__);
+			DBBuffer* buff = PopPool();
+			buff->b(CMD_REIGSTER);
+			buff->s(&data, sizeof(app::S_REGISTER_BASE));
+			buff->s(app::ErrorCode_Account::EC_FAILED);
+			buff->e();
+			PushToMainThread(buff);
 			return;
 		}
 		int ftimevalue = clock() - ftime;
@@ -61,6 +70,7 @@ namespace db
 		DBBuffer* buff = PopPool();
 		buff->b(CMD_REIGSTER);
 		buff->s(&data, sizeof(app::S_REGISTER_BASE));
+		buff->s(app::ErrorCode_Account::EC_SUCCESS);
 		buff->e();
 		PushToMainThread(buff);
 	}
@@ -69,7 +79,6 @@ namespace db
 	{
 		app::S_PLAYER_BASE player;
 		_buff->r(&player, sizeof(app::S_PLAYER_BASE));
-
 		auto mysql = db->GetMysqlConnector();
 		int px = player.pos.x * 100;
 		int py = player.pos.y * 100;

@@ -6,6 +6,7 @@ D:\test\CPlusPlus\TestServer\engine\TcpClient_Thread.cpp;D:\test\CPlusPlus\TestS
 D:\test\CPlusPlus\TestServer\engine\TcpServer.cpp;D:\test\CPlusPlus\TestServer\DBServer\compiles\Debug\x64\TcpServer.obj
 D:\test\CPlusPlus\TestServer\engine\TcpServer_Funs.cpp;D:\test\CPlusPlus\TestServer\DBServer\compiles\Debug\x64\TcpServer_Funs.obj
 D:\test\CPlusPlus\TestServer\engine\TcpServer_Thread.cpp;D:\test\CPlusPlus\TestServer\DBServer\compiles\Debug\x64\TcpServer_Thread.obj
+D:\test\CPlusPlus\TestServer\share\GameData.cpp;D:\test\CPlusPlus\TestServer\DBServer\compiles\Debug\x64\GameData.obj
 D:\test\CPlusPlus\TestServer\share\protobuff\xxx.pb.cc;D:\test\CPlusPlus\TestServer\DBServer\compiles\Debug\x64\xxx.pb.obj
 D:\test\CPlusPlus\TestServer\share\ShareFunction.cpp;D:\test\CPlusPlus\TestServer\DBServer\compiles\Debug\x64\ShareFunction.obj
 D:\test\CPlusPlus\TestServer\share\tinyxml\md5.cpp;D:\test\CPlusPlus\TestServer\DBServer\compiles\Debug\x64\md5.obj
@@ -23,6 +24,5 @@ D:\test\CPlusPlus\TestServer\DBServer\code\DBManager.cpp;D:\test\CPlusPlus\TestS
 D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Read.cpp;D:\test\CPlusPlus\TestServer\DBServer\compiles\Debug\x64\DBManager_Read.obj
 D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Serialize.cpp;D:\test\CPlusPlus\TestServer\DBServer\compiles\Debug\x64\DBManager_Serialize.obj
 D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Write.cpp;D:\test\CPlusPlus\TestServer\DBServer\compiles\Debug\x64\DBManager_Write.obj
-D:\test\CPlusPlus\TestServer\DBServer\code\GameData.cpp;D:\test\CPlusPlus\TestServer\DBServer\compiles\Debug\x64\GameData.obj
 D:\test\CPlusPlus\TestServer\DBServer\code\MySqlConnetor.cpp;D:\test\CPlusPlus\TestServer\DBServer\compiles\Debug\x64\MySqlConnetor.obj
 D:\test\CPlusPlus\TestServer\DBServer\code\TestWindows.cpp;D:\test\CPlusPlus\TestServer\DBServer\compiles\Debug\x64\TestWindows.obj
