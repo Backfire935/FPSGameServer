@@ -194,8 +194,8 @@ namespace app
 	{
 		s32 loginCode;//注册情况
 		S_REGISTER_BASE loginData;
-		tc->read(&loginData, sizeof(S_REGISTER_BASE));
 		tc->read(loginCode);
+		tc->read(&loginData, sizeof(S_REGISTER_BASE));
 
 		auto c = __TcpServer->client(loginData.center_socketfd, true);
 		if (c == nullptr)
@@ -205,8 +205,8 @@ namespace app
 		}
 		//返回给客户端 注册成功消息
 		__TcpServer->begin(c->ID, CMD_LOGIN);
-		__TcpServer->sss(c->ID, &loginData, sizeof(S_REGISTER_BASE));
 		__TcpServer->sss(c->ID, loginCode);
+		__TcpServer->sss(c->ID, &loginData, sizeof(S_REGISTER_BASE));
 		__TcpServer->end(c->ID);
 	}
 

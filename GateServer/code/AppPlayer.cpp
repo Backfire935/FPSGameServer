@@ -108,13 +108,14 @@ namespace app
 	void AppPlayer::onSendLogin(net::ITcpServer* ts, net::S_CLIENT_BASE* c)
 	{
 		//读取接受到的数据
-		s32 len = 0;
+		s32 len = 0;//UE客户端限制死的发送的消息长度，客户端改这里也要改
 		S_REGISTER_BASE registerData;
 
-		ts->read(c->ID, len);;
+		ts->read(c->ID, len);
 		ts->read(c->ID, registerData.name, len);
-		ts->read(c->ID, len);;
+		ts->read(c->ID, len);
 		ts->read(c->ID, registerData.password, len);
+		LOG_MSG("name password is %s %s\n",registerData.name, registerData.password);
 		registerData.gate_socketfd = c->socketfd;
 		registerData.gate_port = c->port;
 
@@ -192,7 +193,7 @@ namespace app
 		auto c = __TcpServer->client(registerData.gate_socketfd  , true);
 		if (c == nullptr)
 		{
-			LOG_MSG("AppPlayer err... line:%d __TcpServer == nullptr \n ", __LINE__);
+			LOG_MSG("AppPlayer err... line:%d __TcpServer == nullptr fd:%d %d %d\n ", __LINE__, registerData.gate_socketfd, registerData.center_socketfd, registerData.db_socketfd);
 			return;
 		}
 		//返回给客户端 注册成功消息
@@ -205,8 +206,8 @@ namespace app
 	{
 		s32 LoginCode;//注册情况
 		S_REGISTER_BASE LoginData;
-		tc->read(&LoginData, sizeof(S_REGISTER_BASE));
 		tc->read(LoginCode);
+		tc->read(&LoginData, sizeof(S_REGISTER_BASE));
 
 		auto c = __TcpServer->client(LoginData.gate_socketfd, true);
 		if (c == nullptr)
@@ -216,8 +217,8 @@ namespace app
 		}
 		//返回给客户端 登陆成功消息
 		__TcpServer->begin(c->ID, CMD_LOGIN);
-		__TcpServer->sss(c->ID, &LoginData, sizeof(S_REGISTER_BASE));
 		__TcpServer->sss(c->ID, LoginCode);
+		//__TcpServer->sss(c->ID, &LoginData, sizeof(S_REGISTER_BASE));
 		__TcpServer->end(c->ID);
 	}
 

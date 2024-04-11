@@ -172,7 +172,6 @@ namespace app
 		}
 
 		//向数据库申请数据 获取玩家游戏数据
-		registerData.ID = mem->ID;
 		auto db = __DBManager->DBAccount;
 		auto buff = db->PopBuffer();
 		buff->b(CMD_REIGSTER);
@@ -199,19 +198,20 @@ namespace app
 		auto mem = app::FindMember(fname);
 		if (mem == nullptr)
 		{
+			LOG_MSG("name is %s 账号不存在\n", loginData.name);
 			ts->begin(c->ID, CMD_LOGIN);
+			ts->sss(c->ID, EC_ACCOUNT_NOT_EXIST);
 			ts->sss(c->ID, &loginData, sizeof(S_REGISTER_BASE));
-			ts->sss(c->ID, 1001);
 			ts->end(c->ID);
 			return;
 		}
 		else
 		{
-			if (mem->state >= M_LOGIN)
+			if (mem->state >= M_LOGIN)//账号已经登录
 			{
 				ts->begin(c->ID, CMD_LOGIN);
+				ts->sss(c->ID, EC_ACCOUNT_LOGINED);
 				ts->sss(c->ID, &loginData, sizeof(S_REGISTER_BASE));
-				ts->sss(c->ID, 1003);
 				ts->end(c->ID);
 				return;
 			}
@@ -219,11 +219,12 @@ namespace app
 		}
 		//2、密码不正确
 		int value = strcmp(loginData.password, mem->password);
+		LOG_MSG("name is %s password is %s %s %d\n",loginData.name, loginData.password, mem->password, value);
 		if(value != 0)
 		{
 			ts->begin(c->ID, CMD_LOGIN);
+			ts->sss(c->ID, EC_PASSWORD_ERROR);
 			ts->sss(c->ID, &loginData, sizeof(S_REGISTER_BASE));
-			ts->sss(c->ID, 1002);
 			ts->end(c->ID);
 			return;
 		}
@@ -243,7 +244,7 @@ namespace app
 		auto db = __DBManager->GetDBSource(ETT_USERREAD);
 		auto buff = db->PopBuffer();
 		buff->b(CMD_LOGIN);
-		buff->s(&loginData, sizeof(S_LOGIN_BASE));
+		buff->s(&loginData, sizeof(S_REGISTER_BASE));
 		buff->e();
 		db->PushToThread(buff);
 
@@ -400,9 +401,9 @@ namespace app
 		__Onlines.insert(std::make_pair(player->memid, player));
 
 		__TcpServer->begin(c->ID, CMD_LOGIN);
-		__TcpServer->sss(c->ID, &logindata, sizeof(S_REGISTER_BASE));
-		__TcpServer->sss(c->ID, &player_data, sizeof(S_PLAYER_BASE));
 		__TcpServer->sss(c->ID, EC_ACCOUNT_LOGINED);
+		__TcpServer->sss(c->ID, &logindata, sizeof(S_REGISTER_BASE));
+		//__TcpServer->sss(c->ID, &player_data, sizeof(S_PLAYER_BASE));//等客户端单独拉返回玩家数据
 		__TcpServer->end(c->ID);
 
 		LOG_MSG("player login successfully...%d-%d\n", player->memid, (int)c->socketfd);
