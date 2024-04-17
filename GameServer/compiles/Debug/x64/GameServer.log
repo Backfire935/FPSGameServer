@@ -1,10 +1,8 @@
-﻿  AppManager.cpp
+﻿  TcpServer_Funs.cpp
 D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\test\CPlusPlus\TestServer\share\GameData.h(52,53): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
-D:\test\CPlusPlus\TestServer\share\ShareFunction.h(61,53): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
-  AppPlayer.cpp
-D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\test\CPlusPlus\TestServer\share\GameData.h(52,53): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
-D:\test\CPlusPlus\TestServer\share\ShareFunction.h(61,53): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
-  正在生成代码...
+D:\test\CPlusPlus\TestServer\engine\TcpServer_Funs.cpp(70,20): warning C4018: “<”: 有符号/无符号不匹配
+D:\test\CPlusPlus\TestServer\engine\TcpServer_Funs.cpp(137,75): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\engine\TcpServer_Funs.cpp(163,16): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+D:\test\CPlusPlus\TestServer\engine\TcpServer_Funs.cpp(232,37): warning C4244: “参数”: 从“SOCKET”转换到“const int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\engine\TcpServer_Funs.cpp(563,45): warning C4018: “<”: 有符号/无符号不匹配
   GameServer.vcxproj -> D:\test\CPlusPlus\TestServer\GameServer\exe\GameServer.exe

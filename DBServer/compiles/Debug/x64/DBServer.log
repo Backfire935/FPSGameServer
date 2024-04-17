@@ -1,25 +1,8 @@
-﻿  AppPlayer.cpp
+﻿  TcpServer_Funs.cpp
 D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-D:\test\CPlusPlus\TestServer\share\GameData.h(52,53): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
-D:\test\CPlusPlus\TestServer\share\ShareFunction.h(61,53): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
-D:\test\CPlusPlus\TestServer\DBServer\code\AppPlayer.cpp(54,13): warning C4244: “初始化”: 从“u64”转换到“int”，可能丢失数据
-D:\test\CPlusPlus\TestServer\DBServer\code\AppPlayer.cpp(142,12): warning C4477: “printf”: 格式字符串“%d”需要类型“int”的参数，但可变参数 4 拥有了类型“SOCKET”
-D:\test\CPlusPlus\TestServer\DBServer\code\AppPlayer.cpp(142,12): message : 请考虑在格式字符串中使用“%lld”
-D:\test\CPlusPlus\TestServer\DBServer\code\AppPlayer.cpp(142,12): message : 请考虑在格式字符串中使用“%Id”
-D:\test\CPlusPlus\TestServer\DBServer\code\AppPlayer.cpp(142,12): message : 请考虑在格式字符串中使用“%I64d”
-D:\test\CPlusPlus\TestServer\DBServer\code\AppPlayer.cpp(158,31): warning C4244: “=”: 从“SOCKET”转换到“u32”，可能丢失数据
-D:\test\CPlusPlus\TestServer\DBServer\code\AppPlayer.cpp(193,28): warning C4244: “=”: 从“SOCKET”转换到“u32”，可能丢失数据
-  DBManager_Write.cpp
-D:\test\CPlusPlus\TestServer\share\GameData.h(52,53): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
-D:\test\CPlusPlus\TestServer\share\ShareFunction.h(61,53): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
-D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Write.cpp(37,18): warning C4244: “初始化”: 从“u64”转换到“s32”，可能丢失数据
-D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Write.cpp(65,18): warning C4244: “初始化”: 从“int64_t”转换到“int”，可能丢失数据
-D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Write.cpp(66,25): warning C4244: “=”: 从“my_ulonglong”转换到“u32”，可能丢失数据
-D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Write.cpp(83,10): warning C4244: “初始化”: 从“f64”转换到“int”，可能丢失数据
-D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Write.cpp(84,10): warning C4244: “初始化”: 从“f64”转换到“int”，可能丢失数据
-D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Write.cpp(85,10): warning C4244: “初始化”: 从“f64”转换到“int”，可能丢失数据
-D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Write.cpp(86,10): warning C4244: “初始化”: 从“f64”转换到“int”，可能丢失数据
-D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Write.cpp(87,10): warning C4244: “初始化”: 从“f64”转换到“int”，可能丢失数据
-D:\test\CPlusPlus\TestServer\DBServer\code\DBManager_Write.cpp(88,10): warning C4244: “初始化”: 从“f64”转换到“int”，可能丢失数据
-  正在生成代码...
+D:\test\CPlusPlus\TestServer\engine\TcpServer_Funs.cpp(70,20): warning C4018: “<”: 有符号/无符号不匹配
+D:\test\CPlusPlus\TestServer\engine\TcpServer_Funs.cpp(137,75): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\engine\TcpServer_Funs.cpp(163,16): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+D:\test\CPlusPlus\TestServer\engine\TcpServer_Funs.cpp(232,37): warning C4244: “参数”: 从“SOCKET”转换到“const int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\engine\TcpServer_Funs.cpp(563,45): warning C4018: “<”: 有符号/无符号不匹配
   DBServer.vcxproj -> D:\test\CPlusPlus\TestServer\DBServer\exe\DBServer.exe

@@ -1,6 +1,10 @@
 #ifndef __IDEFINE_H
 #define  __IDEFINE_H
 
+
+#include <chrono>
+#include <iomanip>
+#include <iostream>
 #include <vector>
 
 #ifdef  ____WIN32_
@@ -17,7 +21,7 @@
 #define MAX_IP_LEN	20 //IP的长度
 #define MAX_COMMAND_LEN 65535//最大指令长度	
 
-#define LOG_MSG printf //日志打印的宏
+
 
 #define CMD_HEART		60000 //心跳包
 #define CMD_RCODE		65001 //加密码
@@ -40,6 +44,19 @@ typedef unsigned int        u32;
 typedef unsigned long long	u64;
 typedef float				f32;
 typedef double				f64;
+
+static void logmsg(const char* format, ...)
+{
+	auto now = std::chrono::system_clock::now();	// 获取当前时间
+	std::time_t now_c = std::chrono::system_clock::to_time_t(now);	// 将时间转换为时间戳
+	std::tm timeinfo = *std::localtime(&now_c);	// 将时间戳转换为本地时间
+	std::cout << std::put_time(&timeinfo, "%Y-%m-%d %H:%M:%S") << "   ";	// 格式化输出
+	va_list args;	// 用于存储可变参数的列表
+	va_start(args, format);	// 初始化参数列表
+	std::vprintf(format, args);	// 将参数列表传递给 printf 函数
+	va_end(args);	// 结束参数列表
+}
+#define LOG_MSG(format, ...) logmsg(format, ##__VA_ARGS__)
 
 namespace  func
 {

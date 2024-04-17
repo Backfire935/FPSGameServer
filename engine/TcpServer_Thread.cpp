@@ -77,7 +77,7 @@ namespace net
 					pushContext(context);
 					continue;
 				}
-
+				
 				tcp->shutDown(context->m_Socket, context->m_Mode, NULL, 3002);
 				pushContext(context);
 				continue;
@@ -97,7 +97,7 @@ namespace net
 
 				if((recvBytes == 0) && (context->m_Mode == func::SC_WAIT_RECV || context->m_Mode == func::SC_WAIT_SEND))
 				{
-					tcp->shutDown(context->m_Socket, context->m_Mode, NULL ,3003);
+					tcp->shutDown(context->m_Socket, context->m_Mode, NULL ,30031);
 					pushContext(context);//扔回对象池
 					continue;
 				}

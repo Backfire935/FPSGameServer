@@ -87,6 +87,7 @@ namespace net
 		c->is_RecvCompleted = false;
 	}
 
+	int times = 1;
 	//业务逻辑层
 	void TcpServer::parseCommand(S_CLIENT_BASE* c, u16 cmd)
 	{
@@ -101,9 +102,16 @@ namespace net
 				u32 value = 0;
 				read(c->ID, value);
 
-				/*begin(c->ID, CMD_HEART);//服务端返回心跳包
-				sss(c->ID, 1);
-				end(c->ID);*/
+				//判断是否是客户端和网关之间进行的心跳包
+				if(value == 1)//仅玩家客户端发送的心跳包值是1
+				{
+					LOG_MSG("收到心跳包 %d 发给:%d 这是第%d次\n",value,c->ID,times);
+					times++;
+					begin(c->ID, CMD_HEART);//服务端返回心跳包
+					sss(c->ID, 1);
+					end(c->ID);
+				}
+				
 				//通过注册消息的方式 派发到业务逻辑层
 				return;
 			}
