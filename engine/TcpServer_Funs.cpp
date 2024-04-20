@@ -91,7 +91,7 @@ namespace net
 	//业务逻辑层
 	void TcpServer::parseCommand(S_CLIENT_BASE* c, u16 cmd)
 	{
-		c->time_Heart = (int)time(NULL);//收到任何消息 都来更新心跳包的时间
+		//c->time_Heart = (int)time(NULL);//收到任何消息 都来更新心跳包的时间
 
 		if(cmd <65000)//说明是一个业务线程的头指令
 		{
@@ -207,7 +207,7 @@ namespace net
 		temp = (int)time(NULL) - c->time_Connect;
 		if(c->state == func::S_Connect )
 		{
-			if(temp > 100)//如果超过十秒还处于连接状态的话
+			if(temp > 100)//如果超过100秒还处于连接状态的话
 			{
 				if(this->onTimeOutEvent != nullptr ) this->onTimeOutEvent(this, c, 2102);//派发超时事件出去
 				shutDown(c->socketfd, 0, c, 2102);

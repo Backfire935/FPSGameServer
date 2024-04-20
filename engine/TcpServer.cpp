@@ -539,11 +539,11 @@ namespace net
 			c->shutdown_kind = kind;
 			c->time_Close = (int)time(NULL);
 			c->closeState = func::S_CLOSE_SHUTDOWN;
-
+			this->updateConnect(false);//有人掉线或者离开的时候，先把socket关掉
+			this->updateSecurityConnect(false);//有人掉线或者离开的时候，先把socket关掉
 			shutdown(sfd, SD_BOTH);
 			CancelIoEx((HANDLE)sfd, nullptr); //取消IO操作，撤销socket上的投递数据
-
-			if (onExceptEvent != nullptr) this->onExceptEvent(this, c, kind+300);
+			if (onExceptEvent != nullptr) this->onExceptEvent(this, c, kind);
 			return;
 		}
 		//传入的c为空的话，就去用方法查找这个socket对应的S_CLIENT_BASE
@@ -570,7 +570,7 @@ namespace net
 		c2->closeState = func::S_CLOSE_SHUTDOWN;
 		shutdown(sfd, SD_BOTH);
 		CancelIoEx((HANDLE)sfd, nullptr); //取消IO操作，撤销socket上的投递数据
-		if (onExceptEvent != nullptr) this->onExceptEvent(this, c2, kind+400);
+		if (onExceptEvent != nullptr) this->onExceptEvent(this, c2, kind);
 	}
 
 

@@ -73,6 +73,7 @@ namespace net
 				if(dwErr == WAIT_TIMEOUT) continue;//超时
 				if(overlapped != NULL)
 				{
+					//掉线，玩家主动关闭，后面在这添加玩家离线的处理
 					tcp->shutDown(context->m_Socket, context->m_Mode, NULL, 3001);
 					pushContext(context);
 					continue;
@@ -97,7 +98,7 @@ namespace net
 
 				if((recvBytes == 0) && (context->m_Mode == func::SC_WAIT_RECV || context->m_Mode == func::SC_WAIT_SEND))
 				{
-					tcp->shutDown(context->m_Socket, context->m_Mode, NULL ,30031);
+					tcp->shutDown(context->m_Socket, context->m_Mode, NULL ,3003);
 					pushContext(context);//扔回对象池
 					continue;
 				}
