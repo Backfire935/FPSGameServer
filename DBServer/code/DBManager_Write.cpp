@@ -77,26 +77,26 @@ namespace db
 	//玩家离开 保存数据
 	void DBManager::Write_UserSave(DBBuffer* _buff, DBConnetor* db)
 	{
-		app::S_PLAYER_BASE player;
-		_buff->r(&player, sizeof(app::S_PLAYER_BASE));
+		s32 memid;
+		_buff->r(memid);
 		auto mysql = db->GetMysqlConnector();
-		int px = player.pos.x * 100;
-		int py = player.pos.y * 100;
-		int pz = player.pos.z * 100;
-		int rx = player.rot.x * 100;
-		int ry = player.rot.y * 100;
-		int rz = player.rot.z * 100;
-
+		int px =  101;
+		int py =  102;
+		int pz =  103;
+		int rx =  104;
+		int ry =  105;
+		int rz =  106;
+		int curhp = 10000;
 		stringstream sql;
 		sql << "update user_data set "
-			<< "curhp = " << player.curhp
+			<< "curhp = " << curhp
 			<< ",pos_x = " << px
 			<< ",pos_y = " << py
 			<< ",pos_z = " << pz
 			<< ",rot_x = " << rx
 			<< ",rot_y = " << ry
 			<< ",rot_z = " << rz 
-			<< " where memid = " << player.memid
+			<< " where memid = " << memid
 			<< ";";
 
 		int err = mysql->ExecQuery(sql.str());
@@ -106,8 +106,8 @@ namespace db
 
 			DBBuffer* buff = PopPool();
 			buff->b(CMD_LEAVE);
-			buff->s(1001);
-			buff->s(&player, sizeof(app::S_PLAYER_BASE));
+			buff->s(app::ErrorCode_Account::EC_FAILED);
+			buff->s(memid);
 			buff->e();
 			PushToMainThread(buff);
 			return;
@@ -118,8 +118,8 @@ namespace db
 
 		DBBuffer* buff = PopPool();
 		buff->b(CMD_LEAVE);
-		buff->s(0);
-		buff->s(&player, sizeof(app::S_PLAYER_BASE));
+		buff->s(app::ErrorCode_Account::EC_SUCCESS);
+		buff->s(memid);
 		buff->e();
 		PushToMainThread(buff);
 	}

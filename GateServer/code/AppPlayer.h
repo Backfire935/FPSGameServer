@@ -30,8 +30,7 @@ namespace app
 	};
 
 	extern IContainer* __AppPlayer;
-	extern std::map<int, S_PLAYER_BASE*>  __Onlines;
-
+	extern std::map<int, S_PLAYER_BASE*>  __Onlines;//玩家登陆在线数据
 }
 
 #endif

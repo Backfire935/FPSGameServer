@@ -127,6 +127,7 @@ namespace net
 
 	port = 0;
 	ID = -1;
+	memid = 0;
 	rCode = func::__ServerInfo->RCode;
 	//接收数据初始化
 	recv_Head =	0;
@@ -152,7 +153,6 @@ namespace net
 	memset(recvBuf, 0, func::__ServerInfo->ReceMax);
 	memset(sendBuf, 0, func::__ServerInfo->SendMax);
 	memset(ip, 0, MAX_IP_LEN);
-
 	closeState = 0;
 	state = func::S_Free;
 	}

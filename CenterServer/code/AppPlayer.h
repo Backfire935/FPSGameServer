@@ -22,6 +22,7 @@ namespace app
 		void onSendReigster(net::ITcpServer* ts, net::S_CLIENT_BASE* c);
 		void onSendLogin(net::ITcpServer* ts, net::S_CLIENT_BASE* c);
 		void onSendMove(net::ITcpServer* ts, net::S_CLIENT_BASE* c);
+		void onSendLeave(net::ITcpServer* ts, net::S_CLIENT_BASE* c);
 		void onSendGetPlayerData(net::ITcpServer* ts, net::S_CLIENT_BASE* c);
 
 		void OnRecvReigster(net::ITcpClient* tc);

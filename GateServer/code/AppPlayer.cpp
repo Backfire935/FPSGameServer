@@ -12,7 +12,6 @@ namespace app
 	std::map<int, S_PLAYER_BASE*>  __Onlines;//玩家登陆在线数据
 	std::list<S_PLAYER_BASE*>  __PlayersPool;//对象回收池
 	u64  temptime = 0;
-
 	
 	AppPlayer::AppPlayer()
 	{
@@ -47,33 +46,8 @@ namespace app
 		case CMD_LOGIN:onSendLogin(ts, c); break;
 		case CMD_MOVE:onSendMove(ts, c); break;
 		case CMD_PLAYERDATA:onSendGetPlayerData(ts, c); break;
-		case 9999:
-			{
-			int len = 0;
-			char* str1 = NULL;
-			char str2[20];
-			memset(str2, 0, 20);
-
-			ts->read(c->ID, len);
-			str1 = new char[len];
-			ts->read(c->ID, str1, len);
-
-			ts->read(c->ID, str2, 20);
-			
-			if (__TcpCenter->getData()->state < func::C_Connect)
-			{
-				LOG_MSG("Center server not connect...\n");
-				return false;
-			}
-			//返回
-			__TcpCenter->begin( 9999);
-			__TcpCenter->sss( len);
-			__TcpCenter->sss( str1, len);
-			__TcpCenter->sss(str2, 20);
-			__TcpCenter->end();
-
-			delete[] str1;
-			}
+		default:
+			LOG_MSG("Unregister cmd:%d...line: % d \n", cmd, __LINE__);
 			break;
 		}
 
@@ -196,6 +170,7 @@ namespace app
 			LOG_MSG("AppPlayer err... line:%d __TcpServer == nullptr fd:%d %d %d\n ", __LINE__, registerData.gate_socketfd, registerData.center_socketfd, registerData.db_socketfd);
 			return;
 		}
+		c->state = func::S_Login;//注册成功后，状态改为登陆状态
 		//返回给客户端 注册成功消息
 		__TcpServer->begin(c->ID, CMD_REIGSTER);
 		//__TcpServer->sss(c->ID, &registerData, sizeof(app::S_REGISTER_BASE));
@@ -210,11 +185,13 @@ namespace app
 		tc->read(&LoginData, sizeof(S_REGISTER_BASE));
 
 		auto c = __TcpServer->client(LoginData.gate_socketfd, true);
+		c->memid = LoginData.ID;//保存玩家数据库唯一id
 		if (c == nullptr)
 		{
 			LOG_MSG("AppPlayer err... line:%d S_CLIENT_BASE c == nullptr \n ", __LINE__);
 			return;
 		}
+		c->state = func::S_Login;//登陆成功后，状态改为登陆状态
 		//返回给客户端 登陆成功消息
 		__TcpServer->begin(c->ID, CMD_LOGIN);
 		__TcpServer->sss(c->ID, LoginCode);

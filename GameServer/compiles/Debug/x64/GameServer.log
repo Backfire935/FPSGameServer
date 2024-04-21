@@ -1,4 +1,19 @@
-﻿  TcpServer.cpp
+﻿  INetBase.cpp
+D:\test\CPlusPlus\TestServer\engine\INetBase.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  TcpClient.cpp
+D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\test\CPlusPlus\TestServer\engine\TcpClient.cpp(100,20): warning C4244: “初始化”: 从“SOCKET”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\engine\TcpClient.cpp(126,20): warning C4244: “初始化”: 从“SOCKET”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\engine\TcpClient.cpp(141,43): warning C4996: 'inet_addr': Use inet_pton() or InetPton() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+  TcpClient_Funs.cpp
+D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\test\CPlusPlus\TestServer\engine\TcpClient_Funs.cpp(101,89): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\engine\TcpClient_Funs.cpp(375,52): warning C4018: “<”: 有符号/无符号不匹配
+  TcpClient_Thread.cpp
+D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\test\CPlusPlus\TestServer\engine\TcpClient_Thread.cpp(61,34): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
+  TcpServer.cpp
 D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
 D:\test\CPlusPlus\TestServer\engine\TcpServer.cpp(60,4): warning C4129: “ ”: 不可识别的字符转义序列
 D:\test\CPlusPlus\TestServer\engine\TcpServer.cpp(276,52): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
@@ -13,40 +28,21 @@ D:\test\CPlusPlus\TestServer\engine\TcpServer_Funs.cpp(232,37): warning C4244: �
 D:\test\CPlusPlus\TestServer\engine\TcpServer_Funs.cpp(563,45): warning C4018: “<”: 有符号/无符号不匹配
   TcpServer_Thread.cpp
 D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  AppGlobal.cpp
+D:\test\CPlusPlus\TestServer\GameServer\code\AppGlobal.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  AppManager.cpp
+D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\test\CPlusPlus\TestServer\share\GameData.h(52,53): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+D:\test\CPlusPlus\TestServer\share\ShareFunction.h(61,53): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+  AppPlayer.cpp
+D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\test\CPlusPlus\TestServer\share\GameData.h(52,53): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+D:\test\CPlusPlus\TestServer\share\ShareFunction.h(61,53): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+  AppTest.cpp
+D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+D:\test\CPlusPlus\TestServer\share\ShareFunction.h(61,53): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
+D:\test\CPlusPlus\TestServer\share\google\protobuf\wire_format_lite.h(935,41): warning C4244: “参数”: 从“google::protobuf::uint64”转换到“google::protobuf::uint32”，可能丢失数据
+D:\test\CPlusPlus\TestServer\share\google\protobuf\parse_context.h(269,28): warning C4244: “-=”: 从“google::protobuf::stringpiece_ssize_type”转换到“int”，可能丢失数据
   正在生成代码...
-libprotobufd.lib(common.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(common.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(coded_stream.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(coded_stream.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(arena.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(arena.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(message_lite.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(message_lite.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(wire_format_lite.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(wire_format_lite.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(generated_message_util.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(generated_message_util.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(unknown_field_set.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(unknown_field_set.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(message.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(message.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(generated_message_reflection.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(generated_message_reflection.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(reflection_ops.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(reflection_ops.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(wire_format.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(wire_format.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(status.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(status.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(int128.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(int128.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(stringpiece.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(stringpiece.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(zero_copy_stream.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(zero_copy_stream.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(zero_copy_stream_impl_lite.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(zero_copy_stream_impl_lite.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(structurally_valid.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(structurally_valid.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(repeated_field.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(repeated_field.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(stringprintf.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(stringprintf.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(extension_set.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(extension_set.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(descriptor.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(descriptor.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(strutil.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(strutil.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(map_field.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(map_field.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(zero_copy_stream_impl.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(zero_copy_stream_impl.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(extension_set_heavy.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(extension_set_heavy.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(implicit_weak_message.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(implicit_weak_message.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(text_format.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(text_format.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(descriptor.pb.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(descriptor.pb.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(strtod.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(strtod.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(tokenizer.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(tokenizer.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(descriptor_database.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(descriptor_database.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(dynamic_message.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(dynamic_message.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(substitute.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(substitute.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(io_win32.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(io_win32.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(any.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(any.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
   GameServer.vcxproj -> D:\test\CPlusPlus\TestServer\GameServer\exe\GameServer.exe

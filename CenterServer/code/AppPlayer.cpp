@@ -41,39 +41,13 @@ namespace app
 			return false;
 		}
 
-		switch (cmd)//向DBServer发消息
+		switch (cmd)//收到网关发来的消息
 		{
 		case CMD_REIGSTER:onSendReigster(ts, c); break;
 		case CMD_LOGIN:onSendLogin(ts, c); break;
 		case CMD_MOVE:onSendMove(ts, c); break;
+		case CMD_LEAVE:onSendLeave(ts, c); break;
 		case CMD_PLAYERDATA:onSendGetPlayerData(ts, c); break;
-		case 9999:
-			{
-			int len = 0;
-			char* str1 = NULL;
-			char str2[20];
-			memset(str2, 0, 20);
-
-			ts->read(c->ID, len);
-			str1 = new char[len];
-			ts->read(c->ID, str1, len);
-
-			ts->read(c->ID, str2, 20);
-			if (__TcpDB->getData()->state < func::C_Connect)
-			{
-				LOG_MSG("DB server not connect...\n");
-				return false;
-			}
-			//返回
-			__TcpDB->begin( 9999);
-			__TcpDB->sss( len);
-			__TcpDB->sss( str1, len);
-			__TcpDB->sss(str2, 20);
-			__TcpDB->end();
-
-			delete[] str1;
-			}
-			break;
 		}
 
 		return false;
@@ -142,6 +116,7 @@ namespace app
 		__TcpDB->sss(&rot, sizeof(S_VECTOR));
 		__TcpDB->end();
 	}
+
 	//3000 获取其他玩家数据
 	void AppPlayer::onSendGetPlayerData(net::ITcpServer* ts, net::S_CLIENT_BASE* c)
 	{
@@ -154,6 +129,23 @@ namespace app
 		}
 		//将接收到的数据发往DBServer
 		__TcpDB->begin(CMD_PLAYERDATA);
+		__TcpDB->sss(memid);
+		__TcpDB->end();
+	}
+
+	//4000 玩家离开
+	void AppPlayer::onSendLeave(net::ITcpServer* ts, net::S_CLIENT_BASE* c)
+	{
+		s32 memid;
+		ts->read(c->ID, memid);
+		if (__TcpDB->getData()->state < func::C_Connect)
+		{
+			LOG_MSG("DB server not connect...\n");
+			return;
+		}
+		LOG_MSG("玩家:%d下线\n", memid);
+		//将接收到的数据发往DBServer
+		__TcpDB->begin(CMD_LEAVE);
 		__TcpDB->sss(memid);
 		__TcpDB->end();
 	}

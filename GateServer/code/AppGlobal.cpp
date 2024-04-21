@@ -1,4 +1,6 @@
 #include "AppGlobal.h"
+#include <ShareFunction.h>
+#include "AppPlayer.h"
 
 namespace app
 {
@@ -48,7 +50,19 @@ namespace app
 		else if(c->state == func::S_Login)
 		{
 			c->state = func::S_NeedSave;
-			LOG_MSG("AppGlobal leave...%d-%d \n", c->ID, (int)c->socketfd);
+			LOG_MSG("AppGlobal leave...%d-%d \n", c->ID, (int)c->socketfd);//在这里向上发送先给Center发最后告知DB玩家已经离线,至于保存什么数据以后再说
+				if (c != nullptr && __TcpCenter != nullptr)
+				{
+					int len = func::__ServerListInfo.size();
+					for ( int i = 0; i < len; i++)//向Center和所有的Game告知玩家离线，至于怎么处理那是上层的事了
+					{
+						__TcpGame[i]->begin(CMD_LEAVE);
+						__TcpGame[i]->sss(c->memid);//告知玩家离线
+						__TcpGame[i]->end();
+					}
+					
+				}
+				c->Reset();//重置连接数据
 		}
 	}
 

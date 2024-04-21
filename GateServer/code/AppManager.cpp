@@ -100,7 +100,6 @@ namespace app
 		__TcpServer->registerCommand(CMD_REIGSTER, __AppPlayer);
 		__TcpServer->registerCommand(CMD_LOGIN, __AppPlayer);
 		__TcpServer->registerCommand(CMD_PLAYERDATA, __AppPlayer);
-		__TcpServer->registerCommand(9999, __AppPlayer);
 		 //客户端注册指令
 		for(u32 i = 0; i < len; i++)
 		{
@@ -112,7 +111,6 @@ namespace app
 				client->registerCommand(CMD_LOGIN, __AppPlayer);
 				client->registerCommand(CMD_MOVE, __AppPlayer);
 				client->registerCommand(CMD_PLAYERDATA, __AppPlayer);
-				client->registerCommand(9999, __AppPlayer);
 			}
 			else//其他服务器处理,可以在这里注册
 			{

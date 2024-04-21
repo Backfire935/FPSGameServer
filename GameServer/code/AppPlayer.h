@@ -22,6 +22,7 @@ namespace app
 	
 		void onSendMove(net::ITcpServer* ts, net::S_CLIENT_BASE* c);
 		void onSendGetPlayerData(net::ITcpServer* ts, net::S_CLIENT_BASE* c);
+		void onSendLeave(net::ITcpServer* ts, net::S_CLIENT_BASE* c);
 
 		void OnRecvGetPlayerData(net::ITcpClient* tc);
 	};

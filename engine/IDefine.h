@@ -20,7 +20,7 @@
 #define MAX_MD5_LEN	35 //服务端和客户端进行通讯时进行MD5码验证的最大长度
 #define MAX_IP_LEN	20 //IP的长度
 #define MAX_COMMAND_LEN 65535//最大指令长度	
-
+#define MAX_PLAYERID_LEN 20 //最大玩家ID长度
 
 
 #define CMD_HEART		60000 //心跳包

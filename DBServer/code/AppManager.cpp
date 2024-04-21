@@ -76,8 +76,8 @@ namespace app
 		__TcpServer->registerCommand(CMD_REIGSTER, __AppPlayer);
 		__TcpServer->registerCommand(CMD_LOGIN, __AppPlayer);
 		__TcpServer->registerCommand(CMD_MOVE, __AppPlayer);
+		__TcpServer->registerCommand(CMD_LEAVE, __AppPlayer);
 		__TcpServer->registerCommand(CMD_PLAYERDATA, __AppPlayer);
-		__TcpServer->registerCommand(9999, __AppPlayer);
 
 		__DBManager = new DBManager();
 		__DBManager->InitDB();

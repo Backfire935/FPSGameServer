@@ -30,12 +30,12 @@ namespace net
 		char	ip[MAX_IP_LEN];
 		u16	port;
 		s32	ID;//当前玩家连接数据ID，也是索引下标
-		u8	rCode;//对数据进行异或，防止知道数据明文是什么,起到混淆的作用
+		u8	 rCode;//对数据进行异或，防止知道数据明文是什么,起到混淆的作用
+		s32 memid;//在DB返回或者客户端申请登录的时候，存入memid，仅在gate这一级有用,因为只有gate的client才有memid
 
-
-	//游戏纪录数据
+	//游戏纪录数据 
 		s32	ClientID;//各个功能服务器ID
-		u8	ClientType;//0 1-DB 2-Center 3-Game 4-Gate 5-Login
+		u8	 ClientType;//0 1-DB 2-Center 3-Game 4-Gate 5-Login
 	
 		//生产者--接收数据
 		//消费者--解析数据

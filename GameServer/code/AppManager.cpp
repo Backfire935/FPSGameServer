@@ -92,13 +92,13 @@ namespace app
 		__TcpServer->registerCommand(CMD_REIGSTER, __AppPlayer);
 		__TcpServer->registerCommand(CMD_LOGIN, __AppPlayer);
 		__TcpServer->registerCommand(CMD_PLAYERDATA, __AppPlayer);
-		__TcpServer->registerCommand(9999, __AppPlayer);
+		__TcpServer->registerCommand(CMD_LEAVE, __AppPlayer);
 		//连接DB作为客户端注册的指令
 		__TcpDB->registerCommand(CMD_REIGSTER, __AppPlayer);
 		__TcpDB->registerCommand(CMD_LOGIN, __AppPlayer);
 		__TcpDB->registerCommand(CMD_MOVE, __AppPlayer);
 		__TcpDB->registerCommand(CMD_PLAYERDATA, __AppPlayer);
-		__TcpDB->registerCommand(9999, __AppPlayer);
+
 		//连接Center作为客户端注册的指令
 
 

@@ -26,7 +26,8 @@ namespace app
 	{
 	}
 
-	void playerLeave(u32 memid)
+#pragma region  通知其他玩家
+	/*void playerLeave(u32 memid)
 	{
 		auto it = __Onlines.begin();
 		while (it != __Onlines.end())
@@ -37,7 +38,7 @@ namespace app
 #else
 			auto c = __TcpServer->client(player->socketfd, true);
 #endif
-			if (c == nullptr || player->memid == memid)
+			if (c == nullptr || player->memid != memid)
 			{
 				++it;
 				continue;
@@ -47,7 +48,8 @@ namespace app
 			__TcpServer->end(c->ID);
 			++it;
 		}
-	}
+	}*/
+#pragma endregion
 
 	void AppPlayer::onUpdate()
 	{
@@ -72,16 +74,7 @@ namespace app
 			}
 			if (c->state == func::S_NeedSave)
 			{
-				//写数据库
-				auto db = __DBManager->GetDBSource(ETT_USERWRITE);
-				auto buff = db->PopBuffer();
-				buff->b(CMD_LEAVE);
-				buff->s(player, sizeof(S_PLAYER_BASE));
-				buff->e();
-				db->PushToThread(buff);
-
-				c->state = func::S_Saving;
-				playerLeave(player->memid);
+				
 			}
 
 			++it;
@@ -102,28 +95,9 @@ namespace app
 		case CMD_LOGIN:onLogin(ts, c); break;
 		case CMD_MOVE:onMove(ts, c); break;
 		case CMD_PLAYERDATA:onGetPlayerData(ts, c); break;
-		case 9999:
-			{
-				int len = 0;
-				char* str1 = NULL;
-				char str2[20];
-				memset(str2, 0, 20);
-			
-				ts->read(c->ID, len);
-				str1 = new char[len];
-				ts->read(c->ID, str1, len);
-
-				ts->read(c->ID, str2, 20);
-				//返回
-				ts->begin(c->ID, 9999);
-				ts->sss(c->ID, len);
-				ts->sss(c->ID, str1, len);
-				ts->sss(c->ID, str2, 20);
-				ts->end(c->ID);
-
-				delete[] str1;
-
-			}
+		case CMD_LEAVE:OnLeave(ts, c); break;
+		default:
+			LOG_MSG("Unregister cmd:%d...line: % d \n", cmd, __LINE__);
 			break;
 		}
 
@@ -182,12 +156,6 @@ namespace app
 	//1000 登陆
 	void AppPlayer::onLogin(net::ITcpServer* ts, net::S_CLIENT_BASE* c)
 	{
-		if (c->state == func::S_Login)
-		{
-			LOG_MSG("onlogin is login....\n");
-			return;
-		}
-
 		S_REGISTER_BASE loginData;
 		ts->read(c->ID, &loginData, sizeof(S_REGISTER_BASE));
 		loginData.db_socketfd = c->socketfd;
@@ -317,6 +285,25 @@ namespace app
 
 	}
 
+	void AppPlayer::OnLeave(net::ITcpServer* ts, net::S_CLIENT_BASE* c)
+	{
+		s32 memid;
+		ts->read(c->ID, memid);
+		auto player = findPlayer(memid, c);
+		if (player == NULL) { LOG_MSG("Cant find leave player....line: % d \n", __LINE__); return; }
+		auto mem = app::FindMember(memid);
+		mem->state = M_SAVING;//玩家离线,设置账号状态为保存
+		LOG_MSG("玩家:%d下线1\n", memid);
+		//告诉DB玩家已经下线
+
+		auto db = __DBManager->GetDBSource(ETT_USERWRITE);
+		auto buff = db->PopBuffer();
+		buff->b(CMD_LEAVE);
+		buff->s(memid);
+		buff->e();
+		db->PushToThread(buff);
+	}
+
 
 
 	//*****************************************************************
@@ -396,7 +383,7 @@ namespace app
 			player->init();
 		}
 
-		c->state = func::S_Login;
+		//c->state = func::S_Login;
 		memcpy(player, &player_data, sizeof(S_PLAYER_BASE));
 		__Onlines.insert(std::make_pair(player->memid, player));
 
@@ -412,42 +399,34 @@ namespace app
 	//4000 玩家离开
 	void OnDB_Leave(DBBuffer* buf)
 	{
-		int err = 0;
-		app::S_PLAYER_BASE player;
+		int errCode = 0;
+		int memid = 0;
 
-		buf->r(err);
-		buf->r(&player, sizeof(app::S_PLAYER_BASE));
+		buf->r(errCode);//错误码
+		buf->r(memid);//玩家memID
 
 
 		//错误处理？？？
-		if (err != 0)
+		if (errCode != 0)
 		{
-			LOG_MSG("OnDB_Leave err...%d line:%d\n", player.socketfd, __LINE__);
+			LOG_MSG("OnDB_Leave success...%d line:%d\n", errCode, __LINE__);
 		}
 
-		//1、清理连接数据
-		auto c = __TcpServer->client((SOCKET)player.socketfd, true);
-		if (c == nullptr)
-		{
-			LOG_MSG("OnDB_Leave err...%d line:%d\n", player.socketfd, __LINE__);
-			return;
-		}
-		c->Reset();
 
 		//2、清理账号状态
-		auto mem = app::FindMember(player.memid);
+		auto mem = app::FindMember(memid);
 		if (mem == nullptr) 
 		{
-			LOG_MSG("OnDB_Leave err...%d line:%d\n", player.socketfd, __LINE__);
+			LOG_MSG("OnDB_Leave err...%d line:%d\n", memid, __LINE__);
 			return;
 		}
 		mem->state = M_FREE;
 	
 		//3、清理玩家数据
-		auto it = __Onlines.find(player.memid);
+		auto it = __Onlines.find(memid);
 		if (it == __Onlines.end())
 		{
-			LOG_MSG("OnDB_Leave err...%d line:%d\n", player.memid, __LINE__);
+			LOG_MSG("OnDB_Leave err...%d line:%d\n", memid, __LINE__);
 			return;
 		}
 
@@ -455,7 +434,7 @@ namespace app
 		__Onlines.erase(it);
 		playdata->init();
 		__PlayersPool.push_back(playdata);
-		LOG_MSG("player leave success...%d-%d\n", err,player.memid);
+		LOG_MSG("player leave success...%d-%d\n", errCode,memid);
 	}
 	//DB数据库返回
 	bool AppPlayer::OnDBCommand(void* buff)
