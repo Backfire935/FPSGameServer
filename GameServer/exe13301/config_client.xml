@@ -18,6 +18,6 @@
     num="2"
     />
     <client1 IP="127.0.0.1" Port="13100" ID="1000" Type="DB"/>
-	<client2 IP="127.0.0.1" Port="13200" ID="2000" Type="Center"/>
+	<client2 IP="127.0.0.2" Port="13222" ID="2000" Type="Center"/>
 
 </root>

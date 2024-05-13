@@ -186,7 +186,7 @@ namespace net
 		send_Tail				= 0;
 		send_TempTail		= 0;
 		is_Sending			= false;
-		is_SendCompleted = true;
+		is_SendCompleted = false;
 
 		time_Heart = (int)time(NULL);
 		time_AutoConnect = (int)time(NULL);

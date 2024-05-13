@@ -5,7 +5,7 @@
 Concurrency::concurrent_queue<AcceptContext*> __accepts;
 Concurrency::concurrent_queue<RecvContext*> __recvs;
 Concurrency::concurrent_queue<SendContext*> __sends;
-//第二章第二节
+
 IOContext::IOContext()
 {
 	m_Socket = INVALID_SOCKET;

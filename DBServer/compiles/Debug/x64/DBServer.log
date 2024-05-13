@@ -1,6 +1,10 @@
 ﻿  INetBase.cpp
 D:\test\CPlusPlus\TestServer\engine\INetBase.cpp(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
 D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  IOPool.cpp
+D:\test\CPlusPlus\TestServer\engine\IOPool.cpp(88,31): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\engine\IOPool.cpp(155,28): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\engine\IOPool.cpp(223,28): warning C4267: “return”: 从“size_t”转换到“int”，可能丢失数据
   TcpClient.cpp
 D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
 D:\test\CPlusPlus\TestServer\engine\TcpClient.cpp(100,20): warning C4244: “初始化”: 从“SOCKET”转换到“int”，可能丢失数据
@@ -16,9 +20,9 @@ D:\test\CPlusPlus\TestServer\engine\TcpClient_Thread.cpp(61,34): warning C4244: 
   TcpServer.cpp
 D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
 D:\test\CPlusPlus\TestServer\engine\TcpServer.cpp(60,4): warning C4129: “ ”: 不可识别的字符转义序列
-D:\test\CPlusPlus\TestServer\engine\TcpServer.cpp(276,52): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
-D:\test\CPlusPlus\TestServer\engine\TcpServer.cpp(308,13): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
-D:\test\CPlusPlus\TestServer\engine\TcpServer.cpp(292,17): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
+D:\test\CPlusPlus\TestServer\engine\TcpServer.cpp(277,52): warning C4244: “参数”: 从“SOCKET”转换到“int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\engine\TcpServer.cpp(309,13): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+D:\test\CPlusPlus\TestServer\engine\TcpServer.cpp(293,17): warning C4996: 'inet_ntoa': Use inet_ntop() or InetNtop() instead or define _WINSOCK_DEPRECATED_NO_WARNINGS to disable deprecated API warnings
   TcpServer_Funs.cpp
 D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
 D:\test\CPlusPlus\TestServer\engine\TcpServer_Funs.cpp(70,20): warning C4018: “<”: 有符号/无符号不匹配
@@ -54,10 +58,4 @@ D:\test\CPlusPlus\TestServer\engine\INetBase.h(1,1): warning C4819: 该文件包
 D:\test\CPlusPlus\TestServer\share\GameData.h(52,53): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
 D:\test\CPlusPlus\TestServer\share\ShareFunction.h(61,53): warning C4996: 'stricmp': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _stricmp. See online help for details.
   正在生成代码...
-libprotobufd.lib(extension_set.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(extension_set.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(descriptor.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(descriptor.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(descriptor_database.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(descriptor_database.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(extension_set_heavy.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(extension_set_heavy.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(map_field.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(map_field.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
-libprotobufd.lib(text_format.obj) : warning LNK4099: 未找到 PDB“”(使用“libprotobufd.lib(text_format.obj)”或在“”中寻找)；正在链接对象，如同没有调试信息一样
   DBServer.vcxproj -> D:\test\CPlusPlus\TestServer\DBServer\exe\DBServer.exe

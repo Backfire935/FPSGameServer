@@ -14,8 +14,9 @@
     SafeCode="test"
     Head="DE"
     />
-    <server num="3" />
+    <server num="2" />
     <client1 IP="127.0.0.1" Port="13200" ID="2000" Type="Center" />
-	<client2 IP="127.0.0.1" Port="13300" ID="3000" Type="Game" />
-<client3 IP="127.0.0.1" Port="13301" ID="3001" Type="Game" />
+<client2 IP="127.0.0.1" Port="13301" ID="3001" Type="Game" />
+	<client3 IP="127.0.0.1" Port="13300" ID="3000" Type="Game" />
+
 </root>

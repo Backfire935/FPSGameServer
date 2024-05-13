@@ -11,6 +11,8 @@
 #include <unistd.h>
 #endif
 
+#define TESTCONNECT 1000
+
 namespace app
 {
 	AppManager* __AppManager = nullptr;
@@ -76,7 +78,7 @@ namespace app
 		 __TcpGame.reserve(len);
 		 for (u32 i = 0; i < len; i++)
 		 {
-			 auto xml = func::__ServerListInfo[i];
+			 auto xml = func::__ServerListInfo[0];
 			 auto client = net::NewTcpClient();
 			 client->setOnConnect(onConnect);
 			 client->setOnSecure(onSecureConnect);
@@ -103,7 +105,7 @@ namespace app
 		 //客户端注册指令
 		for(u32 i = 0; i < len; i++)
 		{
-			auto client = __TcpGame[i];
+			auto client = __TcpGame[0];
 			//client->registerCommand(1000, __AppPlayer);
 			if( i == 0)//这部分职能只由CenterServer处理
 			{

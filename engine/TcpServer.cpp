@@ -256,7 +256,8 @@ namespace net
 		);
 
 		//设置更新属性
-		//将监听socket（listenfd）的属性复制到新的acc->m_Socket上
+		//监听服务器SOCKET  一些属性COPY到新建立的SOCKET
+			//不设置 shutdown调用会不成功
 		setsockopt(acc->m_Socket, SOL_SOCKET,SO_UPDATE_ACCEPT_CONTEXT, (char*)&listenfd, sizeof(listenfd));
 		//设置发送接收缓冲区
 		int rece = func::__ServerInfo->ReceOne;
@@ -424,7 +425,8 @@ namespace net
 		s32 sendBytes = c->send_Tail - c->send_Head;
 		if(sendBytes <= 0) return -4;
 		if(sendBytes > func::__ServerInfo->SendOne) sendBytes = func::__ServerInfo->SendOne;//不能超过一次最大发送的数量
-		
+		c->is_SendCompleted = false;
+
 		SendContext* context = SendContext::pop();//从对象池取出一个
 		context->m_Mode = func::SC_WAIT_SEND;
 		context->setSend(c->socketfd, &c->sendBuf[c->send_Head], sendBytes);//发送

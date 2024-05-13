@@ -95,7 +95,7 @@ namespace net
 					LOG_MSG("overlapped == NULL in line %d \n", __LINE__);
 					continue;
 				}
-
+				// 判断是否有客户端断开了
 				if((recvBytes == 0) && (context->m_Mode == func::SC_WAIT_RECV || context->m_Mode == func::SC_WAIT_SEND))
 				{
 					tcp->shutDown(context->m_Socket, context->m_Mode, NULL ,3003);
